@@ -2,8 +2,7 @@
 //  AppDelegate.swift
 //  SlideMenuControllerSwift
 //
-//  Created by 波戸 勇二 on 12/5/14.
-//  Copyright (c) 2014 Yuji Hato. All rights reserved.
+//  Created by Yuji Hato on 12/3/14.
 //
 
 import UIKit
@@ -13,10 +12,29 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    private func createMenuView() {
 
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as MainViewController
+
+        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as LeftViewController
+
+        let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as RightViewController
+        
+        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+        
+        var slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
+
+        self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+        self.window?.rootViewController = slideMenuController
+        self.window?.makeKeyAndVisible()
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        self.createMenuView()
+
         return true
     }
 

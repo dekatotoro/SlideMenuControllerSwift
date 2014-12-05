@@ -2,8 +2,7 @@
 //  SlideMenuControllerSwiftTests.swift
 //  SlideMenuControllerSwiftTests
 //
-//  Created by 波戸 勇二 on 12/5/14.
-//  Copyright (c) 2014 Yuji Hato. All rights reserved.
+//  Created by Yuji Hato on 12/3/14.
 //
 
 import UIKit
