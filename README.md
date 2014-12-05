@@ -11,6 +11,7 @@ SlideMenuControllerSwift
 )](https://github.com/dekatotoro/SlideMenuControllerSwift/issues?state=open)
 
 
+
 iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
 
 ![sample](Screenshots/SlideMenuControllerSwift.gif)
