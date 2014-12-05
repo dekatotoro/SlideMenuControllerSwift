@@ -1,8 +1,8 @@
 SlideMenuControllerSwift
 ========================
 
-iOS Slide Menu based on iQON, Feedly, Google+, Ameba iPhone app.
-
+iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
+![sample](SlideMenuControllerSwift/Screenshots/SlideMenuControllerSwift.gif)
 
 ##Installation
 
@@ -24,6 +24,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
     var storyboard = UIStoryboard(name: "Main", bundle: nil)
     let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as MainViewController
+    mainViewController.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
+    mainViewController.addRightBarButtonWithImage(UIImage(named: "ic_notifications_black_24dp")!)    
     let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as LeftViewController
     let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as RightViewController
     let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
@@ -72,6 +74,11 @@ or
 if let slideMenuController = self.slideMenuController() {
     // some code
 }
+```
+### add navigationBarButton 
+```swift
+viewController.addLeftBarButtonWithImage(UIImage(named: "hoge")!)
+viewController.addRightBarButtonWithImage(UIImage(named: "fuga")!)
 ```
 
 ### open and close
