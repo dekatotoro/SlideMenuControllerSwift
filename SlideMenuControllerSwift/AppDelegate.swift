@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as MainViewController
-
+        mainViewController.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
+        mainViewController.addRightBarButtonWithImage(UIImage(named: "ic_notifications_black_24dp")!)
+        
         let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as LeftViewController
 
         let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as RightViewController
