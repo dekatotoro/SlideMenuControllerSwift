@@ -1,6 +1,17 @@
 SlideMenuControllerSwift
 ========================
 
+[![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat
+)](https://developer.apple.com/iphone/index.action)
+[![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
+)](https://developer.apple.com/swift)
+[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
+)](http://mit-license.org)
+[![Issues](https://img.shields.io/github/issues/nghialv/MaterialKit.svg?style=flat
+)](https://github.com/dekatotoro/SlideMenuControllerSwift/issues?state=open)
+
+
+
 iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
 
 ![sample](Screenshots/SlideMenuControllerSwift.gif)
@@ -94,8 +105,11 @@ self.slideMenuController()?.closeRight()
 ```
 
 ## Requirements
-
 Requires iOS 7.0 and ARC.
+
+## Features
+- Highly customizable
+- Complete example
 
 
 ## Contributing
@@ -104,8 +118,8 @@ Forks, patches and other feedback are welcome.
 
 ## Creator
 
-[Yuji Hato](https://github.com/dekatotoro)
-[blog](http://buzzmemo.blogspot.jp/)
+[Yuji Hato](https://github.com/dekatotoro) 
+[Blog](http://buzzmemo.blogspot.jp/)
 
 ## License
 
