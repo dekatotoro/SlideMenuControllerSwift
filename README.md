@@ -34,19 +34,11 @@ In your app delegate:
 
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    var storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as MainViewController
-    mainViewController.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
-    mainViewController.addRightBarButtonWithImage(UIImage(named: "ic_notifications_black_24dp")!)    
-    let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as LeftViewController
-    let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as RightViewController
-    let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-
-    var slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
-
-    self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+    // create viewController code...
+        
+    var slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
     self.window?.rootViewController = slideMenuController
-    self.window?.makeKeyAndVisible()
+    self.window?.makeKeyAndVisible()    
 
     return true
 }
