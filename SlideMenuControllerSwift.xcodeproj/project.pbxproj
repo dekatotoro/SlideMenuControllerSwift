@@ -17,7 +17,6 @@
 		C539E66A1A316541003B7CC7 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E6691A316541003B7CC7 /* SlideMenuController.swift */; };
 		C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66B1A316C78003B7CC7 /* LeftViewController.swift */; };
 		C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66D1A316F5F003B7CC7 /* RightViewController.swift */; };
-		C539E6711A31C150003B7CC7 /* SlideMenuControllerSwift.gif in Resources */ = {isa = PBXBuildFile; fileRef = C539E6701A31C150003B7CC7 /* SlideMenuControllerSwift.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +44,6 @@
 		C539E6691A316541003B7CC7 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		C539E66B1A316C78003B7CC7 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		C539E66D1A316F5F003B7CC7 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
-		C539E6701A31C150003B7CC7 /* SlideMenuControllerSwift.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = SlideMenuControllerSwift.gif; path = ../../Documents/SlideMenuControllerSwift.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +69,6 @@
 			children = (
 				C539E6431A315E87003B7CC7 /* SlideMenuControllerSwift */,
 				C539E65C1A315E87003B7CC7 /* SlideMenuControllerSwiftTests */,
-				C539E66F1A31C12D003B7CC7 /* Screenshots */,
 				C539E6421A315E87003B7CC7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,14 +122,6 @@
 				C539E65E1A315E87003B7CC7 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C539E66F1A31C12D003B7CC7 /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				C539E6701A31C150003B7CC7 /* SlideMenuControllerSwift.gif */,
-			);
-			name = Screenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +207,6 @@
 				C539E64F1A315E87003B7CC7 /* Main.storyboard in Resources */,
 				C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */,
 				C539E6511A315E87003B7CC7 /* Images.xcassets in Resources */,
-				C539E6711A31C150003B7CC7 /* SlideMenuControllerSwift.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
