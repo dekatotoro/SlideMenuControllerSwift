@@ -26,7 +26,7 @@ Add the `SlideMenuController.swift` file to your project.
 
 ##Usage
 
-###Basic Setup
+###Setup
 
 In your app delegate:
 
