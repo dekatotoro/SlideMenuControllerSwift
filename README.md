@@ -2,7 +2,7 @@ SlideMenuControllerSwift
 ========================
 
 iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
-![sample](SlideMenuControllerSwift/Screenshots/SlideMenuControllerSwift.gif)
+![sample](Screenshots/SlideMenuControllerSwift.gif)
 
 ##Installation
 
