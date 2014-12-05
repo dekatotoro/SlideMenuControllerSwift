@@ -156,7 +156,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.closeRight()
     }
     
-    func openLeft() {
+    override func openLeft() {
         self.setOpenWindowLevel()
         
         //leftViewControllerのviewWillAppearを呼ぶため
@@ -164,7 +164,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.openLeftWithVelocity(0.0)
     }
     
-    func openRight() {
+    override func openRight() {
         self.setOpenWindowLevel()
         
         //menuViewControllerのviewWillAppearを呼ぶため
@@ -172,12 +172,12 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.openRightWithVelocity(0.0)
     }
     
-    func closeLeft() {
+    override func closeLeft() {
         self.closeLeftWithVelocity(0.0)
         self.setCloseWindowLebel()
     }
     
-    func closeRight() {
+    override func closeRight() {
         self.closeRightWithVelocity(0.0)
         self.setCloseWindowLebel()
     }
@@ -447,7 +447,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    func toggleLeft() {
+    override func toggleLeft() {
         if self.isLeftOpen() {
             self.closeLeft()
             self.setCloseWindowLebel()
@@ -464,7 +464,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return self.leftContainerView.frame.origin.x <= self.leftMinOrigin()
     }
     
-    func toggleRight() {
+    override func toggleRight() {
         if self.isRightOpen() {
             self.closeRight()
             self.setCloseWindowLebel()
@@ -799,20 +799,35 @@ extension UIViewController {
     }
     
     func addLeftBarButtonWithImage(buttonImage: UIImage) {
-        var leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "slideLeftContoller")
+        var leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "toggleLeft")
         self.navigationItem.leftBarButtonItem = leftButton;
     }
     
     func addRightBarButtonWithImage(buttonImage: UIImage) {
-        var rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "slideRightContoller")
+        var rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "toggleRight")
         self.navigationItem.rightBarButtonItem = rightButton;
     }
     
-    func slideLeftContoller() {
+    func toggleLeft() {
         self.slideMenuController()?.toggleLeft()
     }
 
-    func slideRightContoller() {
+    func toggleRight() {
         self.slideMenuController()?.toggleRight()
+    }
+    
+    func openLeft() {
+        self.slideMenuController()?.openLeft()
+    }
+    
+    func openRight() {
+        self.slideMenuController()?.openRight()    }
+    
+    func closeLeft() {
+        self.slideMenuController()?.closeLeft()
+    }
+    
+    func closeRight() {
+        self.slideMenuController()?.closeRight()
     }
 }
