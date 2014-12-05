@@ -7,7 +7,7 @@ SlideMenuControllerSwift
 )](https://developer.apple.com/swift)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
 )](http://mit-license.org)
-[![Issues](https://img.shields.io/github/issues/dekatotoro/MaterialKit.svg?style=flat
+[![Issues](https://img.shields.io/github/issues/dekatotoro/SlideMenuControllerSwift.svg?style=flat
 )](https://github.com/dekatotoro/SlideMenuControllerSwift/issues?state=open)
 
 
