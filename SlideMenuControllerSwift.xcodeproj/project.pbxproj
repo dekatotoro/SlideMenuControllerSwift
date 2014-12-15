@@ -67,6 +67,7 @@
 		C539E6381A315E87003B7CC7 = {
 			isa = PBXGroup;
 			children = (
+				C54F64951A3EC31B00518F38 /* SlideMenuController */,
 				C539E6431A315E87003B7CC7 /* SlideMenuControllerSwift */,
 				C539E65C1A315E87003B7CC7 /* SlideMenuControllerSwiftTests */,
 				C539E6421A315E87003B7CC7 /* Products */,
@@ -85,7 +86,6 @@
 		C539E6431A315E87003B7CC7 /* SlideMenuControllerSwift */ = {
 			isa = PBXGroup;
 			children = (
-				C539E6691A316541003B7CC7 /* SlideMenuController.swift */,
 				C539E6461A315E87003B7CC7 /* AppDelegate.swift */,
 				C539E64B1A315E87003B7CC7 /* MainViewController.swift */,
 				C539E66B1A316C78003B7CC7 /* LeftViewController.swift */,
@@ -122,6 +122,15 @@
 				C539E65E1A315E87003B7CC7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C54F64951A3EC31B00518F38 /* SlideMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				C539E6691A316541003B7CC7 /* SlideMenuController.swift */,
+			);
+			name = SlideMenuController;
+			path = SlideMenuControllerSwift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +434,7 @@
 				C539E6651A315E87003B7CC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C539E6661A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -433,6 +443,7 @@
 				C539E6681A315E87003B7CC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
