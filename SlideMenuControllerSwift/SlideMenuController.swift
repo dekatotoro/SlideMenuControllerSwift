@@ -33,6 +33,7 @@ class SlideMenuOption {
     let rightViewOverlapWidth: CGFloat = 60.0
     let rightBezelWidth: CGFloat = 16.0
     let rightPanFromBezel: Bool = true
+    let hideStatusBar: Bool = true
     
     init() {
         
@@ -148,9 +149,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.setUpViewController(self.rightContainerView, targetViewController: self.rightViewController)
     }
     
-    
-    
-    
+    // Notification func for view close
     func handleWillEnterForegroundNotification(notif: NSNotification) {
         self.closeLeft()
         self.closeRight()
@@ -271,6 +270,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 menuWasHiddenAtStartOfPan = self.isLeftHidden()
                 self.leftViewController?.beginAppearanceTransition(menuWasHiddenAtStartOfPan, animated: true)
                 self.addShadowToView(self.leftContainerView)
+                self.setOpenWindowLevel()
             case UIGestureRecognizerState.Changed:
                 
                 var translation: CGPoint = panGesture.translationInView(panGesture.view!)
@@ -284,7 +284,6 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 var panInfo: PanInfo = self.panLeftResultInfoForVelocity(velocity)
                 
                 if panInfo.action == SlideAction.Open {
-                    self.setOpenWindowLevel()
                     self.openLeftWithVelocity(panInfo.velocity)
                 } else {
                     self.closeLeftWithVelocity(panInfo.velocity)
@@ -321,7 +320,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             rightViewWasHiddenAtStartOfPan = self.isRightHidden()
             self.rightViewController?.beginAppearanceTransition(rightViewWasHiddenAtStartOfPan, animated: true)
             self.addShadowToView(self.rightContainerView)
-            
+            self.setOpenWindowLevel()
         case UIGestureRecognizerState.Changed:
             
             var translation: CGPoint = panGesture.translationInView(panGesture.view!)
@@ -336,7 +335,6 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             var panInfo: PanInfo = self.panRightResultInfoForVelocity(velocity)
             
             if panInfo.action == SlideAction.Open {
-                self.setOpenWindowLevel()
                 self.openRightWithVelocity(panInfo.velocity)
             } else {
                 self.closeRightWithVelocity(panInfo.velocity)
@@ -666,19 +664,23 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     private func setOpenWindowLevel() {
-        dispatch_async(dispatch_get_main_queue(), {
-            if let window = UIApplication.sharedApplication().keyWindow {
-                window.windowLevel = UIWindowLevelStatusBar + 1
-            }
-        })
+        if (self.options.hideStatusBar) {
+            dispatch_async(dispatch_get_main_queue(), {
+                if let window = UIApplication.sharedApplication().keyWindow {
+                    window.windowLevel = UIWindowLevelStatusBar + 1
+                }
+            })
+        }
     }
     
     private func setCloseWindowLebel() {
-        dispatch_async(dispatch_get_main_queue(), {
-            if let window = UIApplication.sharedApplication().keyWindow {
-                window.windowLevel = UIWindowLevelNormal
-            }
-        })
+        if (self.options.hideStatusBar) {
+            dispatch_async(dispatch_get_main_queue(), {
+                if let window = UIApplication.sharedApplication().keyWindow {
+                    window.windowLevel = UIWindowLevelNormal
+                }
+            })
+        }
     }
     
     private func setUpViewController(taretView: UIView, targetViewController: UIViewController?) {
