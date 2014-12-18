@@ -12,6 +12,13 @@ enum SlideAction {
     Close
 }
 
+enum TrackAction {
+    case TapOpen
+    case TapClose
+    case FlickOpen
+    case FlickClose
+}
+
 
 struct PanInfo {
     var action: SlideAction
@@ -161,6 +168,8 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         //leftViewControllerのviewWillAppearを呼ぶため
         self.leftViewController?.beginAppearanceTransition(self.isLeftHidden(), animated: true)
         self.openLeftWithVelocity(0.0)
+        
+        self.track(TrackAction.TapOpen)
     }
     
     override func openRight() {
@@ -238,7 +247,14 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func isTagetViewController() -> Bool {
+        // Function to determine the target ViewController
+        // Please to override it if necessary
         return true
+    }
+    
+    func track(trackAction: TrackAction) {
+        // function is for tracking
+        // Please to override it if necessary
     }
     
     func handleLeftPanGesture(panGesture: UIPanGestureRecognizer) {
@@ -285,15 +301,20 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 
                 if panInfo.action == SlideAction.Open {
                     self.openLeftWithVelocity(panInfo.velocity)
+                    self.track(TrackAction.FlickOpen)
+                    
                 } else {
                     self.closeLeftWithVelocity(panInfo.velocity)
                     self.setCloseWindowLebel()
+                    
+                    self.track(TrackAction.FlickClose)
+
                 }
             break
         default:
             break
         }
-            
+        
     }
     
     func handleRightPanGesture(panGesture: UIPanGestureRecognizer) {
@@ -449,6 +470,9 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         if self.isLeftOpen() {
             self.closeLeft()
             self.setCloseWindowLebel()
+            // closeMenuはメニュータップ時にも呼ばれるため、closeタップのトラッキングはここに入れる
+            
+            self.track(TrackAction.TapClose)
         } else {
             self.openLeft()
         }
