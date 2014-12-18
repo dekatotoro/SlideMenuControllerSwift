@@ -8,8 +8,8 @@ import Foundation
 import UIKit
 
 enum SlideAction {
-    case Open,
-    Close
+    case Open
+    case Close
 }
 
 enum TrackAction {
