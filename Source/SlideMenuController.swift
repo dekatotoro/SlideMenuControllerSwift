@@ -164,7 +164,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.leftViewController?.beginAppearanceTransition(self.isLeftHidden(), animated: true)
         self.openLeftWithVelocity(0.0)
         
-        self.track(TrackAction.TapOpen)
+        self.track(.TapOpen)
     }
     
     override func openRight() {
@@ -292,18 +292,17 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 var velocity:CGPoint = panGesture.velocityInView(panGesture.view)
                 var panInfo: PanInfo = self.panLeftResultInfoForVelocity(velocity)
                 
-                if panInfo.action == SlideAction.Open {
+                if panInfo.action == .Open {
                     self.openLeftWithVelocity(panInfo.velocity)
-                    self.track(TrackAction.FlickOpen)
+                    self.track(.FlickOpen)
                     
                 } else {
                     self.closeLeftWithVelocity(panInfo.velocity)
                     self.setCloseWindowLebel()
                     
-                    self.track(TrackAction.FlickClose)
+                    self.track(.FlickClose)
 
                 }
-            break
         default:
             break
         }
@@ -351,7 +350,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             var velocity: CGPoint = panGesture.velocityInView(panGesture.view)
             var panInfo: PanInfo = self.panRightResultInfoForVelocity(velocity)
             
-            if panInfo.action == SlideAction.Open {
+            if panInfo.action == .Open {
                 self.openRightWithVelocity(panInfo.velocity)
             } else {
                 self.closeRightWithVelocity(panInfo.velocity)
@@ -468,7 +467,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             self.setCloseWindowLebel()
             // closeMenuはメニュータップ時にも呼ばれるため、closeタップのトラッキングはここに入れる
             
-            self.track(TrackAction.TapClose)
+            self.track(.TapClose)
         } else {
             self.openLeft()
         }
@@ -538,15 +537,15 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         var pointOfNoReturn: CGFloat = CGFloat(floor(self.leftMinOrigin()) / 2.0)
         var leftOrigin: CGFloat = self.leftContainerView.frame.origin.x
         
-        var panInfo: PanInfo = PanInfo(action: SlideAction.Close, shouldBounce: false, velocity: 0.0)
+        var panInfo: PanInfo = PanInfo(action: .Close, shouldBounce: false, velocity: 0.0)
         
-        panInfo.action = leftOrigin <= pointOfNoReturn ? SlideAction.Close : SlideAction.Open;
+        panInfo.action = leftOrigin <= pointOfNoReturn ? .Close : .Open;
         
         if velocity.x >= thresholdVelocity {
-            panInfo.action = SlideAction.Open
+            panInfo.action = .Open
             panInfo.velocity = velocity.x
         } else if velocity.x <= (-1.0 * thresholdVelocity) {
-            panInfo.action = SlideAction.Close
+            panInfo.action = .Close
             panInfo.velocity = velocity.x
         }
         
@@ -559,15 +558,15 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         var pointOfNoReturn: CGFloat = CGFloat(floor(self.options.rightViewOverlapWidth + self.rightContainerView.frame.size.width / 2.0))
         var rightOrigin: CGFloat = self.rightContainerView.frame.origin.x
         
-        var panInfo: PanInfo = PanInfo(action: SlideAction.Close, shouldBounce: false, velocity: 0.0)
+        var panInfo: PanInfo = PanInfo(action: .Close, shouldBounce: false, velocity: 0.0)
         
-        panInfo.action = rightOrigin >= pointOfNoReturn ? SlideAction.Close : SlideAction.Open
+        panInfo.action = rightOrigin >= pointOfNoReturn ? .Close : .Open
         
         if velocity.x <= thresholdVelocity {
-            panInfo.action = SlideAction.Open
+            panInfo.action = .Open
             panInfo.velocity = velocity.x
         } else if (velocity.x >= (-1.0 * thresholdVelocity)) {
-            panInfo.action = SlideAction.Close
+            panInfo.action = .Close
             panInfo.velocity = velocity.x
         }
         
