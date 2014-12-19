@@ -14,9 +14,9 @@
 		C539E6511A315E87003B7CC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C539E6501A315E87003B7CC7 /* Images.xcassets */; };
 		C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C539E6521A315E87003B7CC7 /* LaunchScreen.xib */; };
 		C539E6601A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */; };
-		C539E66A1A316541003B7CC7 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E6691A316541003B7CC7 /* SlideMenuController.swift */; };
 		C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66B1A316C78003B7CC7 /* LeftViewController.swift */; };
 		C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66D1A316F5F003B7CC7 /* RightViewController.swift */; };
+		C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +41,9 @@
 		C539E6591A315E87003B7CC7 /* SlideMenuControllerSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlideMenuControllerSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C539E65E1A315E87003B7CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuControllerSwiftTests.swift; sourceTree = "<group>"; };
-		C539E6691A316541003B7CC7 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		C539E66B1A316C78003B7CC7 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		C539E66D1A316F5F003B7CC7 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuController.swift; path = Source/SlideMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 		C539E6381A315E87003B7CC7 = {
 			isa = PBXGroup;
 			children = (
-				C54F64951A3EC31B00518F38 /* SlideMenuController */,
+				C5BA8AA41A43E24C00863FB9 /* Source */,
 				C539E6431A315E87003B7CC7 /* SlideMenuControllerSwift */,
 				C539E65C1A315E87003B7CC7 /* SlideMenuControllerSwiftTests */,
 				C539E6421A315E87003B7CC7 /* Products */,
@@ -124,13 +124,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C54F64951A3EC31B00518F38 /* SlideMenuController */ = {
+		C5BA8AA41A43E24C00863FB9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C539E6691A316541003B7CC7 /* SlideMenuController.swift */,
+				C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */,
 			);
-			name = SlideMenuController;
-			path = SlideMenuControllerSwift;
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,9 +234,9 @@
 			files = (
 				C539E64C1A315E87003B7CC7 /* MainViewController.swift in Sources */,
 				C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */,
-				C539E66A1A316541003B7CC7 /* SlideMenuController.swift in Sources */,
 				C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */,
 				C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */,
+				C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */,
 				C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
