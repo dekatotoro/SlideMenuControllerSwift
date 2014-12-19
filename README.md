@@ -61,6 +61,7 @@ class SlideMenuOption {
     let rightViewOverlapWidth: CGFloat = 60.0
     let rightBezelWidth: CGFloat = 16.0
     let rightPanFromBezel: Bool = true
+    let hideStatusBar: Bool = true
     
     init() {
         
