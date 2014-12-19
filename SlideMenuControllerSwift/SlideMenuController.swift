@@ -7,24 +7,6 @@
 import Foundation
 import UIKit
 
-enum SlideAction {
-    case Open
-    case Close
-}
-
-enum TrackAction {
-    case TapOpen
-    case TapClose
-    case FlickOpen
-    case FlickClose
-}
-
-
-struct PanInfo {
-    var action: SlideAction
-    var shouldBounce: Bool
-    var velocity: CGFloat
-}
 
 class SlideMenuOption {
     
@@ -50,6 +32,25 @@ class SlideMenuOption {
 
 class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
 
+    enum SlideAction {
+        case Open
+        case Close
+    }
+    
+    enum TrackAction {
+        case TapOpen
+        case TapClose
+        case FlickOpen
+        case FlickClose
+    }
+    
+    
+    struct PanInfo {
+        var action: SlideAction
+        var shouldBounce: Bool
+        var velocity: CGFloat
+    }
+    
     var opacityView = UIView()
     var mainContainerView = UIView()
     var leftContainerView = UIView()
@@ -156,12 +157,6 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.setUpViewController(self.rightContainerView, targetViewController: self.rightViewController)
     }
     
-    // Notification func for view close
-    func handleWillEnterForegroundNotification(notif: NSNotification) {
-        self.closeLeft()
-        self.closeRight()
-    }
-    
     override func openLeft() {
         self.setOpenWindowLevel()
         
@@ -257,12 +252,14 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         // Please to override it if necessary
     }
     
+    struct LeftPanState {
+        static var frameAtStartOfPan: CGRect = CGRectZero
+        static var startPointOfPan: CGPoint = CGPointZero
+        static var wasOpenAtStartOfPan: Bool = false
+        static var wasHiddenAtStartOfPan: Bool = false
+    }
+    
     func handleLeftPanGesture(panGesture: UIPanGestureRecognizer) {
-        if let url = NSURL(fileURLWithPath: "xxx") {
-            if NSFileManager.defaultManager().fileExistsAtPath(url.path!) {
-                
-            }
-        }
         
         if !self.isTagetViewController() {
             return
@@ -272,30 +269,26 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        var menuFrameAtStartOfPan: CGRect = self.leftContainerView.frame
-        var startPointOfPan: CGPoint = panGesture.locationInView(self.view)
-        var menuWasOpenAtStartOfPan: Bool = self.isLeftOpen()
-        var menuWasHiddenAtStartOfPan: Bool = self.isLeftHidden()
-
         switch panGesture.state {
             case UIGestureRecognizerState.Began:
                 
-                menuFrameAtStartOfPan = self.leftContainerView.frame
-                startPointOfPan = panGesture.locationInView(self.view)
-                menuWasOpenAtStartOfPan = self.isLeftOpen()
-                menuWasHiddenAtStartOfPan = self.isLeftHidden()
-                self.leftViewController?.beginAppearanceTransition(menuWasHiddenAtStartOfPan, animated: true)
+                LeftPanState.frameAtStartOfPan = self.leftContainerView.frame
+                LeftPanState.startPointOfPan = panGesture.locationInView(self.view)
+                LeftPanState.wasOpenAtStartOfPan = self.isLeftOpen()
+                LeftPanState.wasHiddenAtStartOfPan = self.isLeftHidden()
+                
+                self.leftViewController?.beginAppearanceTransition(LeftPanState.wasHiddenAtStartOfPan, animated: true)
                 self.addShadowToView(self.leftContainerView)
                 self.setOpenWindowLevel()
             case UIGestureRecognizerState.Changed:
                 
                 var translation: CGPoint = panGesture.translationInView(panGesture.view!)
-                self.leftContainerView.frame = self.applyLeftTranslation(translation, toFrame: menuFrameAtStartOfPan)
+                self.leftContainerView.frame = self.applyLeftTranslation(translation, toFrame: LeftPanState.frameAtStartOfPan)
                 self.applyLeftOpacity()
                 self.applyLeftContentViewScale()
             case UIGestureRecognizerState.Ended:
                 
-                self.leftViewController?.beginAppearanceTransition(!menuWasHiddenAtStartOfPan, animated: true)
+                self.leftViewController?.beginAppearanceTransition(!LeftPanState.wasHiddenAtStartOfPan, animated: true)
                 var velocity:CGPoint = panGesture.velocityInView(panGesture.view)
                 var panInfo: PanInfo = self.panLeftResultInfoForVelocity(velocity)
                 
@@ -317,6 +310,13 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    struct rightPanState {
+        static var frameAtStartOfPan: CGRect = CGRectZero
+        static var startPointOfPan: CGPoint = CGPointZero
+        static var wasOpenAtStartOfPan: Bool = false
+        static var wasHiddenAtStartOfPan: Bool = false
+    }
+    
     func handleRightPanGesture(panGesture: UIPanGestureRecognizer) {
         
         if !self.isTagetViewController() {
@@ -327,31 +327,27 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        var rightViewFrameAtStartOfPan: CGRect = self.rightContainerView.frame
-        var startPointOfPan: CGPoint = panGesture.locationInView(self.view)
-        var rightViewWasOpenAtStartOfPan: Bool =  self.isRightOpen()
-        var rightViewWasHiddenAtStartOfPan: Bool = self.isRightHidden()
-        
         switch panGesture.state {
         case UIGestureRecognizerState.Began:
             
-            rightViewFrameAtStartOfPan = self.rightContainerView.frame
-            startPointOfPan = panGesture.locationInView(self.view)
-            rightViewWasOpenAtStartOfPan = self.isRightOpen()
-            rightViewWasHiddenAtStartOfPan = self.isRightHidden()
-            self.rightViewController?.beginAppearanceTransition(rightViewWasHiddenAtStartOfPan, animated: true)
+            rightPanState.frameAtStartOfPan = self.rightContainerView.frame
+            rightPanState.startPointOfPan = panGesture.locationInView(self.view)
+            rightPanState.wasOpenAtStartOfPan =  self.isRightOpen()
+            rightPanState.wasHiddenAtStartOfPan = self.isRightHidden()
+            
+            self.rightViewController?.beginAppearanceTransition(rightPanState.wasHiddenAtStartOfPan, animated: true)
             self.addShadowToView(self.rightContainerView)
             self.setOpenWindowLevel()
         case UIGestureRecognizerState.Changed:
             
             var translation: CGPoint = panGesture.translationInView(panGesture.view!)
-            self.rightContainerView.frame = self.applyRightTranslation(translation, toFrame: rightViewFrameAtStartOfPan)
+            self.rightContainerView.frame = self.applyRightTranslation(translation, toFrame: rightPanState.frameAtStartOfPan)
             self.applyRightOpacity()
             self.applyRightContentViewScale()
             
         case UIGestureRecognizerState.Ended:
             
-            self.rightViewController?.beginAppearanceTransition(!rightViewWasHiddenAtStartOfPan, animated: true)
+            self.rightViewController?.beginAppearanceTransition(!rightPanState.wasHiddenAtStartOfPan, animated: true)
             var velocity: CGPoint = panGesture.velocityInView(panGesture.view)
             var panInfo: PanInfo = self.panRightResultInfoForVelocity(velocity)
             
@@ -538,8 +534,8 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     private func panLeftResultInfoForVelocity(velocity: CGPoint) -> PanInfo {
         
-        var thresholdVelocity: CGFloat = 450.0
-        var pointOfNoReturn: CGFloat = CGFloat(floor(self.leftMinOrigin() / 2.0))
+        var thresholdVelocity: CGFloat = 1000.0
+        var pointOfNoReturn: CGFloat = CGFloat(floor(self.leftMinOrigin()) / 2.0)
         var leftOrigin: CGFloat = self.leftContainerView.frame.origin.x
         
         var panInfo: PanInfo = PanInfo(action: SlideAction.Close, shouldBounce: false, velocity: 0.0)
@@ -559,8 +555,8 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     private func panRightResultInfoForVelocity(velocity: CGPoint) -> PanInfo {
         
-        var thresholdVelocity: CGFloat = -450.0
-        var pointOfNoReturn: CGFloat = CGFloat(floor((self.rightMinOrigin() - self.rightContainerView.frame.size.width) + self.rightContainerView.frame.size.width / 2.0))
+        var thresholdVelocity: CGFloat = -1000.0
+        var pointOfNoReturn: CGFloat = CGFloat(floor(self.options.rightViewOverlapWidth + self.rightContainerView.frame.size.width / 2.0))
         var rightOrigin: CGFloat = self.rightContainerView.frame.origin.x
         
         var panInfo: PanInfo = PanInfo(action: SlideAction.Close, shouldBounce: false, velocity: 0.0)
@@ -855,5 +851,17 @@ extension UIViewController {
     
     func closeRight() {
         self.slideMenuController()?.closeRight()
+    }
+    
+    // Please specify if you want menu gesuture give priority to than targetScrollView
+    func addPriorityToMenuGesuture(targetScrollView: UIScrollView) {
+        if let slideControlelr = self.slideMenuController() {
+            let recognizers =  slideControlelr.view.gestureRecognizers
+            for recognizer in recognizers as [UIGestureRecognizer] {
+                if recognizer is UIPanGestureRecognizer {
+                    targetScrollView.panGestureRecognizer.requireGestureRecognizerToFail(recognizer)
+                }
+            }
+        }
     }
 }
