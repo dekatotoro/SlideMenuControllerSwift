@@ -62,6 +62,7 @@ class SlideMenuOption {
     let rightBezelWidth: CGFloat = 16.0
     let rightPanFromBezel: Bool = true
     let hideStatusBar: Bool = true
+    let pointOfNoReturnWidth: CGFloat = 44.0
     
     init() {
         
