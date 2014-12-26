@@ -23,6 +23,7 @@ class SlideMenuOption {
     let rightBezelWidth: CGFloat = 16.0
     let rightPanFromBezel: Bool = true
     let hideStatusBar: Bool = true
+    let pointOfNoReturnWidth: CGFloat = 44.0
     
     init() {
         
@@ -534,7 +535,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     private func panLeftResultInfoForVelocity(velocity: CGPoint) -> PanInfo {
         
         var thresholdVelocity: CGFloat = 1000.0
-        var pointOfNoReturn: CGFloat = CGFloat(floor(self.leftMinOrigin()) / 2.0)
+        var pointOfNoReturn: CGFloat = CGFloat(floor(self.leftMinOrigin())) + self.options.pointOfNoReturnWidth
         var leftOrigin: CGFloat = self.leftContainerView.frame.origin.x
         
         var panInfo: PanInfo = PanInfo(action: .Close, shouldBounce: false, velocity: 0.0)
@@ -555,7 +556,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     private func panRightResultInfoForVelocity(velocity: CGPoint) -> PanInfo {
         
         var thresholdVelocity: CGFloat = -1000.0
-        var pointOfNoReturn: CGFloat = CGFloat(floor(self.options.rightViewOverlapWidth + self.rightContainerView.frame.size.width / 2.0))
+        var pointOfNoReturn: CGFloat = CGFloat(floor(self.options.rightViewOverlapWidth + self.rightContainerView.frame.size.width)) - self.options.pointOfNoReturnWidth
         var rightOrigin: CGFloat = self.rightContainerView.frame.origin.x
         
         var panInfo: PanInfo = PanInfo(action: .Close, shouldBounce: false, velocity: 0.0)
