@@ -522,8 +522,10 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func changeMainViewController(mainViewController: UIViewController,  close: Bool) {
-    
+        
+        self.removeViewController(self.mainViewController)
         self.mainViewController = mainViewController
+        self.setUpViewController(self.mainContainerView, targetViewController: self.mainViewController)
         if (close) {
             self.closeLeft()
             self.closeRight()
@@ -531,14 +533,19 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func changeLeftViewController(leftViewController: UIViewController, closeLeft:Bool) {
+        
+        self.removeViewController(self.leftViewController)
         self.leftViewController = leftViewController
+        self.setUpViewController(self.leftContainerView, targetViewController: self.leftViewController)
         if (closeLeft) {
             self.closeLeft()
         }
     }
     
     func changeRightViewController(rightViewController: UIViewController, closeRight:Bool) {
+        self.removeViewController(self.rightViewController)
         self.rightViewController = rightViewController;
+        self.setUpViewController(self.rightContainerView, targetViewController: self.rightViewController)
         if (closeRight) {
             self.closeRight()
         }
