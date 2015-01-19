@@ -49,7 +49,7 @@ If you want to use the custom option, please change the SlideMenuOption class.
 ```swift
 class SlideMenuOption {
     
-    let leftViewOverlapWidth: CGFloat = 60.0
+    let leftViewWidth: CGFloat = 270.0
     let leftBezelWidth: CGFloat = 16.0
     let contentViewScale: CGFloat = 0.96
     let contentViewOpacity: CGFloat = 0.5
@@ -58,11 +58,12 @@ class SlideMenuOption {
     let shadowOffset: CGSize = CGSizeMake(0,0)
     let panFromBezel: Bool = true
     let animationDuration: CGFloat = 0.4
-    let rightViewOverlapWidth: CGFloat = 60.0
+    let rightViewWidth: CGFloat = 270.0
     let rightBezelWidth: CGFloat = 16.0
     let rightPanFromBezel: Bool = true
     let hideStatusBar: Bool = true
     let pointOfNoReturnWidth: CGFloat = 44.0
+
     
     init() {
         
