@@ -237,23 +237,26 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
 
     }
     
-    func removeGestures() {
+    func removeLeftGestures() {
         
         if self.leftPanGesture != nil {
             self.view.removeGestureRecognizer(self.leftPanGesture!)
             self.leftPanGesture = nil
         }
         
-        if self.rightPanGesture != nil {
-            self.view.removeGestureRecognizer(self.rightPanGesture!)
-            self.rightPanGesture = nil
-        }
-    
         if self.leftTapGetsture != nil {
             self.view.removeGestureRecognizer(self.leftTapGetsture!)
             self.leftTapGetsture = nil
         }
+    }
     
+    func removeRightGestures() {
+        
+        if self.rightPanGesture != nil {
+            self.view.removeGestureRecognizer(self.rightPanGesture!)
+            self.rightPanGesture = nil
+        }
+        
         if self.rightTapGesture != nil {
             self.view.removeGestureRecognizer(self.rightTapGesture!)
             self.rightTapGesture = nil
