@@ -17,6 +17,10 @@
 		C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66B1A316C78003B7CC7 /* LeftViewController.swift */; };
 		C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66D1A316F5F003B7CC7 /* RightViewController.swift */; };
 		C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
+		C5BD39DA1A6CD12300D0AF95 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39D91A6CD12300D0AF95 /* SwiftViewController.swift */; };
+		C5BD39DC1A6CD15700D0AF95 /* JavaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */; };
+		C5BD39DE1A6CD17B00D0AF95 /* GoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */; };
+		C5BD39E01A6CDC8100D0AF95 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		C539E66B1A316C78003B7CC7 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		C539E66D1A316F5F003B7CC7 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuController.swift; path = Source/SlideMenuController.swift; sourceTree = "<group>"; };
+		C5BD39D91A6CD12300D0AF95 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
+		C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JavaViewController.swift; sourceTree = "<group>"; };
+		C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoViewController.swift; sourceTree = "<group>"; };
+		C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,10 @@
 				C539E64B1A315E87003B7CC7 /* MainViewController.swift */,
 				C539E66B1A316C78003B7CC7 /* LeftViewController.swift */,
 				C539E66D1A316F5F003B7CC7 /* RightViewController.swift */,
+				C5BD39D91A6CD12300D0AF95 /* SwiftViewController.swift */,
+				C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */,
+				C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */,
+				C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */,
 				C539E64D1A315E87003B7CC7 /* Main.storyboard */,
 				C539E6501A315E87003B7CC7 /* Images.xcassets */,
 				C539E6521A315E87003B7CC7 /* LaunchScreen.xib */,
@@ -232,12 +244,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5BD39DE1A6CD17B00D0AF95 /* GoViewController.swift in Sources */,
 				C539E64C1A315E87003B7CC7 /* MainViewController.swift in Sources */,
+				C5BD39E01A6CDC8100D0AF95 /* UIViewControllerExtension.swift in Sources */,
 				C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */,
 				C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */,
 				C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */,
+				C5BD39DC1A6CD15700D0AF95 /* JavaViewController.swift in Sources */,
 				C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */,
 				C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */,
+				C5BD39DA1A6CD12300D0AF95 /* SwiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

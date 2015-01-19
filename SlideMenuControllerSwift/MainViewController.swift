@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setNavigationBarItem()
     }
 
     override func didReceiveMemoryWarning() {
