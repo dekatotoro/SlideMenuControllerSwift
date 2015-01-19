@@ -160,7 +160,8 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.leftContainerView.hidden = false
         self.rightContainerView.hidden = false
 
-        self.removeGestures()
+        self.removeLeftGestures()
+        self.removeRightGestures()
         self.addGestures()
     }
     
