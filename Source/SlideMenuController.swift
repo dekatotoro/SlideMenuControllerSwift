@@ -141,7 +141,8 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.view.insertSubview(rightContainerView, atIndex: 3)
         
         
-        self.addGestures()
+        self.addLeftGestures()
+        self.addRightGestures()
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
@@ -162,7 +163,8 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
 
         self.removeLeftGestures()
         self.removeRightGestures()
-        self.addGestures()
+        self.addLeftGestures()
+        self.addRightGestures()
     }
     
     override func viewDidLoad() {
@@ -206,7 +208,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    func addGestures() {
+    func addLeftGestures() {
     
         if (self.leftViewController != nil) {
             if self.leftPanGesture == nil {
@@ -221,6 +223,9 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 self.view.addGestureRecognizer(self.leftTapGetsture!)
             }
         }
+    }
+    
+    func addRightGestures() {
         
         if (self.rightViewController != nil) {
             if self.rightPanGesture == nil {
@@ -235,7 +240,6 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 self.view.addGestureRecognizer(self.rightTapGesture!)
             }
         }
-
     }
     
     func removeLeftGestures() {
