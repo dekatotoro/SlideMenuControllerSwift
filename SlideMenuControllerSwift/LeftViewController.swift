@@ -7,22 +7,29 @@
 
 import UIKit
 
+enum LeftMenu: Int {
+    case Main = 0
+    case Swift
+    case Java
+    case Go
+    case NonMenu
+}
 
-class LeftViewController : UIViewController {
+protocol LeftMenuProtocol {
+    func changeViewController(menu: LeftMenu)
+}
+
+class LeftViewController : UIViewController, LeftMenuProtocol {
     
-    enum Menu: Int {
-        case Main = 0
-        case Swift
-        case Java
-        case Go
-    }
+
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["Main", "Swift", "Java", "Go"]
+    var menus = ["Main", "Swift", "Java", "Go", "NonMenu"]
     var mainViewController: UIViewController!
     var swiftViewController: UIViewController!
     var javaViewController: UIViewController!
     var goViewController: UIViewController!
+    var nonMenuViewController: UIViewController!
     
     override init() {
         super.init()
@@ -45,6 +52,12 @@ class LeftViewController : UIViewController {
         
         let goViewController = storyboard.instantiateViewControllerWithIdentifier("GoViewController") as GoViewController
         self.goViewController = UINavigationController(rootViewController: goViewController)
+        
+        let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as NonMenuController
+        nonMenuController.delegate = self
+        self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
+        
+        self.tableView.registerCellClass(BaseTableViewCell.self)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -56,7 +69,7 @@ class LeftViewController : UIViewController {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
+        let cell: BaseTableViewCell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
         cell.backgroundColor = UIColor(red: 64/255, green: 170/255, blue: 239/255, alpha: 1.0)
         cell.textLabel?.font = UIFont.italicSystemFontOfSize(18)
         cell.textLabel?.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
@@ -65,24 +78,29 @@ class LeftViewController : UIViewController {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if let menu = Menu(rawValue: indexPath.item) {
-            
-            switch menu {
-            case .Main:
-                self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
-            case .Swift:
-                self.slideMenuController()?.changeMainViewController(self.swiftViewController, close: true)
-                break
-            case .Java:
-                self.slideMenuController()?.changeMainViewController(self.javaViewController, close: true)
-                break
-            case .Go:
-                self.slideMenuController()?.changeMainViewController(self.goViewController, close: true)
-                break
-            default:
-                break
-            }
+        if let menu = LeftMenu(rawValue: indexPath.item) {
+            self.changeViewController(menu)
+        }
+    }
+    
+    func changeViewController(menu: LeftMenu) {
+        switch menu {
+        case .Main:
+            self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
+        case .Swift:
+            self.slideMenuController()?.changeMainViewController(self.swiftViewController, close: true)
+            break
+        case .Java:
+            self.slideMenuController()?.changeMainViewController(self.javaViewController, close: true)
+            break
+        case .Go:
+            self.slideMenuController()?.changeMainViewController(self.goViewController, close: true)
+            break
+        case .NonMenu:
+            self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
+            break
+        default:
+            break
         }
     }
     

@@ -21,6 +21,10 @@
 		C5BD39DC1A6CD15700D0AF95 /* JavaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */; };
 		C5BD39DE1A6CD17B00D0AF95 /* GoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */; };
 		C5BD39E01A6CDC8100D0AF95 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */; };
+		C5C1CE5B1A70DADF00B6E411 /* NonMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5A1A70DADF00B6E411 /* NonMenuController.swift */; };
+		C5C1CE5D1A70F27500B6E411 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */; };
+		C5C1CE5F1A70F2FD00B6E411 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5E1A70F2FD00B6E411 /* StringExtension.swift */; };
+		C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE601A70F3B600B6E411 /* UITableViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JavaViewController.swift; sourceTree = "<group>"; };
 		C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoViewController.swift; sourceTree = "<group>"; };
 		C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		C5C1CE5A1A70DADF00B6E411 /* NonMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMenuController.swift; sourceTree = "<group>"; };
+		C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		C5C1CE5E1A70F2FD00B6E411 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		C5C1CE601A70F3B600B6E411 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,14 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				C539E6461A315E87003B7CC7 /* AppDelegate.swift */,
-				C539E64B1A315E87003B7CC7 /* MainViewController.swift */,
-				C539E66B1A316C78003B7CC7 /* LeftViewController.swift */,
-				C539E66D1A316F5F003B7CC7 /* RightViewController.swift */,
-				C5BD39D91A6CD12300D0AF95 /* SwiftViewController.swift */,
-				C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */,
-				C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */,
-				C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */,
-				C539E64D1A315E87003B7CC7 /* Main.storyboard */,
+				C5C1CE631A70F7C400B6E411 /* ViewController */,
+				C5C1CE641A70F7EC00B6E411 /* View */,
+				C5C1CE621A70F7AA00B6E411 /* Extension */,
 				C539E6501A315E87003B7CC7 /* Images.xcassets */,
 				C539E6521A315E87003B7CC7 /* LaunchScreen.xib */,
 				C539E6481A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld */,
@@ -142,6 +145,55 @@
 				C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		C5C1CE621A70F7AA00B6E411 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C5C1CE5E1A70F2FD00B6E411 /* StringExtension.swift */,
+				C5C1CE601A70F3B600B6E411 /* UITableViewExtension.swift */,
+				C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		C5C1CE631A70F7C400B6E411 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C539E64B1A315E87003B7CC7 /* MainViewController.swift */,
+				C539E66B1A316C78003B7CC7 /* LeftViewController.swift */,
+				C539E66D1A316F5F003B7CC7 /* RightViewController.swift */,
+				C5BD39D91A6CD12300D0AF95 /* SwiftViewController.swift */,
+				C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */,
+				C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */,
+				C5C1CE5A1A70DADF00B6E411 /* NonMenuController.swift */,
+				C539E64D1A315E87003B7CC7 /* Main.storyboard */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		C5C1CE641A70F7EC00B6E411 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5C1CE651A70F80600B6E411 /* Common */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C5C1CE651A70F80600B6E411 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C5C1CE661A70F81100B6E411 /* BaseClasses */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		C5C1CE661A70F81100B6E411 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */,
+			);
+			name = BaseClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,12 +299,16 @@
 				C5BD39DE1A6CD17B00D0AF95 /* GoViewController.swift in Sources */,
 				C539E64C1A315E87003B7CC7 /* MainViewController.swift in Sources */,
 				C5BD39E01A6CDC8100D0AF95 /* UIViewControllerExtension.swift in Sources */,
+				C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */,
 				C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */,
+				C5C1CE5D1A70F27500B6E411 /* BaseTableViewCell.swift in Sources */,
 				C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */,
 				C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */,
+				C5C1CE5B1A70DADF00B6E411 /* NonMenuController.swift in Sources */,
 				C5BD39DC1A6CD15700D0AF95 /* JavaViewController.swift in Sources */,
 				C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */,
 				C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */,
+				C5C1CE5F1A70F2FD00B6E411 /* StringExtension.swift in Sources */,
 				C5BD39DA1A6CD12300D0AF95 /* SwiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
