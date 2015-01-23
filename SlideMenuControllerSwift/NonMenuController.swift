@@ -12,7 +12,7 @@ import UIKit
 
 class NonMenuController: UIViewController {
     
-    var delegate: LeftMenuProtocol?
+    weak var delegate: LeftMenuProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
