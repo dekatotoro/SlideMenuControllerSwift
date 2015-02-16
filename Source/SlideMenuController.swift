@@ -279,7 +279,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         // Please to override it if necessary
     }
     
-    struct leftPanState {
+    struct LeftPanState {
         static var frameAtStartOfPan: CGRect = CGRectZero
         static var startPointOfPan: CGPoint = CGPointZero
         static var wasOpenAtStartOfPan: Bool = false
@@ -299,23 +299,23 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         switch panGesture.state {
             case UIGestureRecognizerState.Began:
                 
-                leftPanState.frameAtStartOfPan = self.leftContainerView.frame
-                leftPanState.startPointOfPan = panGesture.locationInView(self.view)
-                leftPanState.wasOpenAtStartOfPan = self.isLeftOpen()
-                leftPanState.wasHiddenAtStartOfPan = self.isLeftHidden()
+                LeftPanState.frameAtStartOfPan = self.leftContainerView.frame
+                LeftPanState.startPointOfPan = panGesture.locationInView(self.view)
+                LeftPanState.wasOpenAtStartOfPan = self.isLeftOpen()
+                LeftPanState.wasHiddenAtStartOfPan = self.isLeftHidden()
                 
-                self.leftViewController?.beginAppearanceTransition(leftPanState.wasHiddenAtStartOfPan, animated: true)
+                self.leftViewController?.beginAppearanceTransition(LeftPanState.wasHiddenAtStartOfPan, animated: true)
                 self.addShadowToView(self.leftContainerView)
                 self.setOpenWindowLevel()
             case UIGestureRecognizerState.Changed:
                 
                 var translation: CGPoint = panGesture.translationInView(panGesture.view!)
-                self.leftContainerView.frame = self.applyLeftTranslation(translation, toFrame: leftPanState.frameAtStartOfPan)
+                self.leftContainerView.frame = self.applyLeftTranslation(translation, toFrame: LeftPanState.frameAtStartOfPan)
                 self.applyLeftOpacity()
                 self.applyLeftContentViewScale()
             case UIGestureRecognizerState.Ended:
                 
-                self.leftViewController?.beginAppearanceTransition(!leftPanState.wasHiddenAtStartOfPan, animated: true)
+                self.leftViewController?.beginAppearanceTransition(!LeftPanState.wasHiddenAtStartOfPan, animated: true)
                 var velocity:CGPoint = panGesture.velocityInView(panGesture.view)
                 var panInfo: PanInfo = self.panLeftResultInfoForVelocity(velocity)
                 
@@ -336,7 +336,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    struct rightPanState {
+    struct RightPanState {
         static var frameAtStartOfPan: CGRect = CGRectZero
         static var startPointOfPan: CGPoint = CGPointZero
         static var wasOpenAtStartOfPan: Bool = false
@@ -356,24 +356,24 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         switch panGesture.state {
         case UIGestureRecognizerState.Began:
             
-            rightPanState.frameAtStartOfPan = self.rightContainerView.frame
-            rightPanState.startPointOfPan = panGesture.locationInView(self.view)
-            rightPanState.wasOpenAtStartOfPan =  self.isRightOpen()
-            rightPanState.wasHiddenAtStartOfPan = self.isRightHidden()
+            RightPanState.frameAtStartOfPan = self.rightContainerView.frame
+            RightPanState.startPointOfPan = panGesture.locationInView(self.view)
+            RightPanState.wasOpenAtStartOfPan =  self.isRightOpen()
+            RightPanState.wasHiddenAtStartOfPan = self.isRightHidden()
             
-            self.rightViewController?.beginAppearanceTransition(rightPanState.wasHiddenAtStartOfPan, animated: true)
+            self.rightViewController?.beginAppearanceTransition(RightPanState.wasHiddenAtStartOfPan, animated: true)
             self.addShadowToView(self.rightContainerView)
             self.setOpenWindowLevel()
         case UIGestureRecognizerState.Changed:
             
             var translation: CGPoint = panGesture.translationInView(panGesture.view!)
-            self.rightContainerView.frame = self.applyRightTranslation(translation, toFrame: rightPanState.frameAtStartOfPan)
+            self.rightContainerView.frame = self.applyRightTranslation(translation, toFrame: RightPanState.frameAtStartOfPan)
             self.applyRightOpacity()
             self.applyRightContentViewScale()
             
         case UIGestureRecognizerState.Ended:
             
-            self.rightViewController?.beginAppearanceTransition(!rightPanState.wasHiddenAtStartOfPan, animated: true)
+            self.rightViewController?.beginAppearanceTransition(!RightPanState.wasHiddenAtStartOfPan, animated: true)
             var velocity: CGPoint = panGesture.velocityInView(panGesture.view)
             var panInfo: PanInfo = self.panRightResultInfoForVelocity(velocity)
             
