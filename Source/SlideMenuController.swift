@@ -198,11 +198,13 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func closeLeft() {
+        self.leftViewController?.beginAppearanceTransition(self.isLeftHidden(), animated: true)
         self.closeLeftWithVelocity(0.0)
         self.setCloseWindowLebel()
     }
     
     override func closeRight() {
+        self.rightViewController?.beginAppearanceTransition(self.isRightHidden(), animated: true)
         self.closeRightWithVelocity(0.0)
         self.setCloseWindowLebel()
     }
@@ -315,15 +317,20 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 self.applyLeftContentViewScale()
             case UIGestureRecognizerState.Ended:
                 
-                self.leftViewController?.beginAppearanceTransition(!LeftPanState.wasHiddenAtStartOfPan, animated: true)
                 var velocity:CGPoint = panGesture.velocityInView(panGesture.view)
                 var panInfo: PanInfo = self.panLeftResultInfoForVelocity(velocity)
                 
                 if panInfo.action == .Open {
+                    if !LeftPanState.wasHiddenAtStartOfPan {
+                        self.leftViewController?.beginAppearanceTransition(true, animated: true)
+                    }
                     self.openLeftWithVelocity(panInfo.velocity)
                     self.track(.FlickOpen)
                     
                 } else {
+                    if LeftPanState.wasHiddenAtStartOfPan {
+                        self.leftViewController?.beginAppearanceTransition(false, animated: true)
+                    }
                     self.closeLeftWithVelocity(panInfo.velocity)
                     self.setCloseWindowLebel()
                     
@@ -373,13 +380,18 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             
         case UIGestureRecognizerState.Ended:
             
-            self.rightViewController?.beginAppearanceTransition(!RightPanState.wasHiddenAtStartOfPan, animated: true)
             var velocity: CGPoint = panGesture.velocityInView(panGesture.view)
             var panInfo: PanInfo = self.panRightResultInfoForVelocity(velocity)
             
             if panInfo.action == .Open {
+                if !RightPanState.wasHiddenAtStartOfPan {
+                    self.rightViewController?.beginAppearanceTransition(true, animated: true)
+                }
                 self.openRightWithVelocity(panInfo.velocity)
             } else {
+                if RightPanState.wasHiddenAtStartOfPan {
+                    self.rightViewController?.beginAppearanceTransition(false, animated: true)
+                }
                 self.closeRightWithVelocity(panInfo.velocity)
                 self.setCloseWindowLebel()
             }
@@ -409,6 +421,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             self.mainContainerView.transform = CGAffineTransformMakeScale(self.options.contentViewScale, self.options.contentViewScale)
         }) { (Bool) -> Void in
             self.disableContentInteraction()
+            self.leftViewController?.endAppearanceTransition()
         }
     }
     
@@ -435,6 +448,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             self.mainContainerView.transform = CGAffineTransformMakeScale(self.options.contentViewScale, self.options.contentViewScale)
             }) { (Bool) -> Void in
                 self.disableContentInteraction()
+                self.rightViewController?.endAppearanceTransition()
         }
     }
     
@@ -459,6 +473,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             }) { (Bool) -> Void in
                 self.removeShadow(self.leftContainerView)
                 self.enableContentInteraction()
+                self.leftViewController?.endAppearanceTransition()
         }
     }
     
@@ -484,6 +499,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             }) { (Bool) -> Void in
                 self.removeShadow(self.rightContainerView)
                 self.enableContentInteraction()
+                self.rightViewController?.endAppearanceTransition()
         }
     }
     
