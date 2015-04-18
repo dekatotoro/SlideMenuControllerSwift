@@ -31,10 +31,6 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     var goViewController: UIViewController!
     var nonMenuViewController: UIViewController!
     
-    override init() {
-        super.init()
-    }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -44,16 +40,16 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
         
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let swiftViewController = storyboard.instantiateViewControllerWithIdentifier("SwiftViewController") as SwiftViewController
+        let swiftViewController = storyboard.instantiateViewControllerWithIdentifier("SwiftViewController") as! SwiftViewController
         self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
         
-        let javaViewController = storyboard.instantiateViewControllerWithIdentifier("JavaViewController") as JavaViewController
+        let javaViewController = storyboard.instantiateViewControllerWithIdentifier("JavaViewController") as! JavaViewController
         self.javaViewController = UINavigationController(rootViewController: javaViewController)
         
-        let goViewController = storyboard.instantiateViewControllerWithIdentifier("GoViewController") as GoViewController
+        let goViewController = storyboard.instantiateViewControllerWithIdentifier("GoViewController") as! GoViewController
         self.goViewController = UINavigationController(rootViewController: goViewController)
         
-        let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as NonMenuController
+        let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as! NonMenuController
         nonMenuController.delegate = self
         self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
         
