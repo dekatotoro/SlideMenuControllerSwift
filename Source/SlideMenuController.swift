@@ -66,10 +66,6 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     var options = SlideMenuOption()
 
     
-    override init() {
-        super.init()
-    }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -812,10 +808,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     private func slideLeftForGestureRecognizer( gesture: UIGestureRecognizer, point:CGPoint) -> Bool{
-        
-        var slide = self.isLeftOpen()
-        slide |= self.options.panFromBezel && self.isLeftPointContainedWithinBezelRect(point)
-        return slide
+        return self.isLeftOpen() || self.options.panFromBezel && self.isLeftPointContainedWithinBezelRect(point)
     }
     
     private func isLeftPointContainedWithinBezelRect(point: CGPoint) -> Bool{
@@ -834,10 +827,7 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     
     private func slideRightViewForGestureRecognizer(gesture: UIGestureRecognizer, withTouchPoint point: CGPoint) -> Bool {
-        
-        var slide: Bool = self.isRightOpen()
-        slide |= self.options.rightPanFromBezel && self.isRightPointContainedWithinBezelRect(point)
-        return slide
+        return self.isRightOpen() || self.options.rightPanFromBezel && self.isRightPointContainedWithinBezelRect(point)
     }
     
     private func isRightPointContainedWithinBezelRect(point: CGPoint) -> Bool {
@@ -908,7 +898,7 @@ extension UIViewController {
     func addPriorityToMenuGesuture(targetScrollView: UIScrollView) {
         if let slideControlelr = self.slideMenuController() {
             let recognizers =  slideControlelr.view.gestureRecognizers
-            for recognizer in recognizers as [UIGestureRecognizer] {
+            for recognizer in recognizers as! [UIGestureRecognizer] {
                 if recognizer is UIPanGestureRecognizer {
                     targetScrollView.panGestureRecognizer.requireGestureRecognizerToFail(recognizer)
                 }

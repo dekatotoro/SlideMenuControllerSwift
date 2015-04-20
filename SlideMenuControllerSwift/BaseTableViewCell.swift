@@ -10,18 +10,8 @@ import UIKit
 public class BaseTableViewCell : UITableViewCell {
     class var identifier: String { return String.className(self) }
     
-    override init() {
-        super.init()
-        setup()
-    }
-    
     public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         setup()
     }
     
