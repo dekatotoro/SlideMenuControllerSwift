@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 
 
-class SlideMenuOption {
+class SlideMenuOption: NSObject {
     
     var leftViewWidth: CGFloat = 270.0
     var leftBezelWidth: CGFloat = 16.0
@@ -25,7 +25,7 @@ class SlideMenuOption {
     var hideStatusBar: Bool = true
     var pointOfNoReturnWidth: CGFloat = 44.0
     
-    init() {
+    override init() {
         
     }
 }
