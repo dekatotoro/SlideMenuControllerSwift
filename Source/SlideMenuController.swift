@@ -56,8 +56,6 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     var rightViewController: UIViewController?
     var rightPanGesture: UIPanGestureRecognizer?
     var rightTapGesture: UITapGestureRecognizer?
-//    var options = SlideMenuOption()
-
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
