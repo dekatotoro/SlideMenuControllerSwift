@@ -25,8 +25,12 @@ class NonMenuController: UIViewController {
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-        self.slideMenuController()?.removeLeftGestures()
-        self.slideMenuController()?.removeRightGestures()
+        if let viewController = self.slideMenuController()?.mainViewController as? UINavigationController {
+            if viewController.topViewController.isKindOfClass(NonMenuController) {
+                self.slideMenuController()?.removeLeftGestures()
+                self.slideMenuController()?.removeRightGestures()
+            }
+        }
     }
     
     @IBAction func didTouchToMain(sender: UIButton) {
