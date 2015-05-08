@@ -19,8 +19,12 @@ iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
 ##Installation
 
 ####CocoaPods
-comming soon...
-
+```
+pod 'SlideMenuControllerSwift', git: 'https://github.com/dekatotoro/SlideMenuControllerSwift.git'
+```
+  
+It will push official Cocoapods later.
+  
 ####Manually
 Add the `SlideMenuController.swift` file to your project. 
 
