@@ -44,31 +44,13 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-If you want to use the custom option, please change the SlideMenuOption class.
+If you want to use the custom option, please set them before calling the init method, like so:
 
 ```swift
-class SlideMenuOption {
+SlideMenuOptions.leftViewWidth = 50
+SlideMenuOptions.contentViewScale = .50
+...
     
-    var leftViewWidth: CGFloat = 270.0
-    var leftBezelWidth: CGFloat = 16.0
-    var contentViewScale: CGFloat = 0.96
-    var contentViewOpacity: CGFloat = 0.5
-    var shadowOpacity: CGFloat = 0.0
-    var shadowRadius: CGFloat = 0.0
-    var shadowOffset: CGSize = CGSizeMake(0,0)
-    var panFromBezel: Bool = true
-    var animationDuration: CGFloat = 0.4
-    var rightViewWidth: CGFloat = 270.0
-    var rightBezelWidth: CGFloat = 16.0
-    var rightPanFromBezel: Bool = true
-    var hideStatusBar: Bool = true
-    var pointOfNoReturnWidth: CGFloat = 44.0
-
-    
-    init() {
-        
-    }
-}
 ```
 
 ###You can access from UIViewController
