@@ -130,29 +130,26 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         addLeftGestures()
         addRightGestures()
     }
-    
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-        
+  
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         mainContainerView.transform = CGAffineTransformMakeScale(1.0, 1.0)
         leftContainerView.hidden = true
         rightContainerView.hidden = true
+      
+        coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+            self.closeLeftNonAnimation()
+            self.closeRightNonAnimation()
+            self.leftContainerView.hidden = false
+            self.rightContainerView.hidden = false
+      
+            self.removeLeftGestures()
+            self.removeRightGestures()
+            self.addLeftGestures()
+            self.addRightGestures()
+        })
     }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-        
-        closeLeftNonAnimation()
-        closeRightNonAnimation()
-        leftContainerView.hidden = false
-        rightContainerView.hidden = false
-
-        removeLeftGestures()
-        removeRightGestures()
-        addLeftGestures()
-        addRightGestures()
-    }
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = UIRectEdge.None
@@ -868,12 +865,12 @@ extension UIViewController {
     }
     
     func addLeftBarButtonWithImage(buttonImage: UIImage) {
-        var leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "toggleLeft")
+        var leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Plain, target: self, action: "toggleLeft")
         navigationItem.leftBarButtonItem = leftButton;
     }
     
     func addRightBarButtonWithImage(buttonImage: UIImage) {
-        var rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Bordered, target: self, action: "toggleRight")
+        var rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.Plain, target: self, action: "toggleRight")
         navigationItem.rightBarButtonItem = rightButton;
     }
     
