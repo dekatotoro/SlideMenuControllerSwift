@@ -22,17 +22,19 @@ class NonMenuController: UIViewController {
         super.viewWillAppear(animated)
         self.removeNavigationBarItem()
     }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-        if let viewController = self.slideMenuController()?.mainViewController as? UINavigationController {
-            if viewController.topViewController.isKindOfClass(NonMenuController) {
-                self.slideMenuController()?.removeLeftGestures()
-                self.slideMenuController()?.removeRightGestures()
+  
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+            if let viewController = self.slideMenuController()?.mainViewController as? UINavigationController {
+                if viewController.topViewController.isKindOfClass(NonMenuController) {
+                    self.slideMenuController()?.removeLeftGestures()
+                    self.slideMenuController()?.removeRightGestures()
+                }
             }
-        }
+        })
     }
-    
+  
     @IBAction func didTouchToMain(sender: UIButton) {
         delegate?.changeViewController(LeftMenu.Main)
     }
