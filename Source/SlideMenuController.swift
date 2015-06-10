@@ -542,9 +542,13 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     func changeMainViewController(mainViewController: UIViewController,  close: Bool) {
         
-        removeViewController(mainViewController)
-        self.mainViewController = mainViewController
-        setUpViewController(mainContainerView, targetViewController: mainViewController)
+        // change mainViewController if its not current mainViewController
+        if mainViewController != self.mainViewController{
+            removeViewController(mainViewController)
+            self.mainViewController = mainViewController
+            setUpViewController(mainContainerView, targetViewController: mainViewController)
+        }
+        
         if (close) {
             closeLeft()
             closeRight()
