@@ -154,6 +154,11 @@ class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         edgesForExtendedLayout = UIRectEdge.None
     }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainViewController?.viewWillAppear(animated)
+    }
     
     override func viewWillLayoutSubviews() {
         // topLayoutGuideの値が確定するこのタイミングで各種ViewControllerをセットする
