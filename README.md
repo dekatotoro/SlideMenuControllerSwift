@@ -23,8 +23,6 @@ iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
 pod 'SlideMenuControllerSwift'
 ```
   
-It will push official Cocoapods later.
-  
 ####Manually
 Add the `SlideMenuController.swift` file to your project. 
 
