@@ -22,9 +22,14 @@ iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
 ```
 pod 'SlideMenuControllerSwift'
 ```
-  
+
+####Carthage
+```
+github "dekatotoro/SlideMenuControllerSwift"
+```
+
 ####Manually
-Add the `SlideMenuController.swift` file to your project. 
+Add the `SlideMenuController.swift` file to your project.
 
 ##Usage
 
@@ -39,10 +44,10 @@ In your app delegate:
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
     // create viewController code...
-        
+
     let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
     self.window?.rootViewController = slideMenuController
-    self.window?.makeKeyAndVisible()    
+    self.window?.makeKeyAndVisible()
 
     return true
 }
@@ -54,7 +59,7 @@ If you want to use the custom option, please set them before calling the init me
 SlideMenuOptions.leftViewWidth = 50
 SlideMenuOptions.contentViewScale = .50
 ...
-    
+
 ```
 
 ###You can access from UIViewController
@@ -68,7 +73,7 @@ if let slideMenuController = self.slideMenuController() {
     // some code
 }
 ```
-### add navigationBarButton 
+### add navigationBarButton
 ```swift
 viewController.addLeftBarButtonWithImage(UIImage(named: "hoge")!)
 viewController.addRightBarButtonWithImage(UIImage(named: "fuga")!)
@@ -88,7 +93,7 @@ self.slideMenuController()?.closeRight()
 ## Requirements
 Requires Swift1.2 and iOS 7.0 and ARC.  
 If you are developing in the swift1.1, please use branch of swift1.1.  
-  
+
 ## Features
 - Highly customizable
 - Complete example
@@ -100,7 +105,7 @@ Forks, patches and other feedback are welcome.
 
 ## Creator
 
-[Yuji Hato](https://github.com/dekatotoro) 
+[Yuji Hato](https://github.com/dekatotoro)
 [Blog](http://buzzmemo.blogspot.jp/)
 
 ## License
