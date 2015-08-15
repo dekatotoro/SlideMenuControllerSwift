@@ -2,7 +2,8 @@
 //  SlideMenuControllerSwiftTests.swift
 //  SlideMenuControllerSwiftTests
 //
-//  Created by Yuji Hato on 12/3/14.
+//  Created by Kenichi Yonekawa on 8/15/15.
+//  Copyright (c) 2015 Yuji Hato. All rights reserved.
 //
 
 import UIKit

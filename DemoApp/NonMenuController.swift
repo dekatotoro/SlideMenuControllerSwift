@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import SlideMenuControllerSwiftFramework
-
+import SlideMenuControllerSwift
 
 class NonMenuController: UIViewController {
     

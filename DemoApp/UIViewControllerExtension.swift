@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SlideMenuControllerSwiftFramework
+import SlideMenuControllerSwift
 
 extension UIViewController {
     
