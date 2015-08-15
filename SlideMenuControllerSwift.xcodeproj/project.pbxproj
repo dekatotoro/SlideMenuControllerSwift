@@ -128,8 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				CAE83A521B7F67A300A33D49 /* SlideMenuControllerSwift */,
-				C539E6431A315E87003B7CC7 /* DemoApp */,
 				CAE83A611B7F67A300A33D49 /* SlideMenuControllerSwiftTests */,
+				C539E6431A315E87003B7CC7 /* DemoApp */,
 				C539E6421A315E87003B7CC7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -241,7 +241,7 @@
 				CAE83A621B7F67A300A33D49 /* Supporting Files */,
 			);
 			path = SlideMenuControllerSwiftTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		CAE83A621B7F67A300A33D49 /* Supporting Files */ = {
 			isa = PBXGroup;
