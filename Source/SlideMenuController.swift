@@ -46,17 +46,17 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         var velocity: CGFloat
     }
     
-    var opacityView = UIView()
-    var mainContainerView = UIView()
-    var leftContainerView = UIView()
-    var rightContainerView =  UIView()
-    var mainViewController: UIViewController?
-    var leftViewController: UIViewController?
-    var leftPanGesture: UIPanGestureRecognizer?
-    var leftTapGetsture: UITapGestureRecognizer?
-    var rightViewController: UIViewController?
-    var rightPanGesture: UIPanGestureRecognizer?
-    var rightTapGesture: UITapGestureRecognizer?
+    public var opacityView = UIView()
+    public var mainContainerView = UIView()
+    public var leftContainerView = UIView()
+    public var rightContainerView =  UIView()
+    public var mainViewController: UIViewController?
+    public var leftViewController: UIViewController?
+    public var leftPanGesture: UIPanGestureRecognizer?
+    public var leftTapGetsture: UITapGestureRecognizer?
+    public var rightViewController: UIViewController?
+    public var rightPanGesture: UIPanGestureRecognizer?
+    public var rightTapGesture: UITapGestureRecognizer?
     
     public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
