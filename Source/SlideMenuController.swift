@@ -22,6 +22,7 @@ public struct SlideMenuOptions {
     public static var rightPanFromBezel: Bool = true
     public static var hideStatusBar: Bool = true
     public static var pointOfNoReturnWidth: CGFloat = 44.0
+	public static var opacityViewBackgroundColor: UIColor = UIColor.blackColor()
 }
 
 public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
@@ -100,7 +101,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         opacityframe.origin.y = opacityframe.origin.y + opacityOffset
         opacityframe.size.height = opacityframe.size.height - opacityOffset
         opacityView = UIView(frame: opacityframe)
-        opacityView.backgroundColor = UIColor.blackColor()
+        opacityView.backgroundColor = SlideMenuOptions.opacityViewBackgroundColor
         opacityView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         opacityView.layer.opacity = 0.0
         view.insertSubview(opacityView, atIndex: 1)
