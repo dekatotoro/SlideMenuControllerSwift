@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 enum LeftMenu: Int {
     case Main = 0
