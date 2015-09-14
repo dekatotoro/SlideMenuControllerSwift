@@ -26,11 +26,12 @@ class NonMenuController: UIViewController {
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
-            if let viewController = self.slideMenuController()?.mainViewController as? UINavigationController {
-                if viewController.topViewController.isKindOfClass(NonMenuController) {
-                    self.slideMenuController()?.removeLeftGestures()
-                    self.slideMenuController()?.removeRightGestures()
-                }
+            guard let vc = (self.slideMenuController()?.mainViewController as? UINavigationController)?.topViewController else {
+                return
+            }
+            if vc.isKindOfClass(NonMenuController)  {
+                self.slideMenuController()?.removeLeftGestures()
+                self.slideMenuController()?.removeRightGestures()
             }
         })
     }

@@ -10,7 +10,7 @@ import UIKit
 public class BaseTableViewCell : UITableViewCell {
     class var identifier: String { return String.className(self) }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
