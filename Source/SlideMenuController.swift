@@ -426,7 +426,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         case .Scale:
           strongSelf.mainContainerView.transform = CGAffineTransformMakeScale(SlideMenuOptions.contentViewScale, SlideMenuOptions.contentViewScale)
         case .Translate:
-          strongSelf.mainContainerView.transform = CGAffineTransformMakeTranslation(SlideMenuOptions.contentViewTranslation, 0)
+          strongSelf.mainContainerView.transform = CGAffineTransformMakeTranslation(self!.leftValidTranslation(), 0)
         default: break
         }
         
@@ -465,7 +465,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         case .Scale:
           strongSelf.mainContainerView.transform = CGAffineTransformMakeScale(SlideMenuOptions.contentViewScale, SlideMenuOptions.contentViewScale)
         case .Translate:
-          strongSelf.mainContainerView.transform = CGAffineTransformMakeTranslation(-SlideMenuOptions.contentViewTranslation, 0)
+          strongSelf.mainContainerView.transform = CGAffineTransformMakeTranslation(-self!.rightValidTranslation(), 0)
         default: break
         }
         
@@ -613,6 +613,15 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     return CGRectGetWidth(view.bounds)
   }
   
+  private func leftValidTranslation() -> CGFloat {
+    guard let leftViewWidth = leftViewController?.view.bounds.size.width else { return 0 }
+    return min(leftViewWidth, SlideMenuOptions.contentViewTranslation)
+  }
+  
+  private func rightValidTranslation() -> CGFloat {
+    guard let rightViewWidth = rightViewController?.view.bounds.size.width else { return 0 }
+    return min(rightViewWidth, SlideMenuOptions.contentViewTranslation)
+  }
   
   private func panLeftResultInfoForVelocity(velocity: CGPoint) -> PanInfo {
     
@@ -733,7 +742,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
       mainContainerView.transform = CGAffineTransformMakeScale(scale, scale)
       
     case .Translate:
-      mainContainerView.transform = CGAffineTransformMakeTranslation(SlideMenuOptions.contentViewTranslation * openedLeftRatio, 0)
+      mainContainerView.transform = CGAffineTransformMakeTranslation(leftValidTranslation() * openedLeftRatio, 0)
       
     default: break
     }
@@ -750,7 +759,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
       mainContainerView.transform = CGAffineTransformMakeScale(scale, scale)
       
     case .Translate:
-      mainContainerView.transform = CGAffineTransformMakeTranslation(-SlideMenuOptions.contentViewTranslation * openedRightRatio, 0)
+      mainContainerView.transform = CGAffineTransformMakeTranslation(-rightValidTranslation() * openedRightRatio, 0)
       
     default: break
     }
