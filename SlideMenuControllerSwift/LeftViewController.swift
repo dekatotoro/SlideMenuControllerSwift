@@ -85,18 +85,12 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
         case .Swift:
             self.slideMenuController()?.changeMainViewController(self.swiftViewController, close: true)
-            break
         case .Java:
             self.slideMenuController()?.changeMainViewController(self.javaViewController, close: true)
-            break
         case .Go:
             self.slideMenuController()?.changeMainViewController(self.goViewController, close: true)
-            break
         case .NonMenu:
             self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
-            break
-        default:
-            break
         }
     }
     

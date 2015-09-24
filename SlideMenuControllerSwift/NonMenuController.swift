@@ -23,6 +23,7 @@ class NonMenuController: UIViewController {
         self.removeNavigationBarItem()
     }
   
+    @available(iOS 8.0, *)
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         coordinator.animateAlongsideTransition(nil, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
