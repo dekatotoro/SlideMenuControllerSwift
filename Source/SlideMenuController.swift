@@ -10,7 +10,7 @@ import UIKit
 public enum ContentAnimation {
   case None
   case Scale
-  case Translate
+  case Traslate
 }
 
 public struct SlideViewOptions {
@@ -428,7 +428,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         switch SlideMenuOptions.contentViewAnimation {
         case .Scale:
           strongSelf.mainContainerView.transform = CGAffineTransformMakeScale(SlideMenuOptions.contentViewScale, SlideMenuOptions.contentViewScale)
-        case .Translate:
+        case .Traslate:
           strongSelf.mainContainerView.transform = CGAffineTransformMakeTranslation(self!.leftValidTranslation(), 0)
         default: break
         }
@@ -466,7 +466,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         switch SlideMenuOptions.contentViewAnimation {
         case .Scale:
           strongSelf.mainContainerView.transform = CGAffineTransformMakeScale(SlideMenuOptions.contentViewScale, SlideMenuOptions.contentViewScale)
-        case .Translate:
+        case .Traslate:
           strongSelf.mainContainerView.transform = CGAffineTransformMakeTranslation(-self!.rightValidTranslation(), 0)
         default: break
         }
@@ -766,7 +766,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
       let scale: CGFloat = 1.0 - ((1.0 - SlideMenuOptions.contentViewScale) * openedLeftRatio)
       mainContainerView.transform = CGAffineTransformMakeScale(scale, scale)
       
-    case .Translate:
+    case .Traslate:
       mainContainerView.transform = CGAffineTransformMakeTranslation(leftValidTranslation() * openedLeftRatio, 0)
       
     default: break
@@ -783,7 +783,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
       let scale: CGFloat = 1.0 - ((1.0 - SlideMenuOptions.contentViewScale) * openedRightRatio)
       mainContainerView.transform = CGAffineTransformMakeScale(scale, scale)
       
-    case .Translate:
+    case .Traslate:
       mainContainerView.transform = CGAffineTransformMakeTranslation(-rightValidTranslation() * openedRightRatio, 0)
       
     default: break

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
 //      SlideMenuOptions.contentViewAnimation = ContentAnimation.None // Default
       SlideMenuOptions.contentViewAnimation = ContentAnimation.Scale // Scale, Push back effect
-//        SlideMenuOptions.contentViewAnimation = ContentAnimation.Translate // Translate left/right
+//        SlideMenuOptions.contentViewAnimation = ContentAnimation.Traslate // Traslate left/right
       
         let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
         
