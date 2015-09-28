@@ -26,7 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         
         leftViewController.mainViewController = nvc
-        
+      
+//      SlideMenuOptions.contentViewAnimation = ContentAnimation.None // Default
+      SlideMenuOptions.contentViewAnimation = ContentAnimation.Scale // Scale, Push back effect
+//        SlideMenuOptions.contentViewAnimation = ContentAnimation.Traslate // Traslate left/right
+      
         let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
         
         self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
