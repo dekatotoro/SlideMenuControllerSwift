@@ -852,6 +852,14 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         return CGRectContainsPoint(rightContainerView.frame, point)
     }
     
+    public override func prefersStatusBarHidden() -> Bool {
+        return mainViewController?.prefersStatusBarHidden() ?? false
+    }
+    
+    public override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return mainViewController?.preferredStatusBarUpdateAnimation() ?? .Slide
+    }
+    
 }
 
 
