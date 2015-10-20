@@ -903,7 +903,7 @@ extension UIViewController {
     
     // Please specify if you want menu gesuture give priority to than targetScrollView
     public func addPriorityToMenuGesuture(targetScrollView: UIScrollView) {
-        guard let slideControlelr = slideMenuController(), let recognizers = slideControlelr.view.gestureRecognizers else {
+        guard let slideController = slideMenuController(), let recognizers = slideController.view.gestureRecognizers else {
             return
         }
         for recognizer in recognizers where recognizer is UIPanGestureRecognizer {
