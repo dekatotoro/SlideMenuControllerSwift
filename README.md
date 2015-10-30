@@ -48,6 +48,27 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
+####Storyboard Support
+
+1. Inherit `SlideMenuController` and put UIViewController in a storyboard.
+2. Override `awakeFromNib`, then instantiate any view controllers
+
+```
+class ContainerViewController: SlideMenuController {
+
+    override func awakeFromNib() {
+        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("Main") {
+            self.mainViewController = controller
+        }
+        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("Left") {
+            self.leftViewController = controller
+        }
+        super.awakeFromNib()
+    }
+
+}
+```
+
 If you want to use the custom option, please set them before calling the init method, like so:
 
 ```swift

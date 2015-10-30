@@ -88,6 +88,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         initView()
     }
     
+    public override func awakeFromNib() {
+        initView()
+    }
+
     deinit { }
     
     func initView() {
