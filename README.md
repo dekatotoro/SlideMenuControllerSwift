@@ -116,9 +116,11 @@ self.slideMenuController()?.closeRight()
 ```
 
 ## Requirements
-Requires Swift1.2 and iOS 7.0 and ARC.  
-If you are developing in the swift1.1, please use branch of swift1.1.  
-  
+Requires Swift2.0 and iOS 8.0 and ARC.  
+If you are developing in the swift1.1, please use branch of swift1.1. 
+If you are developing in the swift1.2, please use branch of swift1.2. 
+If you want to use even iOS7.0, please to import the code directly.
+
 ## Features
 - Highly customizable
 - Complete example
