@@ -53,7 +53,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var mainViewController: UIViewController?
     public var leftViewController: UIViewController?
     public var leftPanGesture: UIPanGestureRecognizer?
-    public var leftTapGetsture: UITapGestureRecognizer?
+    public var leftTapGesture: UITapGestureRecognizer?
     public var rightViewController: UIViewController?
     public var rightPanGesture: UIPanGestureRecognizer?
     public var rightTapGesture: UITapGestureRecognizer?
@@ -212,10 +212,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 view.addGestureRecognizer(leftPanGesture!)
             }
             
-            if leftTapGetsture == nil {
-                leftTapGetsture = UITapGestureRecognizer(target: self, action: "toggleLeft")
-                leftTapGetsture!.delegate = self
-                view.addGestureRecognizer(leftTapGetsture!)
+            if leftTapGesture == nil {
+                leftTapGesture = UITapGestureRecognizer(target: self, action: "toggleLeft")
+                leftTapGesture!.delegate = self
+                view.addGestureRecognizer(leftTapGesture!)
             }
         }
     }
@@ -244,9 +244,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             leftPanGesture = nil
         }
         
-        if leftTapGetsture != nil {
-            view.removeGestureRecognizer(leftTapGetsture!)
-            leftTapGetsture = nil
+        if leftTapGesture != nil {
+            view.removeGestureRecognizer(leftTapGesture!)
+            leftTapGesture = nil
         }
     }
     
@@ -810,7 +810,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             return slideLeftForGestureRecognizer(gestureRecognizer, point: point)
         } else if gestureRecognizer == rightPanGesture {
             return slideRightViewForGestureRecognizer(gestureRecognizer, withTouchPoint: point)
-        } else if gestureRecognizer == leftTapGetsture {
+        } else if gestureRecognizer == leftTapGesture {
             return isLeftOpen() && !isPointContainedWithinLeftRect(point)
         } else if gestureRecognizer == rightTapGesture {
             return isRightOpen() && !isPointContainedWithinRightRect(point)
