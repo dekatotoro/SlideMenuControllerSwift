@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E75C59D1BE3CA7900844634 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */; };
-		0E75C59E1BE3CA7900844634 /* SlideMenuControllerSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E75C5A31BE3CA9F00844634 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,6 +19,9 @@
 		C539E6601A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */; };
 		C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66B1A316C78003B7CC7 /* LeftViewController.swift */; };
 		C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66D1A316F5F003B7CC7 /* RightViewController.swift */; };
+		C5498C7E1BE897250076A7C5 /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5498C7D1BE897250076A7C5 /* ImageHeaderView.swift */; };
+		C5498C801BE897660076A7C5 /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5498C7F1BE897660076A7C5 /* ImageHeaderView.xib */; };
+		C5498C821BE8994F0076A7C5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5498C811BE8994F0076A7C5 /* UIImageView.swift */; };
 		C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		C5BD39DA1A6CD12300D0AF95 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39D91A6CD12300D0AF95 /* SwiftViewController.swift */; };
 		C5BD39DC1A6CD15700D0AF95 /* JavaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */; };
@@ -28,18 +29,14 @@
 		C5BD39E01A6CDC8100D0AF95 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */; };
 		C5C1CE5B1A70DADF00B6E411 /* NonMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5A1A70DADF00B6E411 /* NonMenuController.swift */; };
 		C5C1CE5D1A70F27500B6E411 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */; };
-		C5C1CE5F1A70F2FD00B6E411 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5E1A70F2FD00B6E411 /* StringExtension.swift */; };
+		C5C1CE5F1A70F2FD00B6E411 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE5E1A70F2FD00B6E411 /* String.swift */; };
 		C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CE601A70F3B600B6E411 /* UITableViewExtension.swift */; };
+		C5F179CE1BEB2A5900EEDD9A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F179CD1BEB2A5900EEDD9A /* UIImage.swift */; };
+		C5F179D01BEB2CB500EEDD9A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F179CF1BEB2CB500EEDD9A /* UIView.swift */; };
+		C5F179D21BEB2FAF00EEDD9A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F179D11BEB2FAF00EEDD9A /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0E75C59B1BE3CA7900844634 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C539E6391A315E87003B7CC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E75C5951BE3CA7900844634;
-			remoteInfo = "SlideMenuControllerSwift-iOS";
-		};
 		C539E65A1A315E87003B7CC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C539E6391A315E87003B7CC7 /* Project object */;
@@ -48,20 +45,6 @@
 			remoteInfo = SlideMenuControllerSwift;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0E75C5A21BE3CA7900844634 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				0E75C59E1BE3CA7900844634 /* SlideMenuControllerSwift.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +63,9 @@
 		C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuControllerSwiftTests.swift; sourceTree = "<group>"; };
 		C539E66B1A316C78003B7CC7 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		C539E66D1A316F5F003B7CC7 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		C5498C7D1BE897250076A7C5 /* ImageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderView.swift; sourceTree = "<group>"; };
+		C5498C7F1BE897660076A7C5 /* ImageHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderView.xib; sourceTree = "<group>"; };
+		C5498C811BE8994F0076A7C5 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuController.swift; path = Source/SlideMenuController.swift; sourceTree = "<group>"; };
 		C5BD39D91A6CD12300D0AF95 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 		C5BD39DB1A6CD15700D0AF95 /* JavaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JavaViewController.swift; sourceTree = "<group>"; };
@@ -87,8 +73,11 @@
 		C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C5C1CE5A1A70DADF00B6E411 /* NonMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMenuController.swift; sourceTree = "<group>"; };
 		C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		C5C1CE5E1A70F2FD00B6E411 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		C5C1CE5E1A70F2FD00B6E411 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C5C1CE601A70F3B600B6E411 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		C5F179CD1BEB2A5900EEDD9A /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		C5F179CF1BEB2CB500EEDD9A /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		C5F179D11BEB2FAF00EEDD9A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +92,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E75C59D1BE3CA7900844634 /* SlideMenuControllerSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +173,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C5498C831BE89BD90076A7C5 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */,
+				C5498C7D1BE897250076A7C5 /* ImageHeaderView.swift */,
+				C5498C7F1BE897660076A7C5 /* ImageHeaderView.xib */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
 		C5BA8AA41A43E24C00863FB9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,9 +196,13 @@
 		C5C1CE621A70F7AA00B6E411 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C5C1CE5E1A70F2FD00B6E411 /* StringExtension.swift */,
+				C5C1CE5E1A70F2FD00B6E411 /* String.swift */,
 				C5C1CE601A70F3B600B6E411 /* UITableViewExtension.swift */,
 				C5BD39DF1A6CDC8100D0AF95 /* UIViewControllerExtension.swift */,
+				C5498C811BE8994F0076A7C5 /* UIImageView.swift */,
+				C5F179CD1BEB2A5900EEDD9A /* UIImage.swift */,
+				C5F179CF1BEB2CB500EEDD9A /* UIView.swift */,
+				C5F179D11BEB2FAF00EEDD9A /* UIColor.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -223,25 +225,9 @@
 		C5C1CE641A70F7EC00B6E411 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C5C1CE651A70F80600B6E411 /* Common */,
+				C5498C831BE89BD90076A7C5 /* TableViewCell */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		C5C1CE651A70F80600B6E411 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				C5C1CE661A70F81100B6E411 /* BaseClasses */,
-			);
-			name = Common;
-			sourceTree = "<group>";
-		};
-		C5C1CE661A70F81100B6E411 /* BaseClasses */ = {
-			isa = PBXGroup;
-			children = (
-				C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */,
-			);
-			name = BaseClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,12 +269,10 @@
 				C539E63D1A315E87003B7CC7 /* Sources */,
 				C539E63E1A315E87003B7CC7 /* Frameworks */,
 				C539E63F1A315E87003B7CC7 /* Resources */,
-				0E75C5A21BE3CA7900844634 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0E75C59C1BE3CA7900844634 /* PBXTargetDependency */,
 			);
 			name = SlideMenuControllerSwift;
 			productName = SlideMenuControllerSwift;
@@ -368,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5498C801BE897660076A7C5 /* ImageHeaderView.xib in Resources */,
 				0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */,
 				C539E64F1A315E87003B7CC7 /* Main.storyboard in Resources */,
 				C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */,
@@ -405,11 +390,16 @@
 				C5C1CE5D1A70F27500B6E411 /* BaseTableViewCell.swift in Sources */,
 				C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */,
 				C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */,
+				C5F179D21BEB2FAF00EEDD9A /* UIColor.swift in Sources */,
+				C5F179CE1BEB2A5900EEDD9A /* UIImage.swift in Sources */,
+				C5498C821BE8994F0076A7C5 /* UIImageView.swift in Sources */,
 				C5C1CE5B1A70DADF00B6E411 /* NonMenuController.swift in Sources */,
+				C5498C7E1BE897250076A7C5 /* ImageHeaderView.swift in Sources */,
 				C5BD39DC1A6CD15700D0AF95 /* JavaViewController.swift in Sources */,
 				C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */,
 				C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */,
-				C5C1CE5F1A70F2FD00B6E411 /* StringExtension.swift in Sources */,
+				C5C1CE5F1A70F2FD00B6E411 /* String.swift in Sources */,
+				C5F179D01BEB2CB500EEDD9A /* UIView.swift in Sources */,
 				C5BD39DA1A6CD12300D0AF95 /* SwiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,11 +415,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0E75C59C1BE3CA7900844634 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0E75C5951BE3CA7900844634 /* SlideMenuControllerSwift-iOS */;
-			targetProxy = 0E75C59B1BE3CA7900844634 /* PBXContainerItemProxy */;
-		};
 		C539E65B1A315E87003B7CC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C539E6401A315E87003B7CC7 /* SlideMenuControllerSwift */;
@@ -538,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -575,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -587,7 +572,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SlideMenuControllerSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -601,7 +585,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SlideMenuControllerSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

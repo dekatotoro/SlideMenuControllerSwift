@@ -21,8 +21,6 @@ protocol LeftMenuProtocol : class {
 
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
-
-    
     @IBOutlet weak var tableView: UITableView!
     var menus = ["Main", "Swift", "Java", "Go", "NonMenu"]
     var mainViewController: UIViewController!
@@ -30,6 +28,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     var javaViewController: UIViewController!
     var goViewController: UIViewController!
     var nonMenuViewController: UIViewController!
+    var imageHeaderView: ImageHeaderView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -54,29 +53,19 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
         
         self.tableView.registerCellClass(BaseTableViewCell.self)
+        
+        self.imageHeaderView = ImageHeaderView.loadNib()
+        self.view.addSubview(self.imageHeaderView)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menus.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: BaseTableViewCell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
-        cell.backgroundColor = UIColor(red: 64/255, green: 170/255, blue: 239/255, alpha: 1.0)
-        cell.textLabel?.font = UIFont.italicSystemFontOfSize(18)
-        cell.textLabel?.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
-        cell.textLabel?.text = menus[indexPath.row]
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let menu = LeftMenu(rawValue: indexPath.item) {
-            self.changeViewController(menu)
-        }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.imageHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 160)
+        self.view.layoutIfNeeded()
     }
     
     func changeViewController(menu: LeftMenu) {
@@ -85,19 +74,63 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
         case .Swift:
             self.slideMenuController()?.changeMainViewController(self.swiftViewController, close: true)
-            break
         case .Java:
             self.slideMenuController()?.changeMainViewController(self.javaViewController, close: true)
-            break
         case .Go:
             self.slideMenuController()?.changeMainViewController(self.goViewController, close: true)
-            break
         case .NonMenu:
             self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
-            break
-        default:
-            break
+        }
+    }
+}
+
+extension LeftViewController : UITableViewDelegate {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if let menu = LeftMenu(rawValue: indexPath.item) {
+            switch menu {
+            case .Main, .Swift, .Java, .Go, .NonMenu:
+                let cell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
+                return cell.height()
+            }
+        }
+        return 0
+    }
+}
+
+extension LeftViewController : UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menus.count
+    }
+    
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if let menu = LeftMenu(rawValue: indexPath.item) {
+            switch menu {
+            case .Main, .Swift, .Java, .Go, .NonMenu:
+                let cell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
+                cell.setData(menus[indexPath.row])
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let menu = LeftMenu(rawValue: indexPath.item) {
+            self.changeViewController(menu)
         }
     }
     
+}
+
+extension LeftViewController: UIScrollViewDelegate {
+    
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.tableView == scrollView {
+            
+        }
+    }
 }

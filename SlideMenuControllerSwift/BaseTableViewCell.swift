@@ -20,7 +20,24 @@ public class BaseTableViewCell : UITableViewCell {
         setup()
     }
     
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     public func setup() {
+    }
+    
+    public func height() -> CGFloat {
+        return 48
+    }
+    
+    public func setData(data: AnyObject?) {
+        self.backgroundColor = UIColor(hex: "F1F8E9")
+        self.textLabel?.font = UIFont.italicSystemFontOfSize(18)
+        self.textLabel?.textColor = UIColor(hex: "9E9E9E")
+        if let menuText = data as? String {
+            self.textLabel?.text = menuText
+        }
     }
     
     override public func setHighlighted(highlighted: Bool, animated: Bool) {
