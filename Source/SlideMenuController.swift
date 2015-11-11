@@ -771,6 +771,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
     private func removeViewController(viewController: UIViewController?) {
         if let _viewController = viewController {
+            _viewController.view.layer.removeAllAnimations()
             _viewController.willMoveToParentViewController(nil)
             _viewController.view.removeFromSuperview()
             _viewController.removeFromParentViewController()
