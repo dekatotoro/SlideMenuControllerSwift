@@ -3,12 +3,20 @@
 =============================================================
 
 ### Enhancements
+* Improved the sample project.
 
-* None.
+### Bugfixes
+* Fixed remains animation. 
+
+
+2.0.3 Release notes (2015-11-05)
+=============================================================
+
+### Enhancements
+* Improved the sample project.
 
 ### Bugfixes
 * Fixed a sample project build error.
-* Changed the design of the sample project.
 
 2.0.2 Release notes (2015-11-03)
 =============================================================
