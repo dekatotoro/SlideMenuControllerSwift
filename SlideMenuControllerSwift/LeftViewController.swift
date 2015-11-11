@@ -89,8 +89,7 @@ extension LeftViewController : UITableViewDelegate {
         if let menu = LeftMenu(rawValue: indexPath.item) {
             switch menu {
             case .Main, .Swift, .Java, .Go, .NonMenu:
-                let cell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
-                return cell.height()
+                return BaseTableViewCell.height()
             }
         }
         return 0
@@ -102,7 +101,6 @@ extension LeftViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menus.count
     }
-    
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -122,7 +120,6 @@ extension LeftViewController : UITableViewDataSource {
             self.changeViewController(menu)
         }
     }
-    
 }
 
 extension LeftViewController: UIScrollViewDelegate {

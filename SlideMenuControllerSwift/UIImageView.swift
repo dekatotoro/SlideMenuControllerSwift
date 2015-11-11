@@ -12,6 +12,10 @@ import UIKit
 extension UIImageView {
     
     func setRandomDownloadImage(width: Int, height: Int) {
+        if self.image != nil {
+            self.alpha = 1
+            return
+        }
         self.alpha = 0
         let url = NSURL(string: "https://ssl.webpack.de/lorempixel.com/\(width)/\(height)/")!
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())

@@ -21,17 +21,16 @@ public class BaseTableViewCell : UITableViewCell {
     }
     
     public override func awakeFromNib() {
-        super.awakeFromNib()
     }
     
     public func setup() {
     }
     
-    public func height() -> CGFloat {
+    public class func height() -> CGFloat {
         return 48
     }
     
-    public func setData(data: AnyObject?) {
+    public func setData(data: Any?) {
         self.backgroundColor = UIColor(hex: "F1F8E9")
         self.textLabel?.font = UIFont.italicSystemFontOfSize(18)
         self.textLabel?.textColor = UIColor(hex: "9E9E9E")
