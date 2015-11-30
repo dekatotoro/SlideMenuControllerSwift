@@ -802,7 +802,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         enableContentInteraction()
     }
     
-    //pragma mark – UIGestureRecognizerDelegate
+    // MARK: UIGestureRecognizerDelegate
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
     
         let point: CGPoint = touch.locationInView(view)
@@ -818,6 +818,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         }
         
         return true
+    }
+    
+    // returning true here helps if the main view is fullwidth with a scrollview
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true;
     }
     
     private func slideLeftForGestureRecognizer( gesture: UIGestureRecognizer, point:CGPoint) -> Bool{
