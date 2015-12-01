@@ -822,7 +822,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
     // returning true here helps if the main view is fullwidth with a scrollview
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true;
+        return true
     }
     
     private func slideLeftForGestureRecognizer( gesture: UIGestureRecognizer, point:CGPoint) -> Bool{
