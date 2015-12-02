@@ -94,7 +94,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
 
     deinit { }
     
-    func initView() {
+    public func initView() {
         mainContainerView = UIView(frame: view.bounds)
         mainContainerView.backgroundColor = UIColor.clearColor()
         mainContainerView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
