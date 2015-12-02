@@ -561,6 +561,30 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         }
     }
     
+    public func changeLeftViewWidth(width: CGFloat) {
+        
+        SlideMenuOptions.leftViewWidth = width;
+        var leftFrame: CGRect = view.bounds
+        leftFrame.size.width = width
+        leftFrame.origin.x = leftMinOrigin();
+        let leftOffset: CGFloat = 0
+        leftFrame.origin.y = leftFrame.origin.y + leftOffset
+        leftFrame.size.height = leftFrame.size.height - leftOffset
+        leftContainerView.frame = leftFrame;
+    }
+    
+    public func changeRightViewWidth(width: CGFloat) {
+        
+        SlideMenuOptions.rightBezelWidth = width;
+        var rightFrame: CGRect = view.bounds
+        rightFrame.size.width = width
+        rightFrame.origin.x = rightMinOrigin()
+        let rightOffset: CGFloat = 0
+        rightFrame.origin.y = rightFrame.origin.y + rightOffset;
+        rightFrame.size.height = rightFrame.size.height - rightOffset
+        rightContainerView.frame = rightFrame;
+    }
+    
     public func changeLeftViewController(leftViewController: UIViewController, closeLeft:Bool) {
         
         removeViewController(self.leftViewController)
