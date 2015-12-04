@@ -22,6 +22,7 @@ public struct SlideMenuOptions {
     public static var rightPanFromBezel: Bool = true
     public static var hideStatusBar: Bool = true
     public static var pointOfNoReturnWidth: CGFloat = 44.0
+    public static var simultaneousGestureRecognizers: Bool = true
 	public static var opacityViewBackgroundColor: UIColor = UIColor.blackColor()
 }
 
@@ -853,7 +854,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
     // returning true here helps if the main view is fullwidth with a scrollview
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+        return SlideMenuOptions.simultaneousGestureRecognizers
     }
     
     private func slideLeftForGestureRecognizer( gesture: UIGestureRecognizer, point:CGPoint) -> Bool{
