@@ -165,6 +165,13 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         edgesForExtendedLayout = UIRectEdge.None
     }
     
+    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        if let mainController = self.mainViewController{
+            return mainController.supportedInterfaceOrientations()
+        }
+        return UIInterfaceOrientationMask.All
+    }
+    
     public override func viewWillLayoutSubviews() {
         // topLayoutGuideの値が確定するこのタイミングで各種ViewControllerをセットする
         setUpViewController(mainContainerView, targetViewController: mainViewController)
