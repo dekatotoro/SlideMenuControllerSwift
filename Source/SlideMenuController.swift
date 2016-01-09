@@ -9,7 +9,7 @@ import UIKit
 
 public struct SlideMenuOptions {
     public static var leftViewWidth: CGFloat = 270.0
-    public static var leftBezelWidth: CGFloat = 16.0
+    public static var leftBezelWidth: CGFloat? = 16.0
     public static var contentViewScale: CGFloat = 0.96
     public static var contentViewOpacity: CGFloat = 0.5
     public static var shadowOpacity: CGFloat = 0.0
@@ -18,7 +18,7 @@ public struct SlideMenuOptions {
     public static var panFromBezel: Bool = true
     public static var animationDuration: CGFloat = 0.4
     public static var rightViewWidth: CGFloat = 270.0
-    public static var rightBezelWidth: CGFloat = 16.0
+    public static var rightBezelWidth: CGFloat? = 16.0
     public static var rightPanFromBezel: Bool = true
     public static var hideStatusBar: Bool = true
     public static var pointOfNoReturnWidth: CGFloat = 44.0
@@ -862,12 +862,15 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     private func isLeftPointContainedWithinBezelRect(point: CGPoint) -> Bool{
-        var leftBezelRect: CGRect = CGRectZero
-        var tempRect: CGRect = CGRectZero
-        let bezelWidth: CGFloat = SlideMenuOptions.leftBezelWidth
+        if let bezelWidth = SlideMenuOptions.leftBezelWidth {
+            var leftBezelRect: CGRect = CGRectZero
+            var tempRect: CGRect = CGRectZero
         
-        CGRectDivide(view.bounds, &leftBezelRect, &tempRect, bezelWidth, CGRectEdge.MinXEdge)
-        return CGRectContainsPoint(leftBezelRect, point)
+            CGRectDivide(view.bounds, &leftBezelRect, &tempRect, bezelWidth, CGRectEdge.MinXEdge)
+            return CGRectContainsPoint(leftBezelRect, point)
+        } else {
+            return true
+        }
     }
     
     private func isPointContainedWithinLeftRect(point: CGPoint) -> Bool {
@@ -881,13 +884,17 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     private func isRightPointContainedWithinBezelRect(point: CGPoint) -> Bool {
-        var rightBezelRect: CGRect = CGRectZero
-        var tempRect: CGRect = CGRectZero
-        let bezelWidth: CGFloat = CGRectGetWidth(view.bounds) - SlideMenuOptions.rightBezelWidth
+        if let rightBezelWidth = SlideMenuOptions.rightBezelWidth {
+            var rightBezelRect: CGRect = CGRectZero
+            var tempRect: CGRect = CGRectZero
+            let bezelWidth: CGFloat = CGRectGetWidth(view.bounds) - rightBezelWidth
         
-        CGRectDivide(view.bounds, &tempRect, &rightBezelRect, bezelWidth, CGRectEdge.MinXEdge)
+            CGRectDivide(view.bounds, &tempRect, &rightBezelRect, bezelWidth, CGRectEdge.MinXEdge)
         
-        return CGRectContainsPoint(rightBezelRect, point)
+            return CGRectContainsPoint(rightBezelRect, point)
+        } else {
+            return true
+        }
     }
     
     private func isPointContainedWithinRightRect(point: CGPoint) -> Bool {
