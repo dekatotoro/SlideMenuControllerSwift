@@ -58,6 +58,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var rightViewController: UIViewController?
     public var rightPanGesture: UIPanGestureRecognizer?
     public var rightTapGesture: UITapGestureRecognizer?
+    public var delegate: SlideMenuControllerDelegate?
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -416,6 +417,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         
         addShadowToView(leftContainerView)
         
+        self.delegate?.leftWillOpen?()
         UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { [weak self]() -> Void in
             if let strongSelf = self {
                 strongSelf.leftContainerView.frame = frame
@@ -426,6 +428,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 if let strongSelf = self {
                     strongSelf.disableContentInteraction()
                     strongSelf.leftViewController?.endAppearanceTransition()
+                    strongSelf.delegate?.leftDidOpen?()
                 }
         }
     }
@@ -447,6 +450,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
         addShadowToView(rightContainerView)
     
+        self.delegate?.rightWillOpen?()
         UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { [weak self]() -> Void in
             if let strongSelf = self {
                 strongSelf.rightContainerView.frame = frame
@@ -457,6 +461,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 if let strongSelf = self {
                     strongSelf.disableContentInteraction()
                     strongSelf.rightViewController?.endAppearanceTransition()
+                    strongSelf.delegate?.rightDidOpen?()
                 }
         }
     }
@@ -475,6 +480,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             duration = Double(fmax(0.1, fmin(1.0, duration)))
         }
         
+        self.delegate?.leftWillClose?()
         UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { [weak self]() -> Void in
             if let strongSelf = self {
                 strongSelf.leftContainerView.frame = frame
@@ -486,6 +492,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     strongSelf.removeShadow(strongSelf.leftContainerView)
                     strongSelf.enableContentInteraction()
                     strongSelf.leftViewController?.endAppearanceTransition()
+                    strongSelf.delegate?.leftDidClose?()
                 }
         }
     }
@@ -505,6 +512,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             duration = Double(fmax(0.1, fmin(1.0, duration)))
         }
     
+        self.delegate?.rightWillClose?()
         UIView.animateWithDuration(duration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { [weak self]() -> Void in
             if let strongSelf = self {
                 strongSelf.rightContainerView.frame = frame
@@ -516,6 +524,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     strongSelf.removeShadow(strongSelf.rightContainerView)
                     strongSelf.enableContentInteraction()
                     strongSelf.rightViewController?.endAppearanceTransition()
+                    strongSelf.delegate?.rightDidClose?()
                 }
         }
     }
@@ -903,6 +912,17 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
 }
 
+@objc public protocol SlideMenuControllerDelegate {
+    optional func leftWillOpen()
+    optional func leftDidOpen()
+    optional func rightWillOpen()
+    optional func rightDidOpen()
+    
+    optional func leftWillClose()
+    optional func leftDidClose()
+    optional func rightWillClose()
+    optional func rightDidClose()
+}
 
 extension UIViewController {
 
