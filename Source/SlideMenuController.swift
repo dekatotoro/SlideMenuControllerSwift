@@ -316,7 +316,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 leftContainerView.frame = applyLeftTranslation(translation, toFrame: LeftPanState.frameAtStartOfPan)
                 applyLeftOpacity()
                 applyLeftContentViewScale()
-            case UIGestureRecognizerState.Ended:
+            case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled:
                 
                 let velocity:CGPoint = panGesture.velocityInView(panGesture.view)
                 let panInfo: PanInfo = panLeftResultInfoForVelocity(velocity)
@@ -379,7 +379,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             applyRightOpacity()
             applyRightContentViewScale()
             
-        case UIGestureRecognizerState.Ended:
+        case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled:
             
             let velocity: CGPoint = panGesture.velocityInView(panGesture.view)
             let panInfo: PanInfo = panRightResultInfoForVelocity(velocity)
