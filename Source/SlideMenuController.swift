@@ -58,7 +58,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var rightViewController: UIViewController?
     public var rightPanGesture: UIPanGestureRecognizer?
     public var rightTapGesture: UITapGestureRecognizer?
-    public var delegate: SlideMenuControllerDelegate?
+    public weak var delegate: SlideMenuControllerDelegate?
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
