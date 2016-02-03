@@ -24,6 +24,8 @@ public struct SlideMenuOptions {
     public static var pointOfNoReturnWidth: CGFloat = 44.0
     public static var simultaneousGestureRecognizers: Bool = true
 	public static var opacityViewBackgroundColor: UIColor = UIColor.blackColor()
+    public static var lockGestureDirection:Bool = true
+    public static var separateGestureFromScrollViewInMainViewController:Bool = true
 }
 
 public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
@@ -58,6 +60,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var rightViewController: UIViewController?
     public var rightPanGesture: UIPanGestureRecognizer?
     public var rightTapGesture: UITapGestureRecognizer?
+    public  var leftScrollView:UIScrollView?
+    public  var mainScrollView:UIScrollView?
+    private var currentGestureDirection:Int?
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -302,6 +307,12 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         switch panGesture.state {
             case UIGestureRecognizerState.Began:
                 
+                currentGestureDirection = nil
+
+                if SlideMenuOptions.separateGestureFromScrollViewInMainViewController{
+                    mainScrollView?.scrollEnabled = false
+                }
+                
                 LeftPanState.frameAtStartOfPan = leftContainerView.frame
                 LeftPanState.startPointOfPan = panGesture.locationInView(view)
                 LeftPanState.wasOpenAtStartOfPan = isLeftOpen()
@@ -313,10 +324,44 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             case UIGestureRecognizerState.Changed:
                 
                 let translation: CGPoint = panGesture.translationInView(panGesture.view!)
+                
+                if SlideMenuOptions.lockGestureDirection {
+                    if self.currentGestureDirection == nil {
+                        //没有设置锁定
+                        if abs(translation.x) > abs(translation.y){
+                            //横向,horizontal
+                            self.currentGestureDirection = 1
+                        }else{
+                            //纵向,vertical
+                            self.currentGestureDirection = 2
+                        }
+                    }
+                    
+                    if self.currentGestureDirection == 1{
+                        //横向滑动
+                        if SlideMenuOptions.lockGestureDirection{
+                            self.leftScrollView?.scrollEnabled = false
+                        }
+                    }else{
+                        //纵向滑动
+                        if SlideMenuOptions.lockGestureDirection{
+                            return
+                        }
+                    }
+                }
+                
                 leftContainerView.frame = applyLeftTranslation(translation, toFrame: LeftPanState.frameAtStartOfPan)
                 applyLeftOpacity()
                 applyLeftContentViewScale()
             case UIGestureRecognizerState.Ended:
+                
+                self.currentGestureDirection = nil
+                if SlideMenuOptions.lockGestureDirection{
+                    self.leftScrollView?.scrollEnabled = true
+                }
+                if SlideMenuOptions.separateGestureFromScrollViewInMainViewController{
+                    self.mainScrollView?.scrollEnabled = true
+                }
                 
                 let velocity:CGPoint = panGesture.velocityInView(panGesture.view)
                 let panInfo: PanInfo = panLeftResultInfoForVelocity(velocity)
@@ -339,6 +384,13 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
 
                 }
         default:
+            self.currentGestureDirection = nil
+            if SlideMenuOptions.lockGestureDirection{
+                self.leftScrollView?.scrollEnabled = true
+            }
+            if SlideMenuOptions.separateGestureFromScrollViewInMainViewController{
+                self.mainScrollView?.scrollEnabled = true
+            }
             break
         }
         
