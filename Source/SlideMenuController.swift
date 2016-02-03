@@ -302,6 +302,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         
         switch panGesture.state {
             case UIGestureRecognizerState.Began:
+                self.delegate?.leftWillOpen?()
                 
                 LeftPanState.frameAtStartOfPan = leftContainerView.frame
                 LeftPanState.startPointOfPan = panGesture.locationInView(view)
@@ -364,6 +365,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         
         switch panGesture.state {
         case UIGestureRecognizerState.Began:
+            self.delegate?.rightWillOpen?()
             
             RightPanState.frameAtStartOfPan = rightContainerView.frame
             RightPanState.startPointOfPan = panGesture.locationInView(view)
