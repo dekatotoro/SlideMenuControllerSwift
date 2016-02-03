@@ -338,7 +338,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     track(.FlickClose)
 
                 }
-        default:
+        case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Possible:
             break
         }
         
@@ -396,7 +396,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 closeRightWithVelocity(panInfo.velocity)
                 setCloseWindowLebel()
             }
-        default:
+        case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Possible:
             break
         }
     }
