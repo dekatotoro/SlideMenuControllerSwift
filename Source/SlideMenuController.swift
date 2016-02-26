@@ -96,7 +96,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         mainContainerView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         view.insertSubview(mainContainerView, atIndex: 0)
 
-        var opacityframe: CGRect = view.bounds
+      var opacityframe: CGRect = view.bounds
         let opacityOffset: CGFloat = 0
         opacityframe.origin.y = opacityframe.origin.y + opacityOffset
         opacityframe.size.height = opacityframe.size.height - opacityOffset
@@ -105,7 +105,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         opacityView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
         opacityView.layer.opacity = 0.0
         view.insertSubview(opacityView, atIndex: 1)
-        
+      
+      if leftViewController != nil {
         var leftFrame: CGRect = view.bounds
         leftFrame.size.width = SlideMenuOptions.leftViewWidth
         leftFrame.origin.x = leftMinOrigin();
@@ -116,7 +117,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         leftContainerView.backgroundColor = UIColor.clearColor()
         leftContainerView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         view.insertSubview(leftContainerView, atIndex: 2)
-        
+        addLeftGestures()
+      }
+      
+      if rightViewController != nil {
         var rightFrame: CGRect = view.bounds
         rightFrame.size.width = SlideMenuOptions.rightViewWidth
         rightFrame.origin.x = rightMinOrigin()
@@ -127,9 +131,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         rightContainerView.backgroundColor = UIColor.clearColor()
         rightContainerView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         view.insertSubview(rightContainerView, atIndex: 3)
-        
-        addLeftGestures()
         addRightGestures()
+      }
     }
   
     public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
