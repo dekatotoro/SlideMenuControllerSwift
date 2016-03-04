@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerCellNib(DataTableViewCell.self)
+        self.slideMenuController()?.delegate = self
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -56,5 +57,39 @@ extension MainViewController : UITableViewDataSource {
         let storyboard = UIStoryboard(name: "SubContentsViewController", bundle: nil)
         let subContentsVC = storyboard.instantiateViewControllerWithIdentifier("SubContentsViewController") as! SubContentsViewController
         self.navigationController?.pushViewController(subContentsVC, animated: true)
+    }
+}
+
+extension MainViewController : SlideMenuControllerDelegate {
+    func leftWillOpen() {
+        print("leftWillOpen")
+    }
+    
+    func leftDidOpen() {
+        print("leftDidOpen")
+    }
+    
+    func leftWillClose() {
+        print("leftWillClose")
+    }
+    
+    func leftDidClose() {
+        print("leftDidClose")
+    }
+    
+    func rightWillOpen() {
+        print("rightWillOpen")
+    }
+    
+    func rightDidOpen() {
+        print("rightDidOpen")
+    }
+    
+    func rightWillClose() {
+        print("rightWillClose")
+    }
+    
+    func rightDidClose() {
+        print("rightDidClose")
     }
 }
