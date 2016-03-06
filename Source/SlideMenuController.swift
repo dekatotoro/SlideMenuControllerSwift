@@ -58,6 +58,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var rightViewController: UIViewController?
     public var rightPanGesture: UIPanGestureRecognizer?
     public var rightTapGesture: UITapGestureRecognizer?
+    public var rightViewEnabled: Bool = true
+    public var leftViewEnabled: Bool = false
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -184,6 +186,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func openLeft() {
+        if(!leftViewEnabled) {
+            return
+        }
+        
         setOpenWindowLevel()
         
         //leftViewControllerのviewWillAppearを呼ぶため
@@ -194,6 +200,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func openRight() {
+        if(!rightViewEnabled) {
+            return
+        }
+
         setOpenWindowLevel()
         
         //menuViewControllerのviewWillAppearを呼ぶため
@@ -294,6 +304,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
     func handleLeftPanGesture(panGesture: UIPanGestureRecognizer) {
         
+        if(!leftViewEnabled) {
+            return
+        }
+        
+
         if !isTagetViewController() {
             return
         }
@@ -356,6 +371,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
     func handleRightPanGesture(panGesture: UIPanGestureRecognizer) {
         
+        if(!rightViewEnabled) {
+            return
+        }
+
         if !isTagetViewController() {
             return
         }
@@ -405,6 +424,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public func openLeftWithVelocity(velocity: CGFloat) {
+        
+        if(!leftViewEnabled) {
+            return
+        }
+
         let xOrigin: CGFloat = leftContainerView.frame.origin.x
         let finalXOrigin: CGFloat = 0.0
         
@@ -434,6 +458,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public func openRightWithVelocity(velocity: CGFloat) {
+        
+        if(!rightViewEnabled) {
+            return
+        }
+
         let xOrigin: CGFloat = rightContainerView.frame.origin.x
     
         //	CGFloat finalXOrigin = SlideMenuOptions.rightViewOverlapWidth;
