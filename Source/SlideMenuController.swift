@@ -10,7 +10,7 @@ import UIKit
 public struct SlideMenuOptions {
     public static var leftViewWidth: CGFloat = 270.0
     public static var leftBezelWidth: CGFloat? = 16.0
-    public static var contentViewScale: CGFloat = 0.99
+    public static var contentViewScale: CGFloat = 0.96
     public static var contentViewOpacity: CGFloat = 0.5
     public static var shadowOpacity: CGFloat = 0.0
     public static var shadowRadius: CGFloat = 0.0
@@ -100,13 +100,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         mainContainerView.backgroundColor = UIColor.clearColor()
         mainContainerView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         view.insertSubview(mainContainerView, atIndex: 0)
-        let editItem = UIBarButtonItem.init(image: UIImage.init(named: "icn_editing"), style: UIBarButtonItemStyle.Plain, target: self.mainViewController, action: "editRandomMessage:")
-        let typeItem = UIBarButtonItem.init(image: UIImage.init(named: "icn_typing"), style: UIBarButtonItemStyle.Plain, target: self.mainViewController, action: "simulateUserTyping:")
-        let appendItem = UIBarButtonItem.init(image: UIImage.init(named: "icn_append"), style: UIBarButtonItemStyle.Plain, target: self.mainViewController, action: "fillWithText:")
-        let pipItem = UIBarButtonItem.init(image: UIImage.init(named: "icn_pic"), style: UIBarButtonItemStyle.Plain, target: self.mainViewController, action: "togglePIPWindow:")
-        self.navigationItem.rightBarButtonItems = [pipItem, editItem, appendItem, typeItem]
-        self.mainViewController?.addLeftBarButtonWithImage(UIImage(named: "icn_upload")!)
-        
+
       var opacityframe: CGRect = view.bounds
         let opacityOffset: CGFloat = 0
         opacityframe.origin.y = opacityframe.origin.y + opacityOffset
@@ -193,10 +187,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         setOpenWindowLevel()
         
         //leftViewControllerのviewWillAppearを呼ぶため
-        
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         openLeftWithVelocity(0.0)
-        removeRightGestures()
+        
         track(.TapOpen)
     }
     
@@ -204,25 +197,20 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         setOpenWindowLevel()
         
         //menuViewControllerのviewWillAppearを呼ぶため
-        
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
         openRightWithVelocity(0.0)
-        removeLeftGestures()
-        track(.TapOpen)
     }
     
     public override func closeLeft() {
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         closeLeftWithVelocity(0.0)
         setCloseWindowLebel()
-        addRightGestures()
     }
     
     public override func closeRight() {
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
         closeRightWithVelocity(0.0)
         setCloseWindowLebel()
-        addLeftGestures()
     }
     
     
@@ -310,7 +298,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             return
         }
         
-        if !isRightHidden() {
+        if isRightOpen() {
             return
         }
         
@@ -372,7 +360,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             return
         }
         
-        if isLeftHidden() {
+        if isLeftOpen() {
             return
         }
         
