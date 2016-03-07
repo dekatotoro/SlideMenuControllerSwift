@@ -290,6 +290,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         static var startPointOfPan: CGPoint = CGPointZero
         static var wasOpenAtStartOfPan: Bool = false
         static var wasHiddenAtStartOfPan: Bool = false
+        static var lastState : UIGestureRecognizerState = .Ended
     }
     
     func handleLeftPanGesture(panGesture: UIPanGestureRecognizer) {
@@ -304,6 +305,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         
         switch panGesture.state {
             case UIGestureRecognizerState.Began:
+                if LeftPanState.lastState != .Ended &&  LeftPanState.lastState != .Cancelled &&  LeftPanState.lastState != .Failed {
+                    return
+                }
                 
                 LeftPanState.frameAtStartOfPan = leftContainerView.frame
                 LeftPanState.startPointOfPan = panGesture.locationInView(view)
@@ -314,12 +318,18 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 addShadowToView(leftContainerView)
                 setOpenWindowLevel()
             case UIGestureRecognizerState.Changed:
+                if LeftPanState.lastState != .Began && LeftPanState.lastState != .Changed {
+                    return
+                }
                 
                 let translation: CGPoint = panGesture.translationInView(panGesture.view!)
                 leftContainerView.frame = applyLeftTranslation(translation, toFrame: LeftPanState.frameAtStartOfPan)
                 applyLeftOpacity()
                 applyLeftContentViewScale()
             case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled:
+                if LeftPanState.lastState != .Changed {
+                    return
+                }
                 
                 let velocity:CGPoint = panGesture.velocityInView(panGesture.view)
                 let panInfo: PanInfo = panLeftResultInfoForVelocity(velocity)
@@ -341,10 +351,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     track(.FlickClose)
 
                 }
-        case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Possible:
-            break
+            case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Possible:
+                break
         }
         
+        LeftPanState.lastState = panGesture.state
     }
     
     struct RightPanState {
@@ -352,6 +363,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         static var startPointOfPan: CGPoint = CGPointZero
         static var wasOpenAtStartOfPan: Bool = false
         static var wasHiddenAtStartOfPan: Bool = false
+        static var lastState : UIGestureRecognizerState = .Ended
     }
     
     func handleRightPanGesture(panGesture: UIPanGestureRecognizer) {
@@ -366,6 +378,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         
         switch panGesture.state {
         case UIGestureRecognizerState.Began:
+            if RightPanState.lastState != .Ended &&  RightPanState.lastState != .Cancelled &&  RightPanState.lastState != .Failed {
+                return
+            }
             
             RightPanState.frameAtStartOfPan = rightContainerView.frame
             RightPanState.startPointOfPan = panGesture.locationInView(view)
@@ -376,6 +391,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             addShadowToView(rightContainerView)
             setOpenWindowLevel()
         case UIGestureRecognizerState.Changed:
+            if RightPanState.lastState != .Began && RightPanState.lastState != .Changed {
+                return
+            }
             
             let translation: CGPoint = panGesture.translationInView(panGesture.view!)
             rightContainerView.frame = applyRightTranslation(translation, toFrame: RightPanState.frameAtStartOfPan)
@@ -383,6 +401,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             applyRightContentViewScale()
             
         case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled:
+            if RightPanState.lastState != .Changed {
+                return
+            }
             
             let velocity: CGPoint = panGesture.velocityInView(panGesture.view)
             let panInfo: PanInfo = panRightResultInfoForVelocity(velocity)
@@ -402,6 +423,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Possible:
             break
         }
+        
+        RightPanState.lastState = panGesture.state
     }
     
     public func openLeftWithVelocity(velocity: CGFloat) {
