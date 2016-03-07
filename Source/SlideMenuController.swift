@@ -59,7 +59,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var rightPanGesture: UIPanGestureRecognizer?
     public var rightTapGesture: UITapGestureRecognizer?
     public var rightViewEnabled: Bool = true
-    public var leftViewEnabled: Bool = false
+    public var leftViewEnabled: Bool = true
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
