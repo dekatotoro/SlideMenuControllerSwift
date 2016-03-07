@@ -184,35 +184,46 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func openLeft() {
-        setOpenWindowLevel()
         
-        //leftViewControllerのviewWillAppearを呼ぶため
-        leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
-        openLeftWithVelocity(0.0)
-        
-        track(.TapOpen)
+        if(leftViewController != nil) {
+            setOpenWindowLevel()
+            
+            //leftViewControllerのviewWillAppearを呼ぶため
+            leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
+            openLeftWithVelocity(0.0)
+            
+            track(.TapOpen)
+        }
     }
     
     public override func openRight() {
-        setOpenWindowLevel()
         
-        //menuViewControllerのviewWillAppearを呼ぶため
-        rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
-        openRightWithVelocity(0.0)
+        if(rightViewController != nil) {
+            setOpenWindowLevel()
+            
+            //menuViewControllerのviewWillAppearを呼ぶため
+            rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
+            openRightWithVelocity(0.0)
+        }
     }
     
     public override func closeLeft() {
-        leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
-        closeLeftWithVelocity(0.0)
-        setCloseWindowLebel()
+        
+        if(leftViewController != nil) {
+            leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
+            closeLeftWithVelocity(0.0)
+            setCloseWindowLebel()
+        }
     }
     
     public override func closeRight() {
-        rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
-        closeRightWithVelocity(0.0)
-        setCloseWindowLebel()
+        
+        if(rightViewController != nil) {
+            rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
+            closeRightWithVelocity(0.0)
+            setCloseWindowLebel()
+        }
     }
-    
     
     public func addLeftGestures() {
     
