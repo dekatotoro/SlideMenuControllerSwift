@@ -218,7 +218,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
         if (leftViewController != nil) {
             if leftPanGesture == nil {
-                leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(SlideMenuController.handleLeftPanGesture(_:)))
+                leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleLeftPanGesture(_:)))
                 leftPanGesture!.delegate = self
                 view.addGestureRecognizer(leftPanGesture!)
             }
