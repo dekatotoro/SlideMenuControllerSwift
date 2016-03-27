@@ -7,6 +7,17 @@
 import Foundation
 import UIKit
 
+@objc public protocol SlideMenuControllerDelegate {
+    optional func leftWillOpen()
+    optional func leftDidOpen()
+    optional func leftWillClose()
+    optional func leftDidClose()
+    optional func rightWillOpen()
+    optional func rightDidOpen()
+    optional func rightWillClose()
+    optional func rightDidClose()
+}
+
 public struct SlideMenuOptions {
     public static var leftViewWidth: CGFloat = 270.0
     public static var leftBezelWidth: CGFloat? = 16.0
@@ -51,6 +62,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         var shouldBounce: Bool
         var velocity: CGFloat
     }
+    
+    public weak var delegate: SlideMenuControllerDelegate?
     
     public var opacityView = UIView()
     public var mainContainerView = UIView()
@@ -189,9 +202,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func openLeft() {
-        setOpenWindowLevel()
+        self.delegate?.leftWillOpen?()
         
-        //leftViewControllerのviewWillAppearを呼ぶため
+        setOpenWindowLevel()
+        // for call viewWillAppear of leftViewController
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         openLeftWithVelocity(0.0)
         
@@ -199,9 +213,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func openRight() {
-        setOpenWindowLevel()
+        self.delegate?.rightWillOpen?()
         
-        //menuViewControllerのviewWillAppearを呼ぶため
+        setOpenWindowLevel()
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
         openRightWithVelocity(0.0)
         
@@ -209,12 +223,16 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func closeLeft() {
+        self.delegate?.leftWillClose?()
+        
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         closeLeftWithVelocity(0.0)
         setCloseWindowLebel()
     }
     
     public override func closeRight() {
+        self.delegate?.rightWillClose?()
+        
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
         closeRightWithVelocity(0.0)
         setCloseWindowLebel()
@@ -316,6 +334,12 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     return
                 }
                 
+                if isLeftHidden() {
+                    self.delegate?.leftWillOpen?()
+                } else {
+                    self.delegate?.leftWillClose?()
+                }
+                
                 LeftPanState.frameAtStartOfPan = leftContainerView.frame
                 LeftPanState.startPointOfPan = panGesture.locationInView(view)
                 LeftPanState.wasOpenAtStartOfPan = isLeftOpen()
@@ -389,12 +413,19 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 return
             }
             
+            if isRightHidden() {
+                self.delegate?.rightWillOpen?()
+            } else {
+                self.delegate?.rightWillClose?()
+            }
+            
             RightPanState.frameAtStartOfPan = rightContainerView.frame
             RightPanState.startPointOfPan = panGesture.locationInView(view)
             RightPanState.wasOpenAtStartOfPan =  isRightOpen()
             RightPanState.wasHiddenAtStartOfPan = isRightHidden()
             
             rightViewController?.beginAppearanceTransition(RightPanState.wasHiddenAtStartOfPan, animated: true)
+            
             addShadowToView(rightContainerView)
             setOpenWindowLevel()
         case UIGestureRecognizerState.Changed:
@@ -463,6 +494,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 if let strongSelf = self {
                     strongSelf.disableContentInteraction()
                     strongSelf.leftViewController?.endAppearanceTransition()
+                    strongSelf.delegate?.leftDidOpen?()
                 }
         }
     }
@@ -494,6 +526,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 if let strongSelf = self {
                     strongSelf.disableContentInteraction()
                     strongSelf.rightViewController?.endAppearanceTransition()
+                    strongSelf.delegate?.rightDidOpen?()
                 }
         }
     }
@@ -523,6 +556,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     strongSelf.removeShadow(strongSelf.leftContainerView)
                     strongSelf.enableContentInteraction()
                     strongSelf.leftViewController?.endAppearanceTransition()
+                    strongSelf.delegate?.leftDidClose?()
                 }
         }
     }
@@ -553,6 +587,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     strongSelf.removeShadow(strongSelf.rightContainerView)
                     strongSelf.enableContentInteraction()
                     strongSelf.rightViewController?.endAppearanceTransition()
+                    strongSelf.delegate?.rightDidClose?()
                 }
         }
     }

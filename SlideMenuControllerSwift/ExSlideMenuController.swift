@@ -27,24 +27,24 @@ class ExSlideMenuController : SlideMenuController {
         case .Left:
             switch trackAction {
             case .TapOpen:
-                print("Left tap open.")
+                print("TrackAction: left tap open.")
             case .TapClose:
-                print("Left tap close.")
+                print("TrackAction: left tap close.")
             case .FlickOpen:
-                print("Left flick open.")
+                print("TrackAction: left flick open.")
             case .FlickClose:
-                print("Left flick close.")
+                print("TrackAction: left flick close.")
             }
         case .Right:
             switch trackAction {
             case .TapOpen:
-                print("Right tap open.")
+                print("TrackAction: right tap open.")
             case .TapClose:
-                print("Right tap close.")
+                print("TrackAction: right tap close.")
             case .FlickOpen:
-                print("Right flick open.")
+                print("TrackAction: right flick open.")
             case .FlickClose:
-                print("Right flick close.")
+                print("TrackAction: right flick close.")
             }
         }
     }
