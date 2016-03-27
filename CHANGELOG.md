@@ -1,3 +1,16 @@
+2.0.6 Release notes (2015-03-27)
+=============================================================
+
+### Enhancements
+
+* Allow unlimited left and right bezels by setting corresponding bezelWidth to nil.
+* Added open/close delegate method.
+
+### Bugfixes
+* Use canceled state for End touch actions.
+* Fixed two menu is overlap.
+* Fixed insert left or right menu when there are not provided.
+
 2.0.5 Release notes (2015-12-02)
 =============================================================
 
