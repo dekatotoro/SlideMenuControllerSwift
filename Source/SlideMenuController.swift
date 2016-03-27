@@ -32,6 +32,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         case Open
         case Close
     }
+
+    public enum SlideMenu {
+        case Left
+        case Right
+    }
     
     public enum TrackAction {
         case TapOpen
@@ -190,7 +195,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         openLeftWithVelocity(0.0)
         
-        track(.TapOpen)
+        track(slideMenu: .Left, trackAction: .TapOpen)
     }
     
     public override func openRight() {
@@ -199,6 +204,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         //menuViewControllerのviewWillAppearを呼ぶため
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
         openRightWithVelocity(0.0)
+        
+        track(slideMenu: .Right, trackAction: .TapOpen)
     }
     
     public override func closeLeft() {
@@ -280,7 +287,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         return true
     }
     
-    public func track(trackAction: TrackAction) {
+    public func track(slideMenu slideMenu: SlideMenu, trackAction: TrackAction) {
         // function is for tracking
         // Please to override it if necessary
     }
@@ -339,8 +346,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                         leftViewController?.beginAppearanceTransition(true, animated: true)
                     }
                     openLeftWithVelocity(panInfo.velocity)
-                    track(.FlickOpen)
                     
+                    track(slideMenu: .Left, trackAction: .FlickOpen)
                 } else {
                     if LeftPanState.wasHiddenAtStartOfPan {
                         leftViewController?.beginAppearanceTransition(false, animated: true)
@@ -348,7 +355,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     closeLeftWithVelocity(panInfo.velocity)
                     setCloseWindowLebel()
                     
-                    track(.FlickClose)
+                    track(slideMenu: .Left, trackAction: .FlickClose)
 
                 }
             case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Possible:
@@ -413,12 +420,16 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     rightViewController?.beginAppearanceTransition(true, animated: true)
                 }
                 openRightWithVelocity(panInfo.velocity)
+                
+                track(slideMenu: .Right, trackAction: .FlickOpen)
             } else {
                 if RightPanState.wasHiddenAtStartOfPan {
                     rightViewController?.beginAppearanceTransition(false, animated: true)
                 }
                 closeRightWithVelocity(panInfo.velocity)
                 setCloseWindowLebel()
+                
+                track(slideMenu: .Right, trackAction: .FlickClose)
             }
         case UIGestureRecognizerState.Failed, UIGestureRecognizerState.Possible:
             break
@@ -551,9 +562,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         if isLeftOpen() {
             closeLeft()
             setCloseWindowLebel()
-            // closeMenuはメニュータップ時にも呼ばれるため、closeタップのトラッキングはここに入れる
+            // Tracking of close tap is put in here. Because closeMenu is due to be call even when the menu tap.
             
-            track(.TapClose)
+            track(slideMenu: .Left, trackAction: .TapClose)
         } else {
             openLeft()
         }
@@ -571,6 +582,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         if isRightOpen() {
             closeRight()
             setCloseWindowLebel()
+            
+            // Tracking of close tap is put in here. Because closeMenu is due to be call even when the menu tap.
+            track(slideMenu: .Right, trackAction: .TapClose)
         } else {
             openRight()
         }
