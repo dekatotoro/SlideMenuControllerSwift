@@ -201,6 +201,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func openLeft() {
+        guard let _ = leftViewController else { // If leftViewController is nil, then return
+            return
+        }
+        
         self.delegate?.leftWillOpen?()
         
         setOpenWindowLevel()
@@ -212,6 +216,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func openRight() {
+        guard let _ = rightViewController else { // If rightViewController is nil, then return
+            return
+        }
+        
         self.delegate?.rightWillOpen?()
         
         setOpenWindowLevel()
@@ -222,6 +230,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func closeLeft() {
+        guard let _ = leftViewController else { // If leftViewController is nil, then return
+            return
+        }
+        
         self.delegate?.leftWillClose?()
         
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
@@ -230,6 +242,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public override func closeRight() {
+        guard let _ = rightViewController else { // If rightViewController is nil, then return
+            return
+        }
+        
         self.delegate?.rightWillClose?()
         
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
