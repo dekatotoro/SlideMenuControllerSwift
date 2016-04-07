@@ -621,7 +621,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public func isLeftOpen() -> Bool {
-        return leftContainerView.frame.origin.x == 0.0
+        return leftViewController != nil && leftContainerView.frame.origin.x == 0.0
     }
     
     public func isLeftHidden() -> Bool {
@@ -641,7 +641,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public func isRightOpen() -> Bool {
-        return rightContainerView.frame.origin.x == CGRectGetWidth(view.bounds) - rightContainerView.frame.size.width
+        return rightViewController != nil && rightContainerView.frame.origin.x == CGRectGetWidth(view.bounds) - rightContainerView.frame.size.width
     }
     
     public func isRightHidden() -> Bool {
