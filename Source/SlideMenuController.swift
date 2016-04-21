@@ -238,7 +238,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         closeLeftWithVelocity(0.0)
-        setCloseWindowLebel()
+        setCloseWindowLevel()
     }
     
     public override func closeRight() {
@@ -250,7 +250,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
         closeRightWithVelocity(0.0)
-        setCloseWindowLebel()
+        setCloseWindowLevel()
     }
     
     
@@ -392,7 +392,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                         leftViewController?.beginAppearanceTransition(false, animated: true)
                     }
                     closeLeftWithVelocity(panInfo.velocity)
-                    setCloseWindowLebel()
+                    setCloseWindowLevel()
                     
                     track(.LeftFlickClose)
 
@@ -473,7 +473,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                     rightViewController?.beginAppearanceTransition(false, animated: true)
                 }
                 closeRightWithVelocity(panInfo.velocity)
-                setCloseWindowLebel()
+                setCloseWindowLevel()
                 
                 track(.RightFlickClose)
             }
@@ -611,7 +611,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public override func toggleLeft() {
         if isLeftOpen() {
             closeLeft()
-            setCloseWindowLebel()
+            setCloseWindowLevel()
             // Tracking of close tap is put in here. Because closeMenu is due to be call even when the menu tap.
             
             track(.LeftTapClose)
@@ -631,7 +631,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public override func toggleRight() {
         if isRightOpen() {
             closeRight()
-            setCloseWindowLebel()
+            setCloseWindowLevel()
             
             // Tracking of close tap is put in here. Because closeMenu is due to be call even when the menu tap.
             track(.RightTapClose)
@@ -871,7 +871,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         }
     }
     
-    private func setCloseWindowLebel() {
+    private func setCloseWindowLevel() {
         if (SlideMenuOptions.hideStatusBar) {
             dispatch_async(dispatch_get_main_queue(), {
                 if let window = UIApplication.sharedApplication().keyWindow {
@@ -901,7 +901,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public func closeLeftNonAnimation(){
-        setCloseWindowLebel()
+        setCloseWindowLevel()
         let finalXOrigin: CGFloat = leftMinOrigin()
         var frame: CGRect = leftContainerView.frame;
         frame.origin.x = finalXOrigin
@@ -913,7 +913,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public func closeRightNonAnimation(){
-        setCloseWindowLebel()
+        setCloseWindowLevel()
         let finalXOrigin: CGFloat = CGRectGetWidth(view.bounds)
         var frame: CGRect = rightContainerView.frame
         frame.origin.x = finalXOrigin
