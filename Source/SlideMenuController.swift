@@ -193,6 +193,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         return UIInterfaceOrientationMask.All
     }
     
+    public override func shouldAutorotate() -> Bool {
+        return mainViewController?.shouldAutorotate() ?? false
+    }
+        
     public override func viewWillLayoutSubviews() {
         // topLayoutGuideの値が確定するこのタイミングで各種ViewControllerをセットする
         setUpViewController(mainContainerView, targetViewController: mainViewController)
