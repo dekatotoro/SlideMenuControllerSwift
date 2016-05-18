@@ -23,6 +23,7 @@ public struct SlideMenuOptions {
     public static var leftBezelWidth: CGFloat? = 16.0
     public static var contentViewScale: CGFloat = 0.96
     public static var contentViewOpacity: CGFloat = 0.5
+    public static var contentViewDrag: Bool = false
     public static var shadowOpacity: CGFloat = 0.0
     public static var shadowRadius: CGFloat = 0.0
     public static var shadowOffset: CGSize = CGSizeMake(0,0)
@@ -503,7 +504,9 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             if let strongSelf = self {
                 strongSelf.leftContainerView.frame = frame
                 strongSelf.opacityView.layer.opacity = Float(SlideMenuOptions.contentViewOpacity)
-                strongSelf.mainContainerView.transform = CGAffineTransformMakeScale(SlideMenuOptions.contentViewScale, SlideMenuOptions.contentViewScale)
+              
+                SlideMenuOptions.contentViewDrag == true ? (strongSelf.mainContainerView.transform = CGAffineTransformMakeTranslation(SlideMenuOptions.leftViewWidth, 0)) : (strongSelf.mainContainerView.transform = CGAffineTransformMakeScale(SlideMenuOptions.contentViewScale, SlideMenuOptions.contentViewScale))
+                
             }
             }) { [weak self](Bool) -> Void in
                 if let strongSelf = self {
@@ -535,7 +538,8 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             if let strongSelf = self {
                 strongSelf.rightContainerView.frame = frame
                 strongSelf.opacityView.layer.opacity = Float(SlideMenuOptions.contentViewOpacity)
-                strongSelf.mainContainerView.transform = CGAffineTransformMakeScale(SlideMenuOptions.contentViewScale, SlideMenuOptions.contentViewScale)
+            
+                SlideMenuOptions.contentViewDrag == true ? (strongSelf.mainContainerView.transform = CGAffineTransformMakeTranslation(-SlideMenuOptions.rightViewWidth, 0)) : (strongSelf.mainContainerView.transform = CGAffineTransformMakeScale(SlideMenuOptions.contentViewScale, SlideMenuOptions.contentViewScale))
             }
             }) { [weak self](Bool) -> Void in
                 if let strongSelf = self {
@@ -822,13 +826,17 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     private func applyLeftContentViewScale() {
         let openedLeftRatio: CGFloat = getOpenedLeftRatio()
         let scale: CGFloat = 1.0 - ((1.0 - SlideMenuOptions.contentViewScale) * openedLeftRatio);
-        mainContainerView.transform = CGAffineTransformMakeScale(scale, scale)
+        let drag: CGFloat = SlideMenuOptions.leftViewWidth + leftContainerView.frame.origin.x
+        
+        SlideMenuOptions.contentViewDrag == true ? (mainContainerView.transform = CGAffineTransformMakeTranslation(drag, 0)) : (mainContainerView.transform = CGAffineTransformMakeScale(scale, scale))
     }
     
     private func applyRightContentViewScale() {
         let openedRightRatio: CGFloat = getOpenedRightRatio()
         let scale: CGFloat = 1.0 - ((1.0 - SlideMenuOptions.contentViewScale) * openedRightRatio)
-        mainContainerView.transform = CGAffineTransformMakeScale(scale, scale)
+        let drag: CGFloat = rightContainerView.frame.origin.x - mainContainerView.frame.size.width
+        
+        SlideMenuOptions.contentViewDrag == true ? (mainContainerView.transform = CGAffineTransformMakeTranslation(drag, 0)) : (mainContainerView.transform = CGAffineTransformMakeScale(scale, scale))
     }
     
     private func addShadowToView(targetContainerView: UIView) {
