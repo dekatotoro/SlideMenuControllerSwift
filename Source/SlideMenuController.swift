@@ -56,6 +56,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         case RightFlickClose
     }
     
+    public enum SlideDirection {
+	case Left
+	case Right
+    }
     
     struct PanInfo {
         var action: SlideAction
@@ -666,6 +670,36 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             closeRight()
         }
     }
+    
+    public func slideMainViewController(mainViewController: UIViewController, close: Bool, direction: SlideDirection, duration: Double) {
+		
+		var animationWidth : CGFloat
+		
+		if (direction == .Right) {
+			animationWidth = mainViewController.view.frame.size.width
+		}
+		else {
+			animationWidth = -mainViewController.view.frame.size.width
+		}
+		
+		let snapshot:UIView = (UIApplication.sharedApplication().delegate!.window!!.snapshotViewAfterScreenUpdates(true))
+		mainViewController.view.addSubview(snapshot);
+		
+		removeViewController(self.mainViewController)
+		self.mainViewController = mainViewController
+		
+		UIView.animateWithDuration(duration, animations: {() in
+			snapshot.layer.opacity = 0;
+			snapshot.layer.transform = CATransform3DMakeTranslation(animationWidth, 0.0, 0.0)
+			}, completion: nil);
+		
+		setUpViewController(mainContainerView, targetViewController: mainViewController)
+		
+		if (close) {
+			closeLeft()
+			closeRight()
+		}
+	}
     
     public func changeLeftViewWidth(width: CGFloat) {
         
