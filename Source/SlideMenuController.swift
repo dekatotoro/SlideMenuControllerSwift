@@ -213,6 +213,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         self.delegate?.leftWillOpen?()
         
         setOpenWindowLevel()
+        disableContentInteraction()
         // for call viewWillAppear of leftViewController
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         openLeftWithVelocity(0.0)
@@ -228,6 +229,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         self.delegate?.rightWillOpen?()
         
         setOpenWindowLevel()
+        disableContentInteraction()
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
         openRightWithVelocity(0.0)
         
@@ -368,6 +370,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 leftViewController?.beginAppearanceTransition(LeftPanState.wasHiddenAtStartOfPan, animated: true)
                 addShadowToView(leftContainerView)
                 setOpenWindowLevel()
+                disableContentInteraction()
             case UIGestureRecognizerState.Changed:
                 if LeftPanState.lastState != .Began && LeftPanState.lastState != .Changed {
                     return
@@ -444,6 +447,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             
             addShadowToView(rightContainerView)
             setOpenWindowLevel()
+            disableContentInteraction()
         case UIGestureRecognizerState.Changed:
             if RightPanState.lastState != .Began && RightPanState.lastState != .Changed {
                 return
@@ -481,7 +485,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         RightPanState.lastState = panGesture.state
     }
     
-    public func openLeftWithVelocity(velocity: CGFloat) {
+    private func openLeftWithVelocity(velocity: CGFloat) {
         let xOrigin: CGFloat = leftContainerView.frame.origin.x
         let finalXOrigin: CGFloat = 0.0
         
@@ -506,14 +510,13 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             }
             }) { [weak self](Bool) -> Void in
                 if let strongSelf = self {
-                    strongSelf.disableContentInteraction()
                     strongSelf.leftViewController?.endAppearanceTransition()
                     strongSelf.delegate?.leftDidOpen?()
                 }
         }
     }
     
-    public func openRightWithVelocity(velocity: CGFloat) {
+    private func openRightWithVelocity(velocity: CGFloat) {
         let xOrigin: CGFloat = rightContainerView.frame.origin.x
     
         //	CGFloat finalXOrigin = SlideMenuOptions.rightViewOverlapWidth;
@@ -539,7 +542,6 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             }
             }) { [weak self](Bool) -> Void in
                 if let strongSelf = self {
-                    strongSelf.disableContentInteraction()
                     strongSelf.rightViewController?.endAppearanceTransition()
                     strongSelf.delegate?.rightDidOpen?()
                 }
