@@ -1,3 +1,12 @@
+2.2.1 Release notes (2016-07-13)
+=============================================================
+
+### Enhancements
+* None.
+
+### Bugfixes
+# Fixes status bar remains hidden occationally
+
 2.1.1 Release notes (2016-04-10)
 =============================================================
 
@@ -53,7 +62,7 @@
 
 ### Bugfixes
 
-* Fixed remains animation. 
+* Fixed remains animation.
 
 
 2.0.3 Release notes (2015-11-05)
@@ -89,6 +98,3 @@
 ### Bugfixes
 
 * None.
-
-
-
