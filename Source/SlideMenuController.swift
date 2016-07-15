@@ -73,7 +73,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var leftViewController: UIViewController?
     public var leftPanGesture: UIPanGestureRecognizer?
     public var leftTapGesture: UITapGestureRecognizer?
-    public var rightViewController: UIViewController?
+    public var rightViewController: UIViewController? {
+    	didSet {
+            rightViewController?.view.clipsToBounds = true
+        }
+    }
     public var rightPanGesture: UIPanGestureRecognizer?
     public var rightTapGesture: UITapGestureRecognizer?
     
