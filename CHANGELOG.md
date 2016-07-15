@@ -1,11 +1,23 @@
-2.2.1 Release notes (2016-07-13)
+2.2.2 Release notes (2016-07-15)
 =============================================================
 
 ### Enhancements
 * None.
 
 ### Bugfixes
-# Fixes status bar remains hidden occationally
+* Fixes both left and right menus can be opened at the same time.
+
+
+2.2.1 Release notes (2016-07-13)
+=============================================================
+
+#### Please do not use this version because there is a critical bug.
+
+### Enhancements
+* None.
+
+### Bugfixes
+* Fixes status bar remains hidden occationally
 
 2.1.1 Release notes (2016-04-10)
 =============================================================
@@ -14,7 +26,7 @@
 * None.
 
 ### Bugfixes
-# Fixes the left and right open bugs
+* Fixes the left and right open bugs
 
 2.1.0 Release notes (2016-03-28)
 =============================================================
