@@ -379,6 +379,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
                 applyLeftContentViewScale()
             case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled:
                 if LeftPanState.lastState != .Changed {
+                    setCloseWindowLevel()
                     return
                 }
                 
@@ -460,6 +461,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             
         case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled:
             if RightPanState.lastState != .Changed {
+                setCloseWindowLevel()
                 return
             }
             
