@@ -693,6 +693,12 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         rightContainerView.frame = rightFrame;
     }
     
+    public func changeAnimationDuration(duration: CGFloat) {
+        if (duration != 0.0) {
+            SlideMenuOptions.animationDuration = duration
+        }
+    }
+    
     public func changeLeftViewController(leftViewController: UIViewController, closeLeft:Bool) {
         
         removeViewController(self.leftViewController)
