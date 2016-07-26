@@ -113,10 +113,6 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
 
     deinit { }
     
-    func isMainViewBackgroundOpaque(isOpaque: Bool = true) -> Bool {
-        return isOpaque
-    }
-    
     var isOpaque: Bool = true {
         didSet {
             if !isOpaque {
