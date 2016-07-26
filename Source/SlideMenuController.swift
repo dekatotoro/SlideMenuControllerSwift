@@ -120,11 +120,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             }
         }
     }
-    
-    
-    func printt() {
-        print("PRINTING")
-    }
+
     
     public func initView() {
         mainContainerView = UIView(frame: view.bounds)
