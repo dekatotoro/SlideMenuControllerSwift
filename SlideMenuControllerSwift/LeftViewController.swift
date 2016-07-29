@@ -94,6 +94,12 @@ extension LeftViewController : UITableViewDelegate {
         }
         return 0
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let menu = LeftMenu(rawValue: (indexPath as NSIndexPath).item) {
+            self.changeViewController(menu)
+        }
+    }
 }
 
 extension LeftViewController : UITableViewDataSource {
@@ -113,12 +119,6 @@ extension LeftViewController : UITableViewDataSource {
             }
         }
         return UITableViewCell()
-    }
-
-    @nonobjc func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let menu = LeftMenu(rawValue: (indexPath as NSIndexPath).item) {
-            self.changeViewController(menu)
-        }
     }
 }
 
