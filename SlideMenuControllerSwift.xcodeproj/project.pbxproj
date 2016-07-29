@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00F5B1D81D4B1EF600E173C3 /* SlideMenuControllerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F5B1D71D4B1EF600E173C3 /* SlideMenuControllerSwiftTests.swift */; };
 		0E75C5A31BE3CA9F00844634 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,7 +17,6 @@
 		C539E64F1A315E87003B7CC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C539E64D1A315E87003B7CC7 /* Main.storyboard */; };
 		C539E6511A315E87003B7CC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C539E6501A315E87003B7CC7 /* Images.xcassets */; };
 		C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C539E6521A315E87003B7CC7 /* LaunchScreen.xib */; };
-		C539E6601A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */; };
 		C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66B1A316C78003B7CC7 /* LeftViewController.swift */; };
 		C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E66D1A316F5F003B7CC7 /* RightViewController.swift */; };
 		C5498C7E1BE897250076A7C5 /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5498C7D1BE897250076A7C5 /* ImageHeaderView.swift */; };
@@ -43,7 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C539E65A1A315E87003B7CC7 /* PBXContainerItemProxy */ = {
+		00F5B1DA1D4B1EF600E173C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C539E6391A315E87003B7CC7 /* Project object */;
 			proxyType = 1;
@@ -53,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00F5B1C91D4AE26800E173C3 /* SlideMenuControllerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuControllerSwiftTests.swift; sourceTree = "<group>"; };
+		00F5B1CB1D4AE26800E173C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00F5B1D51D4B1EF600E173C3 /* SlideMenuControllerSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlideMenuControllerSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00F5B1D71D4B1EF600E173C3 /* SlideMenuControllerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuControllerSwiftTests.swift; sourceTree = "<group>"; };
+		00F5B1D91D4B1EF600E173C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E75C5A41BE3CAFE00844634 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
 		0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuControllerSwift.h; path = Source/SlideMenuControllerSwift.h; sourceTree = "<group>"; };
@@ -64,7 +69,6 @@
 		C539E64E1A315E87003B7CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C539E6501A315E87003B7CC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C539E6531A315E87003B7CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		C539E6591A315E87003B7CC7 /* SlideMenuControllerSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlideMenuControllerSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C539E65E1A315E87003B7CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C539E65F1A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuControllerSwiftTests.swift; sourceTree = "<group>"; };
 		C539E66B1A316C78003B7CC7 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +97,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00F5B1D21D4B1EF600E173C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E75C5921BE3CA7900844634 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,16 +118,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C539E6561A315E87003B7CC7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00F5B1C81D4AE26800E173C3 /* SlideMenuControllerSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				00F5B1C91D4AE26800E173C3 /* SlideMenuControllerSwiftTests.swift */,
+				00F5B1CB1D4AE26800E173C3 /* Info.plist */,
+			);
+			path = SlideMenuControllerSwiftTests;
+			sourceTree = "<group>";
+		};
+		00F5B1D61D4B1EF600E173C3 /* SlideMenuControllerSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				00F5B1D71D4B1EF600E173C3 /* SlideMenuControllerSwiftTests.swift */,
+				00F5B1D91D4B1EF600E173C3 /* Info.plist */,
+			);
+			path = SlideMenuControllerSwiftTests;
+			sourceTree = "<group>";
+		};
 		0E75C5A71BE3CB0D00844634 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +153,8 @@
 				C5BA8AA41A43E24C00863FB9 /* Source */,
 				C539E6431A315E87003B7CC7 /* SlideMenuControllerSwift */,
 				C539E65C1A315E87003B7CC7 /* SlideMenuControllerSwiftTests */,
+				00F5B1C81D4AE26800E173C3 /* SlideMenuControllerSwiftTests */,
+				00F5B1D61D4B1EF600E173C3 /* SlideMenuControllerSwiftTests */,
 				C539E6421A315E87003B7CC7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -139,8 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				C539E6411A315E87003B7CC7 /* SlideMenuControllerSwift.app */,
-				C539E6591A315E87003B7CC7 /* SlideMenuControllerSwiftTests.xctest */,
 				0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */,
+				00F5B1D51D4B1EF600E173C3 /* SlideMenuControllerSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -262,6 +286,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		00F5B1D41D4B1EF600E173C3 /* SlideMenuControllerSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00F5B1DC1D4B1EF600E173C3 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwiftTests" */;
+			buildPhases = (
+				00F5B1D11D4B1EF600E173C3 /* Sources */,
+				00F5B1D21D4B1EF600E173C3 /* Frameworks */,
+				00F5B1D31D4B1EF600E173C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00F5B1DB1D4B1EF600E173C3 /* PBXTargetDependency */,
+			);
+			name = SlideMenuControllerSwiftTests;
+			productName = SlideMenuControllerSwiftTests;
+			productReference = 00F5B1D51D4B1EF600E173C3 /* SlideMenuControllerSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0E75C5951BE3CA7900844634 /* SlideMenuControllerSwift-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E75C5A11BE3CA7900844634 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwift-iOS" */;
@@ -297,24 +339,6 @@
 			productReference = C539E6411A315E87003B7CC7 /* SlideMenuControllerSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C539E6581A315E87003B7CC7 /* SlideMenuControllerSwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C539E6661A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwiftTests" */;
-			buildPhases = (
-				C539E6551A315E87003B7CC7 /* Sources */,
-				C539E6561A315E87003B7CC7 /* Frameworks */,
-				C539E6571A315E87003B7CC7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C539E65B1A315E87003B7CC7 /* PBXTargetDependency */,
-			);
-			name = SlideMenuControllerSwiftTests;
-			productName = SlideMenuControllerSwiftTests;
-			productReference = C539E6591A315E87003B7CC7 /* SlideMenuControllerSwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -322,19 +346,22 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Yuji Hato";
 				TargetAttributes = {
+					00F5B1D41D4B1EF600E173C3 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C539E6401A315E87003B7CC7;
+					};
 					0E75C5951BE3CA7900844634 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0800;
 					};
 					C539E6401A315E87003B7CC7 = {
 						CreatedOnToolsVersion = 6.1.1;
-					};
-					C539E6581A315E87003B7CC7 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = C539E6401A315E87003B7CC7;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -352,13 +379,20 @@
 			projectRoot = "";
 			targets = (
 				C539E6401A315E87003B7CC7 /* SlideMenuControllerSwift */,
-				C539E6581A315E87003B7CC7 /* SlideMenuControllerSwiftTests */,
 				0E75C5951BE3CA7900844634 /* SlideMenuControllerSwift-iOS */,
+				00F5B1D41D4B1EF600E173C3 /* SlideMenuControllerSwiftTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		00F5B1D31D4B1EF600E173C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E75C5941BE3CA7900844634 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -380,16 +414,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C539E6571A315E87003B7CC7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00F5B1D11D4B1EF600E173C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00F5B1D81D4B1EF600E173C3 /* SlideMenuControllerSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E75C5911BE3CA7900844634 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,21 +463,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C539E6551A315E87003B7CC7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C539E6601A315E87003B7CC7 /* SlideMenuControllerSwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C539E65B1A315E87003B7CC7 /* PBXTargetDependency */ = {
+		00F5B1DB1D4B1EF600E173C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C539E6401A315E87003B7CC7 /* SlideMenuControllerSwift */;
-			targetProxy = C539E65A1A315E87003B7CC7 /* PBXContainerItemProxy */;
+			targetProxy = 00F5B1DA1D4B1EF600E173C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -466,6 +493,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		00F5B1DD1D4B1EF600E173C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = SlideMenuControllerSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dekatotoro.SlideMenuControllerSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlideMenuControllerSwift.app/SlideMenuControllerSwift";
+			};
+			name = Debug;
+		};
+		00F5B1DE1D4B1EF600E173C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INFOPLIST_FILE = SlideMenuControllerSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dekatotoro.SlideMenuControllerSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlideMenuControllerSwift.app/SlideMenuControllerSwift";
+			};
+			name = Release;
+		};
 		0E75C59F1BE3CA7900844634 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -484,6 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dekatotoro.SlideMenuControllerSwift;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -507,6 +572,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dekatotoro.SlideMenuControllerSwift;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -535,6 +602,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -552,6 +620,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -578,6 +647,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -587,6 +657,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -601,6 +672,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -614,49 +686,23 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		C539E6671A315E87003B7CC7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SlideMenuControllerSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlideMenuControllerSwift.app/SlideMenuControllerSwift";
-			};
-			name = Debug;
-		};
-		C539E6681A315E87003B7CC7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SlideMenuControllerSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlideMenuControllerSwift.app/SlideMenuControllerSwift";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		00F5B1DC1D4B1EF600E173C3 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00F5B1DD1D4B1EF600E173C3 /* Debug */,
+				00F5B1DE1D4B1EF600E173C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		0E75C5A11BE3CA7900844634 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwift-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -680,15 +726,6 @@
 			buildConfigurations = (
 				C539E6641A315E87003B7CC7 /* Debug */,
 				C539E6651A315E87003B7CC7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C539E6661A315E87003B7CC7 /* Build configuration list for PBXNativeTarget "SlideMenuControllerSwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C539E6671A315E87003B7CC7 /* Debug */,
-				C539E6681A315E87003B7CC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
