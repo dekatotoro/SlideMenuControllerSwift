@@ -36,6 +36,8 @@ public struct SlideMenuOptions {
     public static var pointOfNoReturnWidth: CGFloat = 44.0
     public static var simultaneousGestureRecognizers: Bool = true
 	public static var opacityViewBackgroundColor: UIColor = UIColor.blackColor()
+    public static var panGesturesEnabled: Bool = true
+    public static var tapGesturesEnabled: Bool = true
 }
 
 public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
@@ -262,16 +264,20 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public func addLeftGestures() {
     
         if (leftViewController != nil) {
-            if leftPanGesture == nil {
-                leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleLeftPanGesture(_:)))
-                leftPanGesture!.delegate = self
-                view.addGestureRecognizer(leftPanGesture!)
+            if (SlideMenuOptions.panGesturesEnabled) {
+                if leftPanGesture == nil {
+                    leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleLeftPanGesture(_:)))
+                    leftPanGesture!.delegate = self
+                    view.addGestureRecognizer(leftPanGesture!)
+                }
             }
             
-            if leftTapGesture == nil {
-                leftTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleLeft))
-                leftTapGesture!.delegate = self
-                view.addGestureRecognizer(leftTapGesture!)
+            if (SlideMenuOptions.tapGesturesEnabled) {
+                if leftTapGesture == nil {
+                    leftTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleLeft))
+                    leftTapGesture!.delegate = self
+                    view.addGestureRecognizer(leftTapGesture!)
+                }
             }
         }
     }
@@ -279,16 +285,20 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public func addRightGestures() {
         
         if (rightViewController != nil) {
-            if rightPanGesture == nil {
-                rightPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleRightPanGesture(_:)))
-                rightPanGesture!.delegate = self
-                view.addGestureRecognizer(rightPanGesture!)
+            if (SlideMenuOptions.panGesturesEnabled) {
+                if rightPanGesture == nil {
+                    rightPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleRightPanGesture(_:)))
+                    rightPanGesture!.delegate = self
+                    view.addGestureRecognizer(rightPanGesture!)
+                }
             }
             
-            if rightTapGesture == nil {
-                rightTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleRight))
-                rightTapGesture!.delegate = self
-                view.addGestureRecognizer(rightTapGesture!)
+            if (SlideMenuOptions.tapGesturesEnabled) {
+                if rightTapGesture == nil {
+                    rightTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleRight))
+                    rightTapGesture!.delegate = self
+                    view.addGestureRecognizer(rightTapGesture!)
+                }
             }
         }
     }
