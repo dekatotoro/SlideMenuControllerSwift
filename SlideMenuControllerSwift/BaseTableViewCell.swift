@@ -30,16 +30,16 @@ public class BaseTableViewCell : UITableViewCell {
         return 48
     }
     
-    public func setData(data: Any?) {
+    public func setData(_ data: Any?) {
         self.backgroundColor = UIColor(hex: "F1F8E9")
-        self.textLabel?.font = UIFont.italicSystemFontOfSize(18)
+        self.textLabel?.font = UIFont.italicSystemFont(ofSize: 18)
         self.textLabel?.textColor = UIColor(hex: "9E9E9E")
         if let menuText = data as? String {
             self.textLabel?.text = menuText
         }
     }
     
-    override public func setHighlighted(highlighted: Bool, animated: Bool) {
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
             self.alpha = 0.4
         } else {
@@ -48,7 +48,7 @@ public class BaseTableViewCell : UITableViewCell {
     }
     
     // ignore the default handling
-    override public func setSelected(selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
     }
   
 }
