@@ -20,9 +20,9 @@ extension UIColor {
             hexWithoutSymbol = hex.substring(1)
         }
         
-        let scanner = NSScanner(string: hexWithoutSymbol)
+        let scanner = Scanner(string: hexWithoutSymbol)
         var hexInt:UInt32 = 0x0
-        scanner.scanHexInt(&hexInt)
+        scanner.scanHexInt32(&hexInt)
         
         var r:UInt32!, g:UInt32!, b:UInt32!
         switch (hexWithoutSymbol.length) {
