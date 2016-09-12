@@ -8,15 +8,15 @@
 import UIKit
 
 enum LeftMenu: Int {
-    case Main = 0
-    case Swift
-    case Java
-    case Go
-    case NonMenu
+    case main = 0
+    case swift
+    case java
+    case go
+    case nonMenu
 }
 
 protocol LeftMenuProtocol : class {
-    func changeViewController(menu: LeftMenu)
+    func changeViewController(_ menu: LeftMenu)
 }
 
 class LeftViewController : UIViewController, LeftMenuProtocol {
@@ -36,19 +36,20 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let swiftViewController = storyboard.instantiateViewControllerWithIdentifier("SwiftViewController") as! SwiftViewController
+        let swiftViewController = storyboard.instantiateViewController(withIdentifier: "SwiftViewController") as! SwiftViewController
         self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
         
-        let javaViewController = storyboard.instantiateViewControllerWithIdentifier("JavaViewController") as! JavaViewController
+        let javaViewController = storyboard.instantiateViewController(withIdentifier: "JavaViewController") as! JavaViewController
         self.javaViewController = UINavigationController(rootViewController: javaViewController)
         
-        let goViewController = storyboard.instantiateViewControllerWithIdentifier("GoViewController") as! GoViewController
+        let goViewController = storyboard.instantiateViewController(withIdentifier: "GoViewController") as! GoViewController
         self.goViewController = UINavigationController(rootViewController: goViewController)
         
-        let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as! NonMenuController
+        let nonMenuController = storyboard.instantiateViewController(withIdentifier: "NonMenuController") as! NonMenuController
         nonMenuController.delegate = self
         self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
         
@@ -58,7 +59,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.view.addSubview(self.imageHeaderView)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
@@ -68,46 +69,58 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.view.layoutIfNeeded()
     }
     
-    func changeViewController(menu: LeftMenu) {
+    func changeViewController(_ menu: LeftMenu) {
         switch menu {
-        case .Main:
+        case .main:
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
-        case .Swift:
+        case .swift:
             self.slideMenuController()?.changeMainViewController(self.swiftViewController, close: true)
-        case .Java:
+        case .java:
             self.slideMenuController()?.changeMainViewController(self.javaViewController, close: true)
-        case .Go:
+        case .go:
             self.slideMenuController()?.changeMainViewController(self.goViewController, close: true)
-        case .NonMenu:
+        case .nonMenu:
             self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
         }
     }
 }
 
 extension LeftViewController : UITableViewDelegate {
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let menu = LeftMenu(rawValue: indexPath.item) {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .Main, .Swift, .Java, .Go, .NonMenu:
+            case .main, .swift, .java, .go, .nonMenu:
                 return BaseTableViewCell.height()
             }
         }
         return 0
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let menu = LeftMenu(rawValue: indexPath.row) {
+            self.changeViewController(menu)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.tableView == scrollView {
+            
+        }
+    }
 }
 
 extension LeftViewController : UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menus.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let menu = LeftMenu(rawValue: indexPath.item) {
+        if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .Main, .Swift, .Java, .Go, .NonMenu:
-                let cell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
+            case .main, .swift, .java, .go, .nonMenu:
+                let cell = BaseTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 return cell
             }
@@ -115,19 +128,5 @@ extension LeftViewController : UITableViewDataSource {
         return UITableViewCell()
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let menu = LeftMenu(rawValue: indexPath.item) {
-            self.changeViewController(menu)
-        }
-    }
-}
-
-extension LeftViewController: UIScrollViewDelegate {
     
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if self.tableView == scrollView {
-            
-        }
-    }
 }
