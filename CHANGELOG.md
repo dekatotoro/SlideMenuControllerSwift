@@ -1,3 +1,13 @@
+2.2.3 Release notes (2016-09-12)
+=============================================================
+
+### Enhancements
+* None.
+
+### Bugfixes
+* Added viewWillAppear on mainViewController when SlideMenuController appears on screen
+* Fixes sample project image.
+
 2.2.2 Release notes (2016-07-15)
 =============================================================
 
