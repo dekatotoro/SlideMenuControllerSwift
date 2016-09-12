@@ -113,13 +113,22 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
 
     deinit { }
     
+    var isOpaque: Bool = true {
+        didSet {
+            if !isOpaque {
+                opacityView.removeFromSuperview()
+            }
+        }
+    }
+
+    
     public func initView() {
         mainContainerView = UIView(frame: view.bounds)
         mainContainerView.backgroundColor = UIColor.clearColor()
         mainContainerView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         view.insertSubview(mainContainerView, atIndex: 0)
-
-      var opacityframe: CGRect = view.bounds
+        
+        var opacityframe: CGRect = view.bounds
         let opacityOffset: CGFloat = 0
         opacityframe.origin.y = opacityframe.origin.y + opacityOffset
         opacityframe.size.height = opacityframe.size.height - opacityOffset
@@ -1057,6 +1066,10 @@ extension UIViewController {
     
     public func closeRight() {
         slideMenuController()?.closeRight()
+    }
+    
+    public func addOpacityForBackgroundView(isOpaque: Bool) {
+        slideMenuController()?.isOpaque = isOpaque
     }
     
     // Please specify if you want menu gesuture give priority to than targetScrollView
