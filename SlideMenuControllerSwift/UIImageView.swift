@@ -17,7 +17,7 @@ extension UIImageView {
             return
         }
         self.alpha = 0
-        let url = NSURL(string: "https://ssl.webpack.de/lorempixel.com/\(width)/\(height)/")!
+        let url = NSURL(string: "http://lorempixel.com/\(width)/\(height)/")!
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.timeoutIntervalForRequest = 15
         configuration.timeoutIntervalForResource = 15

@@ -187,7 +187,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         edgesForExtendedLayout = UIRectEdge.None
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.mainViewController?.viewWillAppear(animated)
     }
