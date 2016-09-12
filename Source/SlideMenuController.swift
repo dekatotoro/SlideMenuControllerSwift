@@ -186,6 +186,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
         super.viewDidLoad()
         edgesForExtendedLayout = UIRectEdge.None
     }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainViewController?.viewWillAppear(animated)
+    }
     
     public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         if let mainController = self.mainViewController{
