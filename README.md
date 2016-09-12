@@ -128,11 +128,9 @@ func rightDidClose()
 ```
 
 ## Requirements
-Requires Swift2.0 and iOS 8.0 and ARC.  
-If you are developing in the swift1.1, please use branch of swift1.1.  
-If you are developing in the swift1.2, please use branch of swift1.2.  
-If you are developing in the swift2.1, please use branch of swift2.1.   
-If you want to use even iOS7.0, please to import the code directly.   
+Requires Swift3.0 and iOS 8.0 and ARC.  
+If you are developing in the Swift1.1 ~ 2.3, please use branch of swift1.1 ~ 2.3.  
+If you want to use even iOS8.0, please to import the code directly.   
 If you want to use objective-c even iOS6.0, plesea use    [SlideMenuControllerOC](https://github.com/Pluto-Y/SlideMenuControllerOC).
 
 ## Features
