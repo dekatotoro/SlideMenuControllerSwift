@@ -24,7 +24,7 @@ class DataTableViewCell : BaseTableViewCell {
     @IBOutlet weak var dataText: UILabel!
     
     override func awakeFromNib() {
-        self.dataText?.font = UIFont.italicSystemFontOfSize(16)
+        self.dataText?.font = UIFont.italicSystemFont(ofSize: 16)
         self.dataText?.textColor = UIColor(hex: "9E9E9E")
     }
  
@@ -32,7 +32,7 @@ class DataTableViewCell : BaseTableViewCell {
         return 80
     }
     
-    override func setData(data: Any?) {
+    override func setData(_ data: Any?) {
         if let data = data as? DataTableViewCellData {
             self.dataImage.setRandomDownloadImage(80, height: 80)
             self.dataText.text = data.text
