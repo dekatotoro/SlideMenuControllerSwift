@@ -132,7 +132,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
       if leftViewController != nil {
         var leftFrame: CGRect = view.bounds
         leftFrame.size.width = SlideMenuOptions.leftViewWidth
-        leftFrame.origin.x = leftMinOrigin();
+        leftFrame.origin.x = leftMinOrigin()
         let leftOffset: CGFloat = 0
         leftFrame.origin.y = leftFrame.origin.y + leftOffset
         leftFrame.size.height = leftFrame.size.height - leftOffset
@@ -148,7 +148,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         rightFrame.size.width = SlideMenuOptions.rightViewWidth
         rightFrame.origin.x = rightMinOrigin()
         let rightOffset: CGFloat = 0
-        rightFrame.origin.y = rightFrame.origin.y + rightOffset;
+        rightFrame.origin.y = rightFrame.origin.y + rightOffset
         rightFrame.size.height = rightFrame.size.height - rightOffset
         rightContainerView = UIView(frame: rightFrame)
         rightContainerView.backgroundColor = UIColor.clear
@@ -500,8 +500,8 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         let xOrigin: CGFloat = leftContainerView.frame.origin.x
         let finalXOrigin: CGFloat = 0.0
         
-        var frame = leftContainerView.frame;
-        frame.origin.x = finalXOrigin;
+        var frame = leftContainerView.frame
+        frame.origin.x = finalXOrigin
         
         var duration: TimeInterval = Double(SlideMenuOptions.animationDuration)
         if velocity != 0.0 {
@@ -531,7 +531,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     open func openRightWithVelocity(_ velocity: CGFloat) {
         let xOrigin: CGFloat = rightContainerView.frame.origin.x
     
-        //	CGFloat finalXOrigin = SlideMenuOptions.rightViewOverlapWidth;
+        //	CGFloat finalXOrigin = SlideMenuOptions.rightViewOverlapWidth
         let finalXOrigin: CGFloat = view.bounds.width - rightContainerView.frame.size.width
         
         var frame = rightContainerView.frame
@@ -566,7 +566,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         let xOrigin: CGFloat = leftContainerView.frame.origin.x
         let finalXOrigin: CGFloat = leftMinOrigin()
         
-        var frame: CGRect = leftContainerView.frame;
+        var frame: CGRect = leftContainerView.frame
         frame.origin.x = finalXOrigin
     
         var duration: TimeInterval = Double(SlideMenuOptions.animationDuration)
@@ -676,26 +676,26 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func changeLeftViewWidth(_ width: CGFloat) {
         
-        SlideMenuOptions.leftViewWidth = width;
+        SlideMenuOptions.leftViewWidth = width
         var leftFrame: CGRect = view.bounds
         leftFrame.size.width = width
-        leftFrame.origin.x = leftMinOrigin();
+        leftFrame.origin.x = leftMinOrigin()
         let leftOffset: CGFloat = 0
         leftFrame.origin.y = leftFrame.origin.y + leftOffset
         leftFrame.size.height = leftFrame.size.height - leftOffset
-        leftContainerView.frame = leftFrame;
+        leftContainerView.frame = leftFrame
     }
     
     open func changeRightViewWidth(_ width: CGFloat) {
         
-        SlideMenuOptions.rightBezelWidth = width;
+        SlideMenuOptions.rightBezelWidth = width
         var rightFrame: CGRect = view.bounds
         rightFrame.size.width = width
         rightFrame.origin.x = rightMinOrigin()
         let rightOffset: CGFloat = 0
-        rightFrame.origin.y = rightFrame.origin.y + rightOffset;
+        rightFrame.origin.y = rightFrame.origin.y + rightOffset
         rightFrame.size.height = rightFrame.size.height - rightOffset
-        rightContainerView.frame = rightFrame;
+        rightContainerView.frame = rightFrame
     }
     
     open func changeLeftViewController(_ leftViewController: UIViewController, closeLeft:Bool) {
@@ -710,7 +710,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func changeRightViewController(_ rightViewController: UIViewController, closeRight:Bool) {
         removeViewController(self.rightViewController)
-        self.rightViewController = rightViewController;
+        self.rightViewController = rightViewController
         setUpViewController(rightContainerView, targetViewController: rightViewController)
         if closeRight {
             self.closeRight()
@@ -734,7 +734,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         
         var panInfo: PanInfo = PanInfo(action: .close, shouldBounce: false, velocity: 0.0)
         
-        panInfo.action = leftOrigin <= pointOfNoReturn ? .close : .open;
+        panInfo.action = leftOrigin <= pointOfNoReturn ? .close : .open
         
         if velocity.x >= thresholdVelocity {
             panInfo.action = .open
@@ -836,7 +836,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate func applyLeftContentViewScale() {
         let openedLeftRatio: CGFloat = getOpenedLeftRatio()
-        let scale: CGFloat = 1.0 - ((1.0 - SlideMenuOptions.contentViewScale) * openedLeftRatio);
+        let scale: CGFloat = 1.0 - ((1.0 - SlideMenuOptions.contentViewScale) * openedLeftRatio)
         let drag: CGFloat = SlideMenuOptions.leftViewWidth + leftContainerView.frame.origin.x
         
         SlideMenuOptions.contentViewDrag == true ? (mainContainerView.transform = CGAffineTransform(translationX: drag, y: 0)) : (mainContainerView.transform = CGAffineTransform(scaleX: scale, y: scale))
@@ -922,7 +922,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     open func closeLeftNonAnimation(){
         setCloseWindowLevel()
         let finalXOrigin: CGFloat = leftMinOrigin()
-        var frame: CGRect = leftContainerView.frame;
+        var frame: CGRect = leftContainerView.frame
         frame.origin.x = finalXOrigin
         leftContainerView.frame = frame
         opacityView.layer.opacity = 0.0
@@ -1020,17 +1020,17 @@ extension UIViewController {
             }
             viewController = viewController?.parent
         }
-        return nil;
+        return nil
     }
     
     public func addLeftBarButtonWithImage(_ buttonImage: UIImage) {
         let leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.toggleLeft))
-        navigationItem.leftBarButtonItem = leftButton;
+        navigationItem.leftBarButtonItem = leftButton
     }
     
     public func addRightBarButtonWithImage(_ buttonImage: UIImage) {
         let rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.toggleRight))
-        navigationItem.rightBarButtonItem = rightButton;
+        navigationItem.rightBarButtonItem = rightButton
     }
     
     public func toggleLeft() {
