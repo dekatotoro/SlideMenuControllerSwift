@@ -2,7 +2,8 @@
 =============================================================
 
 ### Enhancements
-* None.
+* Added options `panGesturesEnabled` and `tapGesturesEnabled`.
+  Options defaults are of course set to enabled/true so no impact to anyone already using this.
 
 ### Bugfixes
 * Fix project settings.
