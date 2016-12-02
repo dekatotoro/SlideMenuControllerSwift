@@ -268,8 +268,8 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func addLeftGestures() {
     
-        if (leftViewController != nil) {
-            if (SlideMenuOptions.panGesturesEnabled) {
+        if leftViewController != nil {
+            if SlideMenuOptions.panGesturesEnabled {
                 if leftPanGesture == nil {
                     leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleLeftPanGesture(_:)))
                     leftPanGesture!.delegate = self
@@ -277,7 +277,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
             
-            if (SlideMenuOptions.tapGesturesEnabled) {
+            if SlideMenuOptions.tapGesturesEnabled {
                 if leftTapGesture == nil {
                     leftTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleLeft))
                     leftTapGesture!.delegate = self
@@ -289,8 +289,8 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func addRightGestures() {
         
-        if (rightViewController != nil) {
-            if (SlideMenuOptions.panGesturesEnabled) {
+        if rightViewController != nil {
+            if SlideMenuOptions.panGesturesEnabled {
                 if rightPanGesture == nil {
                     rightPanGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleRightPanGesture(_:)))
                     rightPanGesture!.delegate = self
@@ -298,7 +298,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
             
-            if (SlideMenuOptions.tapGesturesEnabled) {
+            if SlideMenuOptions.tapGesturesEnabled {
                 if rightTapGesture == nil {
                     rightTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleRight))
                     rightTapGesture!.delegate = self
@@ -678,7 +678,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         removeViewController(self.mainViewController)
         self.mainViewController = mainViewController
         setUpViewController(mainContainerView, targetViewController: mainViewController)
-        if (close) {
+        if close {
             closeLeft()
             closeRight()
         }
@@ -770,7 +770,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         if velocity.x <= thresholdVelocity {
             panInfo.action = .open
             panInfo.velocity = velocity.x
-        } else if (velocity.x >= (-1.0 * thresholdVelocity)) {
+        } else if velocity.x >= (-1.0 * thresholdVelocity) {
             panInfo.action = .close
             panInfo.velocity = velocity.x
         }
@@ -891,7 +891,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func setOpenWindowLevel() {
-        if (SlideMenuOptions.hideStatusBar) {
+        if SlideMenuOptions.hideStatusBar {
             DispatchQueue.main.async(execute: {
                 if let window = UIApplication.shared.keyWindow {
                     window.windowLevel = UIWindowLevelStatusBar + 1
@@ -901,7 +901,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func setCloseWindowLevel() {
-        if (SlideMenuOptions.hideStatusBar) {
+        if SlideMenuOptions.hideStatusBar {
             DispatchQueue.main.async(execute: {
                 if let window = UIApplication.shared.keyWindow {
                     window.windowLevel = UIWindowLevelNormal
