@@ -191,7 +191,8 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
 
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.mainViewController?.viewWillAppear(animated)
+        //automatically called 
+        //self.mainViewController?.viewWillAppear(animated)
     }
     
     open override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
@@ -912,10 +913,13 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate func setUpViewController(_ targetView: UIView, targetViewController: UIViewController?) {
         if let viewController = targetViewController {
-            addChildViewController(viewController)
             viewController.view.frame = targetView.bounds
-            targetView.addSubview(viewController.view)
-            viewController.didMove(toParentViewController: self)
+            
+            if (!childViewControllers.contains(viewController)) {
+                addChildViewController(viewController)
+                targetView.addSubview(viewController.view)
+                viewController.didMove(toParentViewController: self)
+            }
         }
     }
     
