@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = "8.0"
   s.source       = { :git => "https://github.com/dekatotoro/SlideMenuControllerSwift.git", :tag => s.version }
-  s.source_files  = "Source/*"
+  s.source_files  = "Source/*.swift"
   s.requires_arc = true
 end
 
