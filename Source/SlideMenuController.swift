@@ -92,14 +92,12 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.init()
         self.mainViewController = mainViewController
         leftViewController = leftMenuViewController
-        initView()
     }
     
     public convenience init(mainViewController: UIViewController, rightMenuViewController: UIViewController) {
         self.init()
         self.mainViewController = mainViewController
         rightViewController = rightMenuViewController
-        initView()
     }
     
     public convenience init(mainViewController: UIViewController, leftMenuViewController: UIViewController, rightMenuViewController: UIViewController) {
@@ -107,11 +105,8 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.mainViewController = mainViewController
         leftViewController = leftMenuViewController
         rightViewController = rightMenuViewController
-        initView()
     }
-    
     open override func awakeFromNib() {
-        initView()
     }
 
     deinit { }
@@ -187,6 +182,9 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
   
     open override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.initView()
+		
         edgesForExtendedLayout = UIRectEdge()
     }
 
