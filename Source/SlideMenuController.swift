@@ -182,9 +182,9 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
   
     open override func viewDidLoad() {
         super.viewDidLoad()
-		
-		self.initView()
-		
+        
+        self.initView()
+        
         edgesForExtendedLayout = UIRectEdge()
     }
 
