@@ -17,14 +17,14 @@ iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
 
 ![sample](Screenshots/SlideMenuControllerSwift3.gif)
 
-##Installation
+## Installation
 
-####CocoaPods
+#### CocoaPods
 ```
 pod 'SlideMenuControllerSwift'
 ```
   
-####Carthage
+#### Carthage
 
 if iOS8 or later, Carthage is supported
 
@@ -33,12 +33,12 @@ if iOS8 or later, Carthage is supported
 
 for more info, see [Carthage](https://github.com/carthage/carthage)
 
-####Manually
+#### Manually
 Add the `SlideMenuController.swift` file to your project. 
 
-##Usage
+## Usage
 
-###Setup
+### Setup
 
 Add `import SlideMenuControllerSwift` in your file
 
@@ -58,7 +58,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-####Storyboard Support
+#### Storyboard Support
 
 1. Inherit `SlideMenuController` and put UIViewController in a storyboard.
 2. Override `awakeFromNib`, then instantiate any view controllers
@@ -88,7 +88,7 @@ SlideMenuOptions.contentViewScale = .50
     
 ```
 
-###You can access from UIViewController
+### You can access from UIViewController
 
 ```swift
 self.slideMenuController()?
