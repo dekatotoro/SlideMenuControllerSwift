@@ -365,7 +365,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        if isRightOpen() {
+        if !isRightHidden() {
             return
         }
         
@@ -445,7 +445,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        if isLeftOpen() {
+        if !isLeftHidden() {
             return
         }
         
