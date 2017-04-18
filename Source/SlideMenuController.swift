@@ -39,6 +39,7 @@ public struct SlideMenuOptions {
 	public static var opacityViewBackgroundColor: UIColor = UIColor.black
     public static var panGesturesEnabled: Bool = true
     public static var tapGesturesEnabled: Bool = true
+    public static var lockPanDirection: Bool = true
 }
 
 open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
@@ -983,6 +984,19 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     // returning true here helps if the main view is fullwidth with a scrollview
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return SlideMenuOptions.simultaneousGestureRecognizers
+    }
+    
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let panRecognizer = gestureRecognizer as? UIPanGestureRecognizer,
+            let view = panRecognizer.view else {
+                return true
+        }
+        if !SlideMenuOptions.lockPanDirection {
+            return true
+        }
+        
+        let translation = panRecognizer.translation(in: view)
+        return abs(translation.x) >= abs(translation.y)
     }
     
     fileprivate func slideLeftForGestureRecognizer( _ gesture: UIGestureRecognizer, point:CGPoint) -> Bool{
