@@ -24,6 +24,7 @@ public struct SlideMenuOptions {
     public static var contentViewScale: CGFloat = 0.96
     public static var contentViewOpacity: CGFloat = 0.5
     public static var contentViewDrag: Bool = false
+    public static var contentCornerRadius: CGFloat = 6.0
     public static var shadowOpacity: CGFloat = 0.0
     public static var shadowRadius: CGFloat = 0.0
     public static var shadowOffset: CGSize = CGSize(width: 0,height: 0)
@@ -119,6 +120,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func initView() {
         mainContainerView = UIView(frame: view.bounds)
+        mainContainerView.clipsToBounds = true
         mainContainerView.backgroundColor = UIColor.clear
         mainContainerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.insertSubview(mainContainerView, at: 0)
@@ -399,6 +401,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 leftContainerView.frame = applyLeftTranslation(translation, toFrame: LeftPanState.frameAtStartOfPan)
                 applyLeftOpacity()
                 applyLeftContentViewScale()
+                applyLeftContentCornerRadius()
             case UIGestureRecognizerState.ended, UIGestureRecognizerState.cancelled:
                 if LeftPanState.lastState != .changed {
                     setCloseWindowLevel()
@@ -480,6 +483,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             rightContainerView.frame = applyRightTranslation(translation, toFrame: RightPanState.frameAtStartOfPan)
             applyRightOpacity()
             applyRightContentViewScale()
+            applyRightContentCornerRadius()
             
         case UIGestureRecognizerState.ended, UIGestureRecognizerState.cancelled:
             if RightPanState.lastState != .changed {
@@ -532,7 +536,10 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             if let strongSelf = self {
                 strongSelf.leftContainerView.frame = frame
                 strongSelf.opacityView.layer.opacity = Float(SlideMenuOptions.contentViewOpacity)
-              
+                
+                if SlideMenuOptions.contentCornerRadius > 0.5 {
+                    strongSelf.mainContainerView.layer.cornerRadius = SlideMenuOptions.contentCornerRadius
+                }
                 SlideMenuOptions.contentViewDrag == true ? (strongSelf.mainContainerView.transform = CGAffineTransform(translationX: SlideMenuOptions.leftViewWidth, y: 0)) : (strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: SlideMenuOptions.contentViewScale, y: SlideMenuOptions.contentViewScale))
                 
             }
@@ -566,7 +573,10 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             if let strongSelf = self {
                 strongSelf.rightContainerView.frame = frame
                 strongSelf.opacityView.layer.opacity = Float(SlideMenuOptions.contentViewOpacity)
-            
+                
+                if SlideMenuOptions.contentCornerRadius > 0.5 {
+                    strongSelf.mainContainerView.layer.cornerRadius = SlideMenuOptions.contentCornerRadius
+                }
                 SlideMenuOptions.contentViewDrag == true ? (strongSelf.mainContainerView.transform = CGAffineTransform(translationX: -SlideMenuOptions.rightViewWidth, y: 0)) : (strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: SlideMenuOptions.contentViewScale, y: SlideMenuOptions.contentViewScale))
             }
             }) { [weak self](Bool) -> Void in
@@ -597,6 +607,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 strongSelf.leftContainerView.frame = frame
                 strongSelf.opacityView.layer.opacity = 0.0
                 strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                strongSelf.mainContainerView.layer.cornerRadius = 0.0
             }
             }) { [weak self](Bool) -> Void in
                 if let strongSelf = self {
@@ -628,6 +639,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 strongSelf.rightContainerView.frame = frame
                 strongSelf.opacityView.layer.opacity = 0.0
                 strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                strongSelf.mainContainerView.layer.cornerRadius = 0.0
             }
             }) { [weak self](Bool) -> Void in
                 if let strongSelf = self {
@@ -865,6 +877,22 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         let drag: CGFloat = rightContainerView.frame.origin.x - mainContainerView.frame.size.width
         
         SlideMenuOptions.contentViewDrag == true ? (mainContainerView.transform = CGAffineTransform(translationX: drag, y: 0)) : (mainContainerView.transform = CGAffineTransform(scaleX: scale, y: scale))
+    }
+    
+    fileprivate func applyLeftContentCornerRadius() {
+        if SlideMenuOptions.contentCornerRadius < 0.5 {
+            return
+        }
+        let openedLeftRatio: CGFloat = getOpenedLeftRatio()
+        mainContainerView.layer.cornerRadius = SlideMenuOptions.contentCornerRadius * openedLeftRatio
+    }
+    
+    fileprivate func applyRightContentCornerRadius() {
+        if SlideMenuOptions.contentCornerRadius < 0.5 {
+            return
+        }
+        let openedRightRatio: CGFloat = getOpenedRightRatio()
+        mainContainerView.layer.cornerRadius = SlideMenuOptions.contentCornerRadius * openedRightRatio
     }
     
     fileprivate func addShadowToView(_ targetContainerView: UIView) {
