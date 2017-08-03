@@ -694,9 +694,21 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func changeMainViewController(_ mainViewController: UIViewController,  close: Bool) {
         
-        removeViewController(self.mainViewController)
-        self.mainViewController = mainViewController
         setUpViewController(mainContainerView, targetViewController: mainViewController)
+        mainViewController.view.alpha = 0.0
+        if let oldViewContoller = self.mainViewController {
+            transition(from: oldViewContoller, to: mainViewController, duration: TimeInterval(SlideMenuOptions.animationDuration), options: [], animations: {
+                mainViewController.view.alpha = 1.0
+            }) { finished in
+                self.removeViewController(oldViewContoller)
+                self.mainViewController = mainViewController
+            }
+        } else {
+            self.removeViewController(self.mainViewController)
+            self.mainViewController = mainViewController
+            self.setUpViewController(mainContainerView, targetViewController: mainViewController)
+        }
+       
         if close {
             closeLeft()
             closeRight()
