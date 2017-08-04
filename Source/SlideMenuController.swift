@@ -30,6 +30,7 @@ public struct SlideMenuOptions {
     public static var shadowOffset: CGSize = CGSize(width: 0,height: 0)
     public static var panFromBezel: Bool = true
     public static var animationDuration: CGFloat = 0.4
+    public static var viewControllerTransitionDuration: Double = 2.0
     public static var animationOptions: UIViewAnimationOptions = []
     public static var rightViewWidth: CGFloat = 270.0
     public static var rightBezelWidth: CGFloat? = 16.0
@@ -704,20 +705,27 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func changeMainViewController(_ mainViewController: UIViewController,  close: Bool) {
         
-        setUpViewController(mainContainerView, targetViewController: mainViewController)
-        mainViewController.view.alpha = 0.0
         if let oldViewContoller = self.mainViewController {
-            transition(from: oldViewContoller, to: mainViewController, duration: 0.3, options: [], animations: {
-                mainViewController.view.alpha = 1.0
-                oldViewContoller.view.transform = CGAffineTransform(translationX: oldViewContoller.view.frame.width, y: 0.0)
+            addChildViewController(mainViewController)
+            mainViewController.view.frame = mainContainerView.bounds
+            mainViewController.view.frame.origin.x = mainViewController.view.bounds.width
+            transition(from: oldViewContoller,
+                       to: mainViewController,
+                       duration: SlideMenuOptions.viewControllerTransitionDuration,
+                       options: SlideMenuOptions.animationOptions,
+                       animations: {
+                        mainViewController.view.frame.origin.x = 0
+                        oldViewContoller.view.alpha = 0.0
             }) { finished in
-                self.removeViewController(oldViewContoller)
+                oldViewContoller.view.alpha = 1.0
+                oldViewContoller.view.transform = CGAffineTransform.identity
                 self.mainViewController = mainViewController
             }
         } else {
-            self.removeViewController(self.mainViewController)
+            setUpViewController(mainContainerView, targetViewController: mainViewController)
+            removeViewController(self.mainViewController)
             self.mainViewController = mainViewController
-            self.setUpViewController(mainContainerView, targetViewController: mainViewController)
+            setUpViewController(mainContainerView, targetViewController: mainViewController)
         }
         
         if close {
