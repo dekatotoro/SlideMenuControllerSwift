@@ -705,7 +705,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func changeMainViewController(_ mainViewController: UIViewController,  close: Bool) {
         
-        if let oldViewContoller = self.mainViewController {
+        if let oldViewContoller = self.mainViewController, oldViewContoller.view.window != nil {
             addChildViewController(mainViewController)
             mainViewController.view.frame = mainContainerView.bounds
             mainViewController.view.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
