@@ -703,13 +703,14 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return rightContainerView.frame.origin.x >= view.bounds.width
     }
     
-    open func changeMainViewController(_ mainViewController: UIViewController,  close: Bool) {
+    open func changeMainViewController(_ mainViewController: UIViewController,  close: Bool, animated: Bool = true) {
         
-        if let oldViewContoller = self.mainViewController, oldViewContoller.view.window != nil {
+        if let oldViewContoller = self.mainViewController, oldViewContoller.view.window != nil && animated {
             addChildViewController(mainViewController)
             mainViewController.view.frame = mainContainerView.bounds
             mainViewController.view.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             mainViewController.view.alpha = 0.0
+            self.mainViewController = mainViewController
             transition(from: oldViewContoller,
                        to: mainViewController,
                        duration: SlideMenuOptions.viewControllerTransitionDuration,
@@ -718,9 +719,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                         mainViewController.view.alpha = 1.0
                         mainViewController.view.transform = CGAffineTransform.identity
                         
-            }) { finished in
-                self.mainViewController = mainViewController
-            }
+            })
         } else {
             setUpViewController(mainContainerView, targetViewController: mainViewController)
             removeViewController(self.mainViewController)
