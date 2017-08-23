@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SlideMenuControllerSwift"
-  s.version      = "3.0.1"
+  s.version      = "3.0.2"
   s.summary      = "iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app."
   s.homepage     = "https://github.com/dekatotoro/SlideMenuControllerSwift"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -12,4 +12,3 @@ Pod::Spec.new do |s|
   s.source_files  = "Source/*.swift"
   s.requires_arc = true
 end
-
