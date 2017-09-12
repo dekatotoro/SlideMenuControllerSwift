@@ -117,7 +117,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     deinit { }
     
     open func initView() {
-        mainContainerView = UIView(frame: view.bounds)
+        mainContainerView.frame = view.bounds
         mainContainerView.backgroundColor = UIColor.clear
         mainContainerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.insertSubview(mainContainerView, at: 0)
