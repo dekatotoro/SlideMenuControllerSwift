@@ -39,6 +39,7 @@ public struct SlideMenuOptions {
 	public static var opacityViewBackgroundColor: UIColor = UIColor.black
     public static var panGesturesEnabled: Bool = true
     public static var tapGesturesEnabled: Bool = true
+    public static var dismissSwipeIfTapOnMenuContainer: Bool = false
 }
 
 open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
@@ -375,6 +376,13 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                     return
                 }
                 
+                if SlideMenuOptions.dismissSwipeIfTapOnMenuContainer == true {
+                    let location: CGPoint = panGesture.location(in: panGesture.view)
+                    if self.leftContainerView.frame.contains(location) {
+                        return
+                    }
+                }
+                
                 if isLeftHidden() {
                     self.delegate?.leftWillOpen?()
                 } else {
@@ -453,6 +461,13 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         case UIGestureRecognizerState.began:
             if RightPanState.lastState != .ended &&  RightPanState.lastState != .cancelled &&  RightPanState.lastState != .failed {
                 return
+            }
+            
+            if SlideMenuOptions.dismissSwipeIfTapOnMenuContainer == true {
+                let location: CGPoint = panGesture.location(in: panGesture.view)
+                if self.rightContainerView.frame.contains(location) {
+                    return
+                }
             }
             
             if isRightHidden() {
