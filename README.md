@@ -23,7 +23,7 @@ iOS Slide View based on iQON, Feedly, Google+, Ameba iPhone app.
 ```
 pod 'SlideMenuControllerSwift'
 ```
-  
+
 #### Carthage
 
 if iOS8 or later, Carthage is supported
@@ -34,7 +34,7 @@ if iOS8 or later, Carthage is supported
 for more info, see [Carthage](https://github.com/carthage/carthage)
 
 #### Manually
-Add the `SlideMenuController.swift` file to your project. 
+Add the `SlideMenuController.swift` file to your project.
 
 ## Usage
 
@@ -49,7 +49,7 @@ In your app delegate:
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
     // create viewController code...
-        
+
     let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
     self.window?.rootViewController = slideMenuController
     self.window?.makeKeyAndVisible()    
@@ -85,7 +85,7 @@ If you want to use the custom option, please set them before calling the init me
 SlideMenuOptions.leftViewWidth = 50
 SlideMenuOptions.contentViewScale = .50
 ...
-    
+
 ```
 
 ### You can access from UIViewController
@@ -99,7 +99,7 @@ if let slideMenuController = self.slideMenuController() {
     // some code
 }
 ```
-### add navigationBarButton 
+### add navigationBarButton
 ```swift
 viewController.addLeftBarButtonWithImage(UIImage(named: "hoge")!)
 viewController.addRightBarButtonWithImage(UIImage(named: "fuga")!)
@@ -129,10 +129,10 @@ func rightDidClose()
 ```
 
 ## Requirements
-Requires Swift3.0 and iOS 8.0 and ARC.  
-If you are developing in the Swift1.1 ~ 2.3, please use branch of swift1.1 ~ 2.3.  
+Requires Swift4.0 and iOS 9.0 and ARC.
+If you are developing in the Swift1.1 ~ 3.2, please use branch of swift1.1 ~ 3.  
 If you want to use even iOS8.0, please to import the code directly.   
-If you want to use objective-c even iOS6.0, plesea use    [SlideMenuControllerOC](https://github.com/Pluto-Y/SlideMenuControllerOC).
+If you want to use objective-c even iOS6.0, plesea use [SlideMenuControllerOC](https://github.com/Pluto-Y/SlideMenuControllerOC).
 
 ## Features
 - Highly customizable
@@ -144,7 +144,7 @@ Forks, patches and other feedback are welcome.
 
 ## Creator
 ### SlideMenuControllerSwift
-[Yuji Hato](https://github.com/dekatotoro) 
+[Yuji Hato](https://github.com/dekatotoro)
 [Blog](http://buzzmemo.blogspot.jp/)
 
 ### SlideMenuControllerOC
