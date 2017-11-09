@@ -173,12 +173,12 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             self.leftContainerView.isHidden = false
             self.rightContainerView.isHidden = false
       
-            if self.leftPanGesture != nil && self.leftPanGesture != nil {
+            if self.leftPanGesture != nil && self.leftTapGesture != nil {
                 self.removeLeftGestures()
                 self.addLeftGestures()
             }
             
-            if self.rightPanGesture != nil && self.rightPanGesture != nil {
+            if self.rightPanGesture != nil && self.rightTapGesture != nil {
                 self.removeRightGestures()
                 self.addRightGestures()
             }
