@@ -704,7 +704,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     open func changeRightViewWidth(_ width: CGFloat) {
         
-        SlideMenuOptions.rightBezelWidth = width
+        SlideMenuOptions.rightViewWidth = width
         var rightFrame: CGRect = view.bounds
         rightFrame.size.width = width
         rightFrame.origin.x = rightMinOrigin()
