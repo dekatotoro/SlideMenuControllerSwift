@@ -6,6 +6,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 @objc public protocol SlideMenuControllerDelegate {
     @objc optional func leftWillOpen()
@@ -218,12 +219,67 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return self.mainViewController?.preferredStatusBarStyle ?? .default
     }
     
+    fileprivate func setScrolling(enabled isEnabled:Bool, forView view: UIView?) {
+        guard let containerView = view else { return }
+        
+        if let mapView = containerView as? MKMapView {
+            mapView.isScrollEnabled = isEnabled
+        }
+        else if let scrollView = containerView as? UIScrollView {
+            scrollView.isScrollEnabled = isEnabled
+        }
+        
+        for subview in containerView.subviews {
+            setScrolling(enabled: isEnabled, forView: subview)
+        }
+    }
+
+    fileprivate func rightWillOpen() {
+        setScrolling(enabled: false, forView: mainViewController?.view)
+        delegate?.rightWillOpen?()
+    }
+    
+    fileprivate func rightDidOpen() {
+        setScrolling(enabled: true, forView: rightViewController?.view)
+        delegate?.rightDidOpen?()
+    }
+    
+    fileprivate func rightWillClose() {
+        setScrolling(enabled: false, forView: rightViewController?.view)
+        delegate?.rightWillOpen?()
+    }
+    
+    fileprivate func rightDidClose() {
+        setScrolling(enabled: true, forView: mainViewController?.view)
+        delegate?.rightDidClose?()
+    }
+    
+    fileprivate func leftWillOpen() {
+        setScrolling(enabled: false, forView: mainViewController?.view)
+        delegate?.leftWillOpen?()
+    }
+    
+    fileprivate func leftDidOpen() {
+        setScrolling(enabled: true, forView: leftViewController?.view)
+        delegate?.leftDidClose?()
+    }
+    
+    fileprivate func leftWillClose() {
+        setScrolling(enabled: false, forView: leftViewController?.view)
+        delegate?.leftWillClose?()
+    }
+    
+    fileprivate func leftDidClose() {
+        setScrolling(enabled: true, forView: mainViewController?.view)
+        delegate?.leftDidClose?()
+    }
+    
     open override func openLeft() {
         guard let _ = leftViewController else { // If leftViewController is nil, then return
             return
         }
         
-        self.delegate?.leftWillOpen?()
+        leftWillOpen()
         
         setOpenWindowLevel()
         // for call viewWillAppear of leftViewController
@@ -238,7 +294,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        self.delegate?.rightWillOpen?()
+        rightWillOpen()
         
         setOpenWindowLevel()
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
@@ -252,7 +308,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        self.delegate?.leftWillClose?()
+        leftWillClose()
         
         leftViewController?.beginAppearanceTransition(isLeftHidden(), animated: true)
         closeLeftWithVelocity(0.0)
@@ -264,7 +320,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        self.delegate?.rightWillClose?()
+        rightWillClose()
         
         rightViewController?.beginAppearanceTransition(isRightHidden(), animated: true)
         closeRightWithVelocity(0.0)
@@ -376,9 +432,9 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 
                 if isLeftHidden() {
-                    self.delegate?.leftWillOpen?()
+                    leftWillOpen()
                 } else {
-                    self.delegate?.leftWillClose?()
+                    leftWillClose()
                 }
                 
                 LeftPanState.frameAtStartOfPan = leftContainerView.frame
@@ -456,9 +512,9 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             }
             
             if isRightHidden() {
-                self.delegate?.rightWillOpen?()
+                rightWillOpen()
             } else {
-                self.delegate?.rightWillClose?()
+                rightWillClose()
             }
             
             RightPanState.frameAtStartOfPan = rightContainerView.frame
@@ -539,7 +595,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 if let strongSelf = self {
                     strongSelf.disableContentInteraction()
                     strongSelf.leftViewController?.endAppearanceTransition()
-                    strongSelf.delegate?.leftDidOpen?()
+                    strongSelf.leftDidOpen()
                 }
         }
     }
@@ -572,7 +628,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 if let strongSelf = self {
                     strongSelf.disableContentInteraction()
                     strongSelf.rightViewController?.endAppearanceTransition()
-                    strongSelf.delegate?.rightDidOpen?()
+                    strongSelf.rightDidOpen()
                 }
         }
     }
@@ -602,7 +658,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                     strongSelf.removeShadow(strongSelf.leftContainerView)
                     strongSelf.enableContentInteraction()
                     strongSelf.leftViewController?.endAppearanceTransition()
-                    strongSelf.delegate?.leftDidClose?()
+                    strongSelf.leftDidClose()
                 }
         }
     }
@@ -633,7 +689,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                     strongSelf.removeShadow(strongSelf.rightContainerView)
                     strongSelf.enableContentInteraction()
                     strongSelf.rightViewController?.endAppearanceTransition()
-                    strongSelf.delegate?.rightDidClose?()
+                    strongSelf.rightDidClose()
                 }
         }
     }
@@ -985,6 +1041,18 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return SlideMenuOptions.simultaneousGestureRecognizers
     }
     
+    open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
+            let velocity = panGestureRecognizer.velocity(in: self.view)
+            if (abs(velocity.y) * 2.5 < abs(velocity.x)) {
+                return true
+            }
+        }
+        
+        return false
+    }
+
     fileprivate func slideLeftForGestureRecognizer( _ gesture: UIGestureRecognizer, point:CGPoint) -> Bool{
         return isLeftOpen() || SlideMenuOptions.panFromBezel && isLeftPointContainedWithinBezelRect(point)
     }
@@ -1074,8 +1142,8 @@ extension UIViewController {
         slideMenuController()?.closeRight()
     }
     
-    // Please specify if you want menu gesuture give priority to than targetScrollView
-    public func addPriorityToMenuGesuture(_ targetScrollView: UIScrollView) {
+    // Please specify if you want menu gesture give priority to than targetScrollView
+    public func addPriorityToMenuGesture(_ targetScrollView: UIScrollView) {
         guard let slideController = slideMenuController(), let recognizers = slideController.view.gestureRecognizers else {
             return
         }
