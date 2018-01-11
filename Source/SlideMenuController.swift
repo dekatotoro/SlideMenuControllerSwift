@@ -1041,6 +1041,18 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return SlideMenuOptions.simultaneousGestureRecognizers
     }
     
+    open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
+            let velocity = panGestureRecognizer.velocity(in: self.view)
+            if (abs(velocity.y) * 2.5 < abs(velocity.x)) {
+                return true
+            }
+        }
+        
+        return false
+    }
+
     fileprivate func slideLeftForGestureRecognizer( _ gesture: UIGestureRecognizer, point:CGPoint) -> Bool{
         return isLeftOpen() || SlideMenuOptions.panFromBezel && isLeftPointContainedWithinBezelRect(point)
     }
