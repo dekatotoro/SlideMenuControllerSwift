@@ -1142,8 +1142,8 @@ extension UIViewController {
         slideMenuController()?.closeRight()
     }
     
-    // Please specify if you want menu gesuture give priority to than targetScrollView
-    public func addPriorityToMenuGesuture(_ targetScrollView: UIScrollView) {
+    // Please specify if you want menu gesture give priority to than targetScrollView
+    public func addPriorityToMenuGesture(_ targetScrollView: UIScrollView) {
         guard let slideController = slideMenuController(), let recognizers = slideController.view.gestureRecognizers else {
             return
         }
