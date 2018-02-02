@@ -10,7 +10,7 @@ import UIKit
 
 class ExSlideMenuController : SlideMenuController {
 
-    override func isTagetViewController() -> Bool {
+    override func isTargetViewController() -> Bool {
         if let vc = UIApplication.topViewController() {
             if vc is MainViewController ||
             vc is SwiftViewController ||
