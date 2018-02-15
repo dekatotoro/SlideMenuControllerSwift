@@ -1028,7 +1028,6 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
 }
 
-
 extension UIViewController {
 
     public func slideMenuController() -> SlideMenuController? {
