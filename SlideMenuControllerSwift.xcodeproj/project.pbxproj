@@ -328,6 +328,7 @@
 				TargetAttributes = {
 					0E75C5951BE3CA7900844634 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0900;
 					};
 					C539E6401A315E87003B7CC7 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -487,6 +488,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dekatotoro.SlideMenuControllerSwift;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -512,6 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dekatotoro.SlideMenuControllerSwift;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
