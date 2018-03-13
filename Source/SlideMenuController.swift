@@ -363,6 +363,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         static var lastState : UIGestureRecognizerState = .ended
     }
     
+    @objc
     func handleLeftPanGesture(_ panGesture: UIPanGestureRecognizer) {
         
         if !isTagetViewController() {
@@ -444,6 +445,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         static var lastState : UIGestureRecognizerState = .ended
     }
     
+    @objc
     func handleRightPanGesture(_ panGesture: UIPanGestureRecognizer) {
         
         if !isTagetViewController() {
@@ -1128,25 +1130,37 @@ extension UIViewController {
         navigationItem.rightBarButtonItem = rightButton
     }
     
+    public func addRightBarButtonWithView(_ view: UIControl) {
+        let rightButton = UIBarButtonItem(customView: view)
+        view.addTarget(self, action: #selector(self.toggleRight), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    @objc
     public func toggleLeft() {
         slideMenuController()?.toggleLeft()
     }
 
+    @objc
     public func toggleRight() {
         slideMenuController()?.toggleRight()
     }
     
+    @objc
     public func openLeft() {
         slideMenuController()?.openLeft()
     }
     
+    @objc
     public func openRight() {
         slideMenuController()?.openRight()    }
     
+    @objc
     public func closeLeft() {
         slideMenuController()?.closeLeft()
     }
     
+    @objc
     public func closeRight() {
         slideMenuController()?.closeRight()
     }
