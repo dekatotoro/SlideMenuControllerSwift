@@ -421,6 +421,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                     closeLeftWithVelocity(panInfo.velocity)
                     setCloseWindowLevel()
                     
+                    self.delegate?.leftWillClose?()
                     track(.leftFlickClose)
 
                 }
@@ -503,6 +504,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 closeRightWithVelocity(panInfo.velocity)
                 setCloseWindowLevel()
                 
+                self.delegate?.rightWillClose?()
                 track(.rightFlickClose)
             }
         case UIGestureRecognizerState.failed, UIGestureRecognizerState.possible:
