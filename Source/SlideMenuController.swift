@@ -1027,7 +1027,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return rightContainerView.frame.contains(point)
     }
     
-    override open func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+    public final func dismissForcedly(animated flag: Bool, completion: (() -> Void)? = nil) {
         
         self.removeViewController(self.leftViewController)
         self.removeViewController(self.mainViewController)
@@ -1037,6 +1037,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         self.mainViewController = nil
         self.rightViewController = nil
         
+        self.opacityView.removeFromSuperview()
         self.leftContainerView.removeFromSuperview()
         self.mainContainerView.removeFromSuperview()
         self.rightContainerView.removeFromSuperview()
