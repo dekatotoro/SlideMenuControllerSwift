@@ -167,20 +167,21 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         leftContainerView.isHidden = true
         rightContainerView.isHidden = true
       
-        coordinator.animate(alongsideTransition: nil, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
-            self.closeLeftNonAnimation()
-            self.closeRightNonAnimation()
-            self.leftContainerView.isHidden = false
-            self.rightContainerView.isHidden = false
+        coordinator.animate(alongsideTransition: nil, completion: { [weak self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+            
+            self?.closeLeftNonAnimation()
+            self?.closeRightNonAnimation()
+            self?.leftContainerView.isHidden = false
+            self?.rightContainerView.isHidden = false
       
-            if self.leftPanGesture != nil && self.leftPanGesture != nil {
-                self.removeLeftGestures()
-                self.addLeftGestures()
+            if self?.leftPanGesture != nil && self?.leftPanGesture != nil {
+                self?.removeLeftGestures()
+                self?.addLeftGestures()
             }
             
-            if self.rightPanGesture != nil && self.rightPanGesture != nil {
-                self.removeRightGestures()
-                self.addRightGestures()
+            if self?.rightPanGesture != nil && self?.rightPanGesture != nil {
+                self?.removeRightGestures()
+                self?.addRightGestures()
             }
         })
     }
@@ -1026,6 +1027,22 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return rightContainerView.frame.contains(point)
     }
     
+    override open func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        
+        self.removeViewController(self.leftViewController)
+        self.removeViewController(self.mainViewController)
+        self.removeViewController(self.rightViewController)
+        
+        self.leftViewController = nil
+        self.mainViewController = nil
+        self.rightViewController = nil
+        
+        self.leftContainerView.removeFromSuperview()
+        self.mainContainerView.removeFromSuperview()
+        self.rightContainerView.removeFromSuperview()
+        
+        super.dismiss(animated: flag, completion: completion)
+    }
 }
 
 extension UIViewController {
