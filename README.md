@@ -67,10 +67,10 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 class ContainerViewController: SlideMenuController {
 
     override func awakeFromNib() {
-        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("Main") {
+        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "Main") {
             self.mainViewController = controller
         }
-        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("Left") {
+        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "Left") {
             self.leftViewController = controller
         }
         super.awakeFromNib()
