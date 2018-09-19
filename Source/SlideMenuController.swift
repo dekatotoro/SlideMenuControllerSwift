@@ -931,7 +931,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    fileprivate func setUpViewController(_ targetView: UIView, targetViewController: UIViewController?) {
+    public func setUpViewController(_ targetView: UIView, targetViewController: UIViewController?) {
         if let viewController = targetViewController {
             viewController.view.frame = targetView.bounds
             
@@ -944,7 +944,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    fileprivate func removeViewController(_ viewController: UIViewController?) {
+    public func removeViewController(_ viewController: UIViewController?) {
         if let _viewController = viewController {
             _viewController.view.layer.removeAllAnimations()
             _viewController.willMove(toParentViewController: nil)
