@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E75C5A31BE3CA9F00844634 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
-		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E6461A315E87003B7CC7 /* AppDelegate.swift */; };
 		C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C539E6481A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld */; };
@@ -49,6 +48,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = C539E6401A315E87003B7CC7;
 			remoteInfo = SlideMenuControllerSwift;
+		};
+		D39C38B92183DAFE006CA5FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C539E6391A315E87003B7CC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E75C5951BE3CA7900844634;
+			remoteInfo = "SlideMenuControllerSwift-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -291,6 +297,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D39C38BA2183DAFE006CA5FF /* PBXTargetDependency */,
 			);
 			name = SlideMenuControllerSwift;
 			productName = SlideMenuControllerSwift;
@@ -445,6 +452,11 @@
 			isa = PBXTargetDependency;
 			target = C539E6401A315E87003B7CC7 /* SlideMenuControllerSwift */;
 			targetProxy = C539E65A1A315E87003B7CC7 /* PBXContainerItemProxy */;
+		};
+		D39C38BA2183DAFE006CA5FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E75C5951BE3CA7900844634 /* SlideMenuControllerSwift-iOS */;
+			targetProxy = D39C38B92183DAFE006CA5FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
