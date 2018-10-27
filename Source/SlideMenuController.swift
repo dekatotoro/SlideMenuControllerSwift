@@ -521,7 +521,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         
         var duration: TimeInterval = Double(SlideMenuOptions.animationDuration)
         if velocity != 0.0 {
-            duration = Double(fabs(xOrigin - finalXOrigin) / velocity)
+            duration = Double(abs(xOrigin - finalXOrigin) / velocity)
             duration = Double(fmax(0.1, fmin(1.0, duration)))
         }
         
@@ -555,7 +555,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
         var duration: TimeInterval = Double(SlideMenuOptions.animationDuration)
         if velocity != 0.0 {
-            duration = Double(fabs(xOrigin - view.bounds.width) / velocity)
+            duration = Double(abs(xOrigin - view.bounds.width) / velocity)
             duration = Double(fmax(0.1, fmin(1.0, duration)))
         }
     
@@ -587,7 +587,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
         var duration: TimeInterval = Double(SlideMenuOptions.animationDuration)
         if velocity != 0.0 {
-            duration = Double(fabs(xOrigin - finalXOrigin) / velocity)
+            duration = Double(abs(xOrigin - finalXOrigin) / velocity)
             duration = Double(fmax(0.1, fmin(1.0, duration)))
         }
         
@@ -618,7 +618,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
         var duration: TimeInterval = Double(SlideMenuOptions.animationDuration)
         if velocity != 0.0 {
-            duration = Double(fabs(xOrigin - view.bounds.width) / velocity)
+            duration = Double(abs(xOrigin - view.bounds.width) / velocity)
             duration = Double(fmax(0.1, fmin(1.0, duration)))
         }
     
