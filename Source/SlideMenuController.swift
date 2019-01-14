@@ -173,12 +173,12 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             self.leftContainerView.isHidden = false
             self.rightContainerView.isHidden = false
       
-            if self.leftPanGesture != nil && self.leftPanGesture != nil {
+            if self.leftPanGesture != nil && self.leftTapGesture != nil {
                 self.removeLeftGestures()
                 self.addLeftGestures()
             }
             
-            if self.rightPanGesture != nil && self.rightPanGesture != nil {
+            if self.rightPanGesture != nil && self.rightTapGesture != nil {
                 self.removeRightGestures()
                 self.addRightGestures()
             }
@@ -340,7 +340,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    open func isTagetViewController() -> Bool {
+    open func isTargetViewController() -> Bool {
         // Function to determine the target ViewController
         // Please to override it if necessary
         return true
@@ -361,7 +361,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func handleLeftPanGesture(_ panGesture: UIPanGestureRecognizer) {
         
-        if !isTagetViewController() {
+        if !isTargetViewController() {
             return
         }
         
@@ -441,7 +441,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func handleRightPanGesture(_ panGesture: UIPanGestureRecognizer) {
         
-        if !isTagetViewController() {
+        if !isTargetViewController() {
             return
         }
         
