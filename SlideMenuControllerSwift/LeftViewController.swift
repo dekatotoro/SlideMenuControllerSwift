@@ -39,26 +39,26 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let swiftViewController = storyboard.instantiateViewControllerWithIdentifier("SwiftViewController") as! SwiftViewController
+        let swiftViewController = storyboard.instantiateViewController(withIdentifier: "SwiftViewController") as! SwiftViewController
         self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
         
-        let javaViewController = storyboard.instantiateViewControllerWithIdentifier("JavaViewController") as! JavaViewController
+        let javaViewController = storyboard.instantiateViewController(withIdentifier: "JavaViewController") as! JavaViewController
         self.javaViewController = UINavigationController(rootViewController: javaViewController)
         
-        let goViewController = storyboard.instantiateViewControllerWithIdentifier("GoViewController") as! GoViewController
+        let goViewController = storyboard.instantiateViewController(withIdentifier: "GoViewController") as! GoViewController
         self.goViewController = UINavigationController(rootViewController: goViewController)
         
-        let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as! NonMenuController
+        let nonMenuController = storyboard.instantiateViewController(withIdentifier: "NonMenuController") as! NonMenuController
         nonMenuController.delegate = self
         self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
         
-        self.tableView.registerCellClass(BaseTableViewCell.self)
+        self.tableView.registerCellClass(cellClass: BaseTableViewCell.self)
         
         self.imageHeaderView = ImageHeaderView.loadNib()
         self.view.addSubview(self.imageHeaderView)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
@@ -107,7 +107,7 @@ extension LeftViewController : UITableViewDataSource {
         if let menu = LeftMenu(rawValue: indexPath.item) {
             switch menu {
             case .Main, .Swift, .Java, .Go, .NonMenu:
-                let cell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
+                let cell = BaseTableViewCell(style: UITableViewCell.CellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 return cell
             }
@@ -117,7 +117,7 @@ extension LeftViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let menu = LeftMenu(rawValue: indexPath.item) {
-            self.changeViewController(menu)
+            self.changeViewController(menu: menu)
         }
     }
 }
