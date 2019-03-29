@@ -426,6 +426,8 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
                 }
             case UIGestureRecognizer.State.failed, UIGestureRecognizer.State.possible:
                 break
+        @unknown default:
+            print("Require to handel")
         }
         
         LeftPanState.lastState = panGesture.state
@@ -507,6 +509,8 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             }
         case UIGestureRecognizer.State.failed, UIGestureRecognizer.State.possible:
             break
+        @unknown default:
+            print("Require to handel")
         }
         
         RightPanState.lastState = panGesture.state
