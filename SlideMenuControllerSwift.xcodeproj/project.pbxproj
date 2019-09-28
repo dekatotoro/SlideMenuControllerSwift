@@ -45,6 +45,7 @@
 		236C71E9233EE5F100096210 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C71C6233EE5F100096210 /* DataTableViewCell.swift */; };
 		236C71EA233EE5F100096210 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236C71C7233EE5F100096210 /* UIApplication.swift */; };
 		236C71EB233EE5F100096210 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 236C71C8233EE5F100096210 /* Info.plist */; };
+		236C71ED233EE83400096210 /* SlideMenuControllerSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 236C71EC233EE83300096210 /* SlideMenuControllerSwift.podspec */; };
 		C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		236C71C6233EE5F100096210 /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		236C71C7233EE5F100096210 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		236C71C8233EE5F100096210 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		236C71EC233EE83300096210 /* SlideMenuControllerSwift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SlideMenuControllerSwift.podspec; sourceTree = "<group>"; };
 		C539E6411A315E87003B7CC7 /* SlideMenuControllerSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideMenuControllerSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C539E6591A315E87003B7CC7 /* SlideMenuControllerSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlideMenuControllerSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuController.swift; path = Source/SlideMenuController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		C539E6381A315E87003B7CC7 = {
 			isa = PBXGroup;
 			children = (
+				236C71EC233EE83300096210 /* SlideMenuControllerSwift.podspec */,
 				236C71A1233EE5F100096210 /* SlideMenuControllerSwift */,
 				C5BA8AA41A43E24C00863FB9 /* Source */,
 				C539E6421A315E87003B7CC7 /* Products */,
@@ -349,6 +352,7 @@
 				236C71D3233EE5F100096210 /* ic_notifications_black_24dp.png in Resources */,
 				0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */,
 				236C71E6233EE5F100096210 /* DataTableViewCell.xib in Resources */,
+				236C71ED233EE83400096210 /* SlideMenuControllerSwift.podspec in Resources */,
 				236C71E0233EE5F100096210 /* Images.xcassets in Resources */,
 				236C71DA233EE5F100096210 /* LaunchScreen.xib in Resources */,
 				236C71D4233EE5F100096210 /* ic_menu_black_24dp@2x.png in Resources */,
