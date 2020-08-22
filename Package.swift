@@ -18,11 +18,6 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SlideMenuControllerSwift",
-            dependencies: [],
-            path: "SlideMenuControllerSwift",
-            sources: ["SlideMenuControllerSwift"],
-            publicHeadersPath: "SlideMenuControllerSwift"
-        )
+            name: "SlideMenuControllerSwift")
     ]
 )
