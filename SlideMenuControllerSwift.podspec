@@ -7,8 +7,9 @@ Pod::Spec.new do |s|
   s.author             = { "Yuji Hato" => "hatoyujidev@gmail.com" }
   s.social_media_url   = "https://twitter.com/dekatotoro"
   s.platform     = :ios
-  s.ios.deployment_target = "9.0"
+  s.ios.deployment_target = "12.0"
   s.source       = { :git => "https://github.com/dekatotoro/SlideMenuControllerSwift.git", :tag => s.version }
   s.source_files  = "Source/*.swift"
+  s.swift_version = "5.0"
   s.requires_arc = true
 end
